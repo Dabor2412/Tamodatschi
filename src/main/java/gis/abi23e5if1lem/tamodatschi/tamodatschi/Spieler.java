@@ -1,7 +1,5 @@
 package gis.abi23e5if1lem.tamodatschi.tamodatschi;
 
-import javafx.scene.control.SpinnerValueFactory;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,8 +9,8 @@ public class Spieler {
         private int angriffskraft;
         private int verteidigung;
         private int hunger;
-        private int posX;
-        private int posY;
+        private int posX = 0;
+        private int posY = 0;
         private int geld;
         List<Essen> essen = new ArrayList();
 
