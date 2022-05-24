@@ -1,5 +1,10 @@
 package gis.abi23e5if1lem.tamodatschi.tamodatschi;
 
+import javafx.scene.control.SpinnerValueFactory;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class Spieler {
         private String name;
         private int leben;
@@ -10,7 +15,7 @@ public class Spieler {
         private int posX;
         private int poxY;
         private int geld;
-
+        List<Essen> list = new ArrayList<Essen>();
         public Spieler () {}
 
         public int getLeben(){return leben;}
@@ -27,9 +32,9 @@ public class Spieler {
 
         public List getEssen() {return essen;}
 
-        public void addEssen(){List.add}
+        public void addEssen(){list.add(Essen);}
 
-        public void konsumiereEssen(){List.del}
+        public void konsumiereEssen(){list.remove(Essen);}
 
         public int getGeld() {return geld;}
 
