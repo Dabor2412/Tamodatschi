@@ -1,5 +1,6 @@
 package gis.abi23e5if1lem.tamodatschi.tamodatschi;
 
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 public class Ort {
@@ -7,8 +8,7 @@ public class Ort {
     protected int positionX;
     protected int positionY;
     protected boolean betretbar;
-    protected ImageView grafik;
-    protected int id;
+    protected ImageView grafik = new ImageView(new Image("Tamodatschi/src/main/resources/gis/abi23e5if1lem/tamodatschi/tamodatschi/sand.jpg"));     //Dateipfad bearbeiten
 
     public boolean getBetretbar() {
         return this.betretbar;
