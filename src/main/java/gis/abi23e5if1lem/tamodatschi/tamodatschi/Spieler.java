@@ -12,9 +12,10 @@ public class Spieler {
         private int verteidigung;
         private int hunger;
         private int posX;
-        private int poxY;
+        private int posY;
         private int geld;
         List<Essen> essen = new ArrayList();
+
         public Spieler () {
 
         }
@@ -71,11 +72,11 @@ public class Spieler {
                 this.posX = posX;
         }
 
-        public int getPoxY() {
-                return poxY;
+        public int getPosY() {
+                return posY;
         }
 
-        public void setPoxY(int poxY) {
-                this.poxY = poxY;
+        public void setPosY(int posY) {
+                this.posY = posY;
         }
 }
