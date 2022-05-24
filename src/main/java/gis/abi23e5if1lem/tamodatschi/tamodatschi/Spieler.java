@@ -11,33 +11,71 @@ public class Spieler {
         private int angriffskraft;
         private int verteidigung;
         private int hunger;
-        private List essen;
         private int posX;
         private int poxY;
         private int geld;
-        List<Essen> list = new ArrayList<Essen>();
-        public Spieler () {}
+        List<Essen> essen = new ArrayList();
+        public Spieler () {
 
-        public int getLeben(){return leben;}
+        }
 
-        public void setLeben(int leben){this.leben = leben;}
+        public int getLeben(){
+                return leben;
+        }
 
-        public int getAngriffskraft(){return angriffskraft;}
+        public void setLeben(int leben){
+                this.leben = leben;
+        }
 
-        public void setAngriffskraft(int angriffskraft){this.angriffskraft = angriffskraft;}
+        public int getAngriffskraft(){
+                return angriffskraft;
+        }
 
-        public int getVerteidigung(){return verteidigung;}
+        public void setAngriffskraft(int angriffskraft){
+                this.angriffskraft = angriffskraft;
+        }
 
-        public void setVerteidigung(int verteidigung){this.verteidigung = verteidigung;}
+        public int getVerteidigung(){
+                return verteidigung;
+        }
 
-        public List getEssen() {return essen;}
+        public void setVerteidigung(int verteidigung){
+                this.verteidigung = verteidigung;
+        }
 
-        public void addEssen(){list.add(Essen);}
+        public List getEssen() {
+                return essen;
+        }
 
-        public void konsumiereEssen(){list.remove(Essen);}
+        public void addEssen(Essen gericht){
+                essen.add(gericht);
+        }
 
-        public int getGeld() {return geld;}
+        public void konsumiereEssen(Essen gericht){
+                essen.remove(gericht);
+        }
 
-        public void setGeld(int geld) {this.geld = geld;}
+        public int getGeld() {
+                return geld;
+        }
 
+        public void setGeld(int geld) {
+                this.geld = geld;
+        }
+
+        public int getPosX() {
+                return posX;
+        }
+
+        public void setPosX(int posX) {
+                this.posX = posX;
+        }
+
+        public int getPoxY() {
+                return poxY;
+        }
+
+        public void setPoxY(int poxY) {
+                this.poxY = poxY;
+        }
 }

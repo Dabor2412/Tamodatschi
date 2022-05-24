@@ -10,6 +10,6 @@ public class Minigame extends Application {
     }
 
     public void initGame(){
-
+        launch();
     }
 }

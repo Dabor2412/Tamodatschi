@@ -31,5 +31,13 @@ public class Shop extends Application {
         return null;
     }
 
+    public void addInv(Essen gericht){
+        inventar.add(gericht);
+    }
+
+    public void removeInv(Essen gericht){
+        inventar.remove(gericht);
+    }
+
 
 }

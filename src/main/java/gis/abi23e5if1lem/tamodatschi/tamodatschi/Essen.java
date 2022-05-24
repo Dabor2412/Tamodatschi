@@ -12,4 +12,20 @@ public class Essen {
     public void konsumieren(){
 
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int[] getBuffs() {
+        return buffs;
+    }
+
+    public void setBuffs(int[] buffs) {
+        this.buffs = buffs;
+    }
 }

@@ -12,4 +12,16 @@ public class Spielfeld {
         Spieler sp = Main.tdi.spieler;
     }
 
+    public Object[][] getMap() {
+        return map;
+    }
+
+    public void setMap(Object[][] map) {
+        this.map = map;
+    }
+
+    public void setMapPoint(Object o, int posX, int posY){
+        map[posX][posY] = o;
+    }
+
 }
