@@ -8,8 +8,7 @@ public class Ort {
     protected int positionX;
     protected int positionY;
     protected boolean betretbar;
-    protected ImageView grafik = new ImageView(new Image("Tamodatschi/src/main/resources/gis/abi23e5if1lem/tamodatschi/tamodatschi/sand.jpg"));     //Dateipfad bearbeiten
-
+    protected String grafik = getClass().getResource("images/sand.jpg").toString();
     public boolean getBetretbar() {
         return this.betretbar;
     }
@@ -20,5 +19,8 @@ public class Ort {
         this.name = name;
         this.positionX = x;
         this.positionY = y;
+    }
+    public void applyImage(ImageView imv){
+        imv.setImage(new Image(grafik));
     }
 }

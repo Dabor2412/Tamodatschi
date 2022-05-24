@@ -1,38 +1,82 @@
 package gis.abi23e5if1lem.tamodatschi.tamodatschi;
 
+import javafx.scene.control.SpinnerValueFactory;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class Spieler {
         private String name;
         private int leben;
         private int angriffskraft;
         private int verteidigung;
         private int hunger;
-        private List essen;
         private int posX;
-        private int poxY;
+        private int posY;
         private int geld;
+        List<Essen> essen = new ArrayList();
 
-        public Spieler () {}
+        public Spieler () {
 
-        public int getLeben(){return leben;}
+        }
 
-        public void setLeben(int leben){this.leben = leben;}
+        public int getLeben(){
+                return leben;
+        }
 
-        public int getAngriffskraft(){return angriffskraft;}
+        public void setLeben(int leben){
+                this.leben = leben;
+        }
 
-        public void setAngriffskraft(int angriffskraft){this.angriffskraft = angriffskraft;}
+        public int getAngriffskraft(){
+                return angriffskraft;
+        }
 
-        public int getVerteidigung(){return verteidigung;}
+        public void setAngriffskraft(int angriffskraft){
+                this.angriffskraft = angriffskraft;
+        }
 
-        public void setVerteidigung(int verteidigung){this.verteidigung = verteidigung;}
+        public int getVerteidigung(){
+                return verteidigung;
+        }
 
-        public List getEssen() {return essen;}
+        public void setVerteidigung(int verteidigung){
+                this.verteidigung = verteidigung;
+        }
 
-        public void addEssen(){List.add}
+        public List getEssen() {
+                return essen;
+        }
 
-        public void konsumiereEssen(){List.del}
+        public void addEssen(Essen gericht){
+                essen.add(gericht);
+        }
 
-        public int getGeld() {return geld;}
+        public void konsumiereEssen(Essen gericht){
+                essen.remove(gericht);
+        }
 
-        public void setGeld(int geld) {this.geld = geld;}
+        public int getGeld() {
+                return geld;
+        }
 
+        public void setGeld(int geld) {
+                this.geld = geld;
+        }
+
+        public int getPosX() {
+                return posX;
+        }
+
+        public void setPosX(int posX) {
+                this.posX = posX;
+        }
+
+        public int getPosY() {
+                return posY;
+        }
+
+        public void setPosY(int posY) {
+                this.posY = posY;
+        }
 }
