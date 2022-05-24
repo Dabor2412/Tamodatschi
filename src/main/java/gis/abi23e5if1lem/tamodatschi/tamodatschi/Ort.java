@@ -7,8 +7,7 @@ public class Ort {
     protected int positionX;
     protected int positionY;
     protected boolean betretbar;
-    protected ImageView grafik;
-    protected int id;
+    protected ImageView grafik = ;
 
     public boolean getBetretbar() {
         return this.betretbar;
