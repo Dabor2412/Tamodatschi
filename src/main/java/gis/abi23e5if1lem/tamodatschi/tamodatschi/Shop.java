@@ -20,25 +20,25 @@ public class Shop extends Application {
     }
 
     private void lootbox1(int gross){
-        Random zg = new Random();//ein Zufalsgeneratorobjekt wird erstellt
-    spieler.setGeld(spieler.getGeld()-2*Math.pow(gross,2)); //hier Geld festlegen//Preis wird abgebucht
-    int boost=Math.round(Math.pow(2,gross)*1000/(zg.nextInt(900)+100));//Größe der Box wird zufällig festgelegt
-    switch (zg.nextInt(3)+1) {//Art der Box wird zufällig festgelegt
-      case 1 : 
-        spieler.setAngriffskraft(spieler.getAngriffskraft()+boost);//Atribut wird geändert
-        //hier Label schrift  einstellen
-        break;
-      case  2: 
-         spieler.setVerteidigung(spieler.getVerteidigung()+boost);//Atribut wird geändert
-        //hier Label schrift  einstellen
-        break;
-       case 3: 
-         spieler.setLeben(spieler.getLeben()+boost);//Atribut wird geändert
-        //hier Label schrift  einstellen
-        break;
-      default: 
+        Random zg = new Random(); //ein Zufalsgeneratorobjekt wird erstellt
+        Main.tdi.spieler.setGeld((int) (Main.tdi.spieler.getGeld()-2*Math.pow(gross,2))); //hier Geld festlegen//Preis wird abgebucht
+        int boost = (int) Math.round(Math.pow(2,gross)*1000/(zg.nextInt(900)+100)); //Größe der Box wird zufällig festgelegt
+        switch (zg.nextInt(3)+1) {//Art der Box wird zufällig festgelegt
+            case 1 :
+                Main.tdi.spieler.setAngriffskraft(Main.tdi.spieler.getAngriffskraft()+boost); //Atribut wird geändert
+                //hier Label schrift  einstellen
+                break;
+            case  2:
+                Main.tdi.spieler.setVerteidigung(Main.tdi.spieler.getVerteidigung()+boost); //Atribut wird geändert
+                //hier Label schrift  einstellen
+                break;
+            case 3:
+               Main.tdi.spieler.setLeben(Main.tdi.spieler.getLeben()+boost); //Atribut wird geändert
+                //hier Label schrift  einstellen
+                break;
+            default:
         
-    } // end of switch
+        } // end of switch
     }
 
 

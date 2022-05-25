@@ -5,9 +5,9 @@ import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
-import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -29,17 +29,19 @@ public class Tamodatschi extends Application {
 
     // End
     @FXML
-    protected void onTestButtonClick() {
+    protected void onTestButtonClick(Event e) {
     // Test:
         feld = new Spielfeld(true);
         feld.initDrawMap(pane);
-    // End
+        ((Button) e.getSource()).setDisable(true);
+        // End
     }
     @FXML
-    protected void onTest2ButtonClick() {
+    protected void onTest2ButtonClick(Event e) {
     // Test:
         feld.applyOrt(testOrt);
         feld.drawMap(pane);
+        ((Button) e.getSource()).setDisable(true);
     // End
     }
     @FXML
@@ -55,7 +57,29 @@ public class Tamodatschi extends Application {
     }
     @FXML
     protected void onDisplayText(KeyEvent kev){
-        System.out.println(kev.getCharacter());
+        switch (kev.getCharacter()) {
+            case "w" :
+                if(spieler.getPosY() > 0){
+                    spieler.setPosY(spieler.getPosY() - 1);
+                }
+                break;
+            case "a" :
+                if(spieler.getPosX() > 0){
+                    spieler.setPosX(spieler.getPosX() - 1);
+                }
+                break;
+            case "s" :
+                if(spieler.getPosY() < feld.getMap()[0].length-1){
+                    spieler.setPosY(spieler.getPosY() + 1);
+                }
+                break;
+            case "d" :
+                if(spieler.getPosX() < feld.getMap().length-1){
+                    spieler.setPosX(spieler.getPosX() + 1);
+                }
+                break;
+        }
+        feld.drawMap(pane);
     }
 
 
