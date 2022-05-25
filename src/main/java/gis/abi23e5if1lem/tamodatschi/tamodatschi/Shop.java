@@ -25,7 +25,7 @@ public class Shop extends Application {
     int boost=Math.round(Math.pow(2,gross)*1000/(zg.nextInt(900)+100));//Größe der Box wird zufällig festgelegt
     switch (zg.nextInt(3)+1) {//Art der Box wird zufällig festgelegt
       case 1 : 
-        spieler.setAngrifskraft(spieler.getAngrifskraft()+boost);//Atribut wird geändert
+        spieler.setAngriffskraft(spieler.getAngriffskraft()+boost);//Atribut wird geändert
         //hier Label schrift  einstellen
         break;
       case  2: 
