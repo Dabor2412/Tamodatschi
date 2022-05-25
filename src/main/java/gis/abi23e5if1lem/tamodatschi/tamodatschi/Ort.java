@@ -8,7 +8,7 @@ public class Ort {
     protected int positionX;
     protected int positionY;
     protected boolean betretbar;
-    protected String grafik = getClass().getResource("images/sand.jpg").toString();
+    protected String grafik = getClass().getResource("images/banan.png").toString();
     public boolean getBetretbar() {
         return this.betretbar;
     }
@@ -19,8 +19,5 @@ public class Ort {
         this.name = name;
         this.positionX = x;
         this.positionY = y;
-    }
-    public void applyImage(ImageView imv){
-        imv.setImage(new Image(grafik));
     }
 }
