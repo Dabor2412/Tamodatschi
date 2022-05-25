@@ -20,21 +20,21 @@ public class Shop extends Application {
 
     }
 
-    private void lootbox1(){
-        Random zg = new Random();
-    player.setGeld(player.getGeld-5); //hier Geld fetlegen
-    int boost=Math.round(1000/(zg.nextInt(900)+100));
-    switch (zg.nextInt(3)+1) {
+    private void lootbox1(int gross){
+        Random zg = new Random();//ein Zufalsgeneratorobjekt wird erstellt
+    spieler.setGeld(spieler.getGeld-2*Math.pow(gross,2)); //hier Geld festlegen//Preis wird abgebucht
+    int boost=Math.round(Math.pow(2,gross)*1000/(zg.nextInt(900)+100));//Größe der Box wird zufällig festgelegt
+    switch (zg.nextInt(3)+1) {//Art der Box wird zufällig festgelegt
       case 1 : 
-        player.setAngrifskraft(player.getAngrifskraft()+boost);
+        spieler.setAngrifskraft(spieler.getAngrifskraft()+boost);//Atribut wird geändert
         //hier Label schrift  einstellen
         break;
       case  2: 
-         player.setVerteidigung(player.getVerteidigung()+boost);
+         spieler.setVerteidigung(spieler.getVerteidigung()+boost);//Atribut wird geändert
         //hier Label schrift  einstellen
         break;
        case 3: 
-         player.setLeben(player.getLeben()+boost);
+         spieler.setLeben(spieler.getLeben()+boost);//Atribut wird geändert
         //hier Label schrift  einstellen
         break;
       default: 
@@ -42,49 +42,6 @@ public class Shop extends Application {
     } // end of switch
     }
 
-    private void lootbox2(){
-        Random zg = new Random();
-    player.setGeld(player.getGeld-8); //hier Geld fetlegen
-    int boost=Math.round(2000/(zg.nextInt(900)+100));
-    switch (zg.nextInt(3)+1) {
-      case 1 : 
-        player.setAngrifskraft(player.getAngrifskraft()+boost);
-        //hier Label schrift  einstellen
-        break;
-      case  2: 
-         player.setVerteidigung(player.getVerteidigung()+boost);
-        //hier Label schrift  einstellen
-        break;
-       case 3: 
-         player.setLeben(player.getLeben()+boost);
-        //hier Label schrift  einstellen
-        break;
-      default: 
-        
-    } // end of switch
-    }
-
-    private void lootbox3(){
-        Random zg = new Random();
-    player.setGeld(player.getGeld-5); //hier Geld fetlegen
-    int boost=Math.round(1000/(zg.nextInt(900)+100));
-    switch (zg.nextInt(3)+1) {
-      case 1 : 
-        player.setAngrifskraft(player.getAngrifskraft()+boost);
-        //hier Label schrift  einstellen
-        break;
-      case  2: 
-         player.setVerteidigung(player.getVerteidigung()+boost);
-        //hier Label schrift  einstellen
-        break;
-       case 3: 
-         player.setLeben(player.getLeben()+boost);
-        //hier Label schrift  einstellen
-        break;
-      default: 
-        
-    } // end of switch
-    }
 
     public void addInv(Essen gericht){
         inventar.add(gericht);
