@@ -9,8 +9,8 @@ public class Spielfeld {
 
     protected String grafik = getClass().getResource("images/sand.jpg").toString();
 
-    private ImageView[][] map = new ImageView[64][36];
-    private ImageView player;
+    private static ImageView[][] map = new ImageView[42][26];
+    private static ImageView player;
 
     /**
      * Class constructor
@@ -34,10 +34,10 @@ public class Spielfeld {
         }
 
         player = new ImageView(new Image(getClass().getResource("images/iGoSleep.jpg").toString()));
-        player.setFitHeight(16);
-        player.setFitWidth(16);
-        player.setX(Main.tdi.spieler.getPosX() * 16);
-        player.setY(Main.tdi.spieler.getPosY() * 16);
+        player.setFitHeight(24);
+        player.setFitWidth(24);
+        player.setX(Main.tdi.spieler.getPosX() * 24);
+        player.setY(Main.tdi.spieler.getPosY() * 24);
 
         pane.getChildren().add(player);
     }
@@ -51,15 +51,15 @@ public class Spielfeld {
              ) {
             if (node instanceof ImageView) {
                 if(node.equals(player)){
-                    player.setX(Main.tdi.spieler.getPosX() * 16);
-                    player.setY(Main.tdi.spieler.getPosY() * 16);
+                    player.setX(Main.tdi.spieler.getPosX() * 24);
+                    player.setY(Main.tdi.spieler.getPosY() * 24);
 
                     return;
                 }
                 ImageView imv = ((ImageView) node);
 
-                int posX = (int) (imv.getX() / 16);
-                int posY = (int) (imv.getY() / 16);
+                int posX = (int) (imv.getX() / 24);
+                int posY = (int) (imv.getY() / 24);
 
                 imv.setImage(map[posX][posY].getImage());
             }
@@ -73,10 +73,10 @@ public class Spielfeld {
         for (int i = 0; i < map.length; i++) {
             for (int j = 0; j < map[i].length; j++) {
                 map[i][j] = new ImageView(new Image(grafik));
-                map[i][j].setFitWidth(16);
-                map[i][j].setFitHeight(16);
-                map[i][j].setX(i * 16);
-                map[i][j].setY(j * 16);
+                map[i][j].setFitWidth(24);
+                map[i][j].setFitHeight(24);
+                map[i][j].setX(i * 24);
+                map[i][j].setY(j * 24);
             }
         }
     }
@@ -89,11 +89,11 @@ public class Spielfeld {
         ImageView imv = map[place.positionX][place.positionY];
 
         imv.setImage(new Image(place.grafik));
-        imv.setFitHeight(16);
-        imv.setFitWidth(16);
+        imv.setFitHeight(24);
+        imv.setFitWidth(24);
 
-        imv.setX(16 * place.positionX);
-        imv.setY(16 * place.positionY);
+        imv.setX(24 * place.positionX);
+        imv.setY(24 * place.positionY);
     }
 
     public void movePlayer(){

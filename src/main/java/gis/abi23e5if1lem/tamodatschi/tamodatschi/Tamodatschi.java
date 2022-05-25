@@ -5,18 +5,17 @@ import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.Random;
 
 public class Tamodatschi extends Application {
-
     public static Spieler spieler = new Spieler();
-    public Spielfeld feld = new Spielfeld(false);
-
+    public Spielfeld feld;
     @FXML
     public Pane pane;
 
@@ -32,7 +31,7 @@ public class Tamodatschi extends Application {
     @FXML
     protected void onTestButtonClick() {
     // Test:
-        feld.genMap();
+        feld = new Spielfeld(true);
         feld.initDrawMap(pane);
     // End
     }
@@ -47,20 +46,25 @@ public class Tamodatschi extends Application {
     protected void onTestPlayerButtonClick() {
     // Test:
         Random r = new Random();
-        int x = r.nextInt(64);
-        int y = r.nextInt(36);
+        int x = r.nextInt(42);
+        int y = r.nextInt(26);
         spieler.setPosX(x);
         spieler.setPosY(y);
         feld.drawMap(pane);
     // End
+    }
+    @FXML
+    protected void onDisplayText(KeyEvent kev){
+        System.out.println(kev.getCharacter());
     }
 
 
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Tamodatschi.class.getResource("tamodatschi.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 1280, 576);
+        Scene scene = new Scene(fxmlLoader.load(), 1152, 700);
         stage.setTitle("Tamodatschi");
+        stage.setResizable(false);
         stage.setScene(scene);
         stage.show();
 
