@@ -10,7 +10,6 @@ import java.util.Random;
 public class Shop extends Application {
 
     private List<Essen> inventar = new ArrayList();
-
     public Shop(){
 
     }
@@ -22,7 +21,7 @@ public class Shop extends Application {
 
     private void lootbox1(int gross){
         Random zg = new Random();//ein Zufalsgeneratorobjekt wird erstellt
-    spieler.setGeld(spieler.getGeld-2*Math.pow(gross,2)); //hier Geld festlegen//Preis wird abgebucht
+    spieler.setGeld(spieler.getGeld()-2*Math.pow(gross,2)); //hier Geld festlegen//Preis wird abgebucht
     int boost=Math.round(Math.pow(2,gross)*1000/(zg.nextInt(900)+100));//Größe der Box wird zufällig festgelegt
     switch (zg.nextInt(3)+1) {//Art der Box wird zufällig festgelegt
       case 1 : 
