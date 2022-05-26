@@ -5,11 +5,11 @@ import javafx.stage.Stage;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class Shop extends Application {
 
     private List<Essen> inventar = new ArrayList();
-
     public Shop(){
 
     }
@@ -19,17 +19,28 @@ public class Shop extends Application {
 
     }
 
-    private int[] lootbox1(){
-        return null;
+    private void lootbox1(int gross){
+        Random zg = new Random(); //ein Zufalsgeneratorobjekt wird erstellt
+        Main.tdi.spieler.setGeld((int) (Main.tdi.spieler.getGeld()-2*Math.pow(gross,2))); //hier Geld festlegen//Preis wird abgebucht
+        int boost = (int) Math.round(Math.pow(2,gross)*1000/(zg.nextInt(900)+100)); //Größe der Box wird zufällig festgelegt
+        switch (zg.nextInt(3)+1) {//Art der Box wird zufällig festgelegt
+            case 1 :
+                Main.tdi.spieler.setAngriffskraft(Main.tdi.spieler.getAngriffskraft()+boost); //Atribut wird geändert
+                //hier Label schrift  einstellen
+                break;
+            case  2:
+                Main.tdi.spieler.setVerteidigung(Main.tdi.spieler.getVerteidigung()+boost); //Atribut wird geändert
+                //hier Label schrift  einstellen
+                break;
+            case 3:
+               Main.tdi.spieler.setLeben(Main.tdi.spieler.getLeben()+boost); //Atribut wird geändert
+                //hier Label schrift  einstellen
+                break;
+            default:
+        
+        } // end of switch
     }
 
-    private int[] lootbox2(){
-        return null;
-    }
-
-    private int[] lootbox3(){
-        return null;
-    }
 
     public void addInv(Essen gericht){
         inventar.add(gericht);

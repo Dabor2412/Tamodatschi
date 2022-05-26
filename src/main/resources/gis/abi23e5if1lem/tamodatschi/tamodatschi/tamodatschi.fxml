@@ -3,10 +3,10 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onDisplayClick" prefHeight="576.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gis.abi23e5if1lem.tamodatschi.tamodatschi.Tamodatschi">
+<Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyTyped="#onDisplayText" onMouseClicked="#onDisplayClick" prefHeight="700.0" prefWidth="1152.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gis.abi23e5if1lem.tamodatschi.tamodatschi.Tamodatschi">
    <children>
-      <Button fx:id="button1" layoutX="1060.0" layoutY="47.0" mnemonicParsing="false" onMouseClicked="#onTestButtonClick" prefHeight="25.0" prefWidth="154.0" text="InitTest" />
-      <Button layoutX="1060.0" layoutY="102.0" mnemonicParsing="false" onMouseClicked="#onTest2ButtonClick" prefHeight="25.0" prefWidth="154.0" text="DrawTest" />
-      <Button layoutX="1060.0" layoutY="154.0" mnemonicParsing="false" onMouseClicked="#onTestPlayerButtonClick" prefHeight="25.0" prefWidth="154.0" text="PlayerTest" />
+      <Button layoutX="1064.0" layoutY="47.0" mnemonicParsing="false" onMouseClicked="#onTestButtonClick" prefHeight="25.0" prefWidth="85.0" text="InitTest" />
+      <Button layoutX="1064.0" layoutY="102.0" mnemonicParsing="false" onMouseClicked="#onTest2ButtonClick" prefHeight="25.0" prefWidth="85.0" text="DrawTest" />
+      <Button layoutX="1064.0" layoutY="154.0" mnemonicParsing="false" onMouseClicked="#onTestPlayerButtonClick" prefHeight="25.0" prefWidth="85.0" text="PlayerTest" />
    </children>
 </Pane>
