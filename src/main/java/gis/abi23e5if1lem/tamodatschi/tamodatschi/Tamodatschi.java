@@ -16,6 +16,7 @@ import java.util.Random;
 public class Tamodatschi extends Application {
     public static Spieler spieler = new Spieler();
     public Spielfeld feld;
+    public Scene scene;
     @FXML
     public Pane pane;
 
@@ -25,7 +26,7 @@ public class Tamodatschi extends Application {
     }
 
     // Test variables:
-    Ort testOrt = new Ort("Test", 16,16);
+    Ort testOrt = new Ort("Test", 16,16, getClass().getResource("images/banan.png").toString());
 
     // End
     @FXML
@@ -101,6 +102,7 @@ public class Tamodatschi extends Application {
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Tamodatschi.class.getResource("tamodatschi.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 1152, 700);
+        this.scene = scene;
         stage.setTitle("Tamodatschi");
         stage.setResizable(false);
         stage.setScene(scene);

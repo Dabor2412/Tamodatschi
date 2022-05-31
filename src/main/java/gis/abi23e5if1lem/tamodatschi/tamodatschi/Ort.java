@@ -15,9 +15,10 @@ public class Ort {
     public void setBetretbar(boolean betretbar) {
         this.betretbar = betretbar;
     }
-    public Ort(String name, int x, int y) {
+    public Ort(String name, int x, int y, String grafik) {
         this.name = name;
         this.positionX = x;
         this.positionY = y;
+        this.grafik = grafik;
     }
 }
