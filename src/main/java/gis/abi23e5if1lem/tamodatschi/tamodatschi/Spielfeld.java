@@ -5,9 +5,12 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 
+import java.util.Random;
+
 public class Spielfeld {
 
-    protected String grafik = getClass().getResource("images/sand.jpg").toString();
+    protected String grafik = getClass().getResource("images/grass.png").toString();
+    protected String tree = getClass().getResource("images/Sakura_tree_oben.png").toString();
 
     private static ImageView[][] map = new ImageView[42][26];
     private static ImageView player;
@@ -70,15 +73,24 @@ public class Spielfeld {
      * Generates an empty map of sand
      */
     public void genMap(){
-        for (int i = 0; i < map.length; i++) {
-            for (int j = 0; j < map[i].length; j++) {
-                map[i][j] = new ImageView(new Image(grafik));
-                map[i][j].setFitWidth(24);
-                map[i][j].setFitHeight(24);
-                map[i][j].setX(i * 24);
-                map[i][j].setY(j * 24);
+        Random rd = new Random();
+            for (int i = 0; i < map.length; i++) {
+                for (int j = 0; j < map[i].length; j++) {
+                    if (rd.nextInt(100) <= 95) {
+                    map[i][j] = new ImageView(new Image(grafik));
+                    map[i][j].setFitWidth(24);
+                    map[i][j].setFitHeight(24);
+                    map[i][j].setX(i * 24);
+                    map[i][j].setY(j * 24);
+                    } else {
+                        map[i][j] = new ImageView(new Image(tree));
+                        map[i][j].setFitWidth(24);
+                        map[i][j].setFitHeight(24);
+                        map[i][j].setX(i * 24);
+                        map[i][j].setY(j * 24);
+                    }
+                }
             }
-        }
     }
 
     /**

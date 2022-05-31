@@ -8,7 +8,7 @@ public class Ort {
     protected int positionX;
     protected int positionY;
     protected boolean betretbar;
-    protected String grafik = getClass().getResource("images/banan.png").toString();
+    protected String grafik = getClass().getResource("images/japanese_door.png").toString();
     public boolean getBetretbar() {
         return this.betretbar;
     }
