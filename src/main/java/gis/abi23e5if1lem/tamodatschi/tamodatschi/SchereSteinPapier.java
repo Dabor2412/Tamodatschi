@@ -42,9 +42,12 @@ public class SchereSteinPapier extends Application {
         button_schere.setPrefWidth(60);
         root.add(button_schere, 0, 1);
         button_schere.setOnAction(e -> {
-            if (fight(0, root, symbol1, symbol2)) {
+            if (fight(0, root, symbol1, symbol2) == 1) {
                 label.setText("Du hast gewonnen.");
                 label.setTextFill(Color.GREEN);
+            } else if(fight(0, root, symbol1, symbol2) == 2){
+                label.setText("Es gibt keinen Sieger");
+                label.setTextFill(Color.VIOLET);
             } else {
                 label.setText("Du hast verloren.");
                 label.setTextFill(Color.RED);
@@ -56,10 +59,13 @@ public class SchereSteinPapier extends Application {
         button_stein.setPrefWidth(60);
         root.add(button_stein, 1, 1);
         button_stein.setOnAction(e -> {
-            if (fight(1, root, symbol1, symbol2)) {
+            if (fight(1, root, symbol1, symbol2) == 1) {
                 label.setText("Du hast gewonnen.");
                 label.setTextFill(Color.GREEN);
-            } else {
+            } else if(fight(1, root, symbol1, symbol2) == 2){
+                label.setText("Es gibt keinen Sieger");
+                label.setTextFill(Color.YELLOW);
+            }  else {
                 label.setText("Du hast verloren.");
                 label.setTextFill(Color.RED);
             }
@@ -70,9 +76,12 @@ public class SchereSteinPapier extends Application {
         button_papier.setPrefWidth(60);
         root.add(button_papier, 2, 1);
         button_papier.setOnAction(e -> {
-            if (fight(2, root, symbol1, symbol2)) {
+            if (fight(2, root, symbol1, symbol2) == 1) {
                 label.setText("Du hast gewonnen.");
                 label.setTextFill(Color.GREEN);
+            } else if(fight(2, root, symbol1, symbol2) == 2){
+                label.setText("Es gibt keinen Sieger");
+                label.setTextFill(Color.YELLOW);
             } else {
                 label.setText("Du hast verloren.");
                 label.setTextFill(Color.RED);
@@ -86,7 +95,7 @@ public class SchereSteinPapier extends Application {
         stage.show();
     }
 
-    private boolean fight(int x, GridPane gp, Label symbol2, Label symbol1) {
+    private int fight(int x, GridPane gp, Label symbol2, Label symbol1) {
         Random rd = new Random();
         switch(rd.nextInt(3)) {
             case 0:
@@ -95,15 +104,15 @@ public class SchereSteinPapier extends Application {
                 switch(x) {
                     case 0:
                         symbol2.setGraphic(new ImageView(new Image(getClass().getResource("images/Schere.jpg").toString())));
-                        return false;
+                        return 2;
                     case 1:
                         symbol2.setGraphic(new ImageView(new Image(getClass().getResource("images/Stein.jpg").toString())));
-                        return true;
+                        return 1;
                     case 2:
                         symbol2.setGraphic(new ImageView(new Image(getClass().getResource("images/Papier.jpg").toString())));
-                        return false;
+                        return 0;
                     default:
-                        return false;
+                        return 0;
                 }
             case 1:
                 symbol1.setGraphic(new ImageView(new Image(getClass().getResource("images/Stein.jpg").toString())));
@@ -111,15 +120,15 @@ public class SchereSteinPapier extends Application {
                 switch(x) {
                     case 0:
                         symbol2.setGraphic(new ImageView(new Image(getClass().getResource("images/Schere.jpg").toString())));
-                        return false;
+                        return 0;
                     case 1:
                         symbol2.setGraphic(new ImageView(new Image(getClass().getResource("images/Stein.jpg").toString())));
-                        return false;
+                        return 2;
                     case 2:
                         symbol2.setGraphic(new ImageView(new Image(getClass().getResource("images/Papier.jpg").toString())));
-                        return true;
+                        return 1;
                     default:
-                        return false;
+                        return 0;
                 }
             case 2:
                 symbol1.setGraphic(new ImageView(new Image(getClass().getResource("images/Papier.jpg").toString())));
@@ -127,18 +136,18 @@ public class SchereSteinPapier extends Application {
                 switch(x) {
                     case 0:
                         symbol2.setGraphic(new ImageView(new Image(getClass().getResource("images/Schere.jpg").toString())));
-                        return true;
+                        return 1;
                     case 1:
                         symbol2.setGraphic(new ImageView(new Image(getClass().getResource("images/Stein.jpg").toString())));
-                        return false;
+                        return 0;
                     case 2:
                         symbol2.setGraphic(new ImageView(new Image(getClass().getResource("images/Papier.jpg").toString())));
-                        return false;
+                        return 2;
                     default:
-                        return false;
+                        return 0;
                 }
         }
-        return false;
+        return 0;
     }
 
     public static void main(String[] args) {
