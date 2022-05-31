@@ -56,6 +56,19 @@ public class Tamodatschi extends Application {
     // End
     }
     @FXML
+    protected void onTestMinigameButtonClick() {
+        // Test:
+        SchereSteinPapier ssp = new SchereSteinPapier();
+        ssp.start();
+        // End
+    }
+    @FXML
+    protected void onTestShopButtonClick() {
+        // Test:
+
+        // End
+    }
+    @FXML
     protected void onDisplayText(KeyEvent kev){
         switch (kev.getCharacter()) {
             case "w" :
@@ -79,6 +92,7 @@ public class Tamodatschi extends Application {
                 }
                 break;
         }
+
         feld.drawMap(pane);
     }
 

@@ -16,9 +16,9 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.Random;
 
-public class SchereSteinPapier extends Application {
-    @Override
-    public void start(Stage stage) throws IOException {
+public class SchereSteinPapier {
+
+    public void start() {
         GridPane root = new GridPane();
         root.setHgap(20);
         root.setVgap(20);
@@ -81,6 +81,7 @@ public class SchereSteinPapier extends Application {
         button_papier.setPrefWidth(220);
 
         Scene scene = new Scene(root, 800, 500);
+        Stage stage = new Stage();
         stage.setTitle("Schere Stein Papier");
         stage.setScene(scene);
         stage.show();
@@ -139,9 +140,5 @@ public class SchereSteinPapier extends Application {
                 }
         }
         return false;
-    }
-
-    public static void main(String[] args) {
-        launch();
     }
 }
