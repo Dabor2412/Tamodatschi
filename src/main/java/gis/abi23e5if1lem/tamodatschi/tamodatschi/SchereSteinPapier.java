@@ -64,7 +64,7 @@ public class SchereSteinPapier {
                 label.setTextFill(Color.GREEN);
             } else if(fight(1, root, symbol1, symbol2) == 2){
                 label.setText("Es gibt keinen Sieger");
-                label.setTextFill(Color.YELLOW);
+                label.setTextFill(Color.VIOLET);
             }  else {
                 label.setText("Du hast verloren.");
                 label.setTextFill(Color.RED);
@@ -81,7 +81,7 @@ public class SchereSteinPapier {
                 label.setTextFill(Color.GREEN);
             } else if(fight(2, root, symbol1, symbol2) == 2){
                 label.setText("Es gibt keinen Sieger");
-                label.setTextFill(Color.YELLOW);
+                label.setTextFill(Color.VIOLET);
             } else {
                 label.setText("Du hast verloren.");
                 label.setTextFill(Color.RED);
