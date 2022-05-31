@@ -68,16 +68,16 @@ public class Shop extends Application {
 
         for (int i = 0; i < this.inventar.size(); i++) {
             Essen essen = this.inventar.get(i);
-            Button tempi = new Button(this.inventar.get(i).name());
+            Button tempi = new Button(this.inventar.get(i).getName());
             tempi.setOnAction(e -> buyItem(essen));
             tempi.setPrefWidth(180);
             root_new.add(tempi, 0, (i+1));                                                        //Name
-            root_new.add(new Label(String.valueOf(this.inventar.get(i).buffs())), 1, (i+1));     //Buffs
-            root_new.add(new Label(String.valueOf(this.inventar.get(i).price())), 2, (i+1));     //Preis
+            root_new.add(new Label(String.valueOf(this.inventar.get(i).getBuff())), 1, (i+1));     //Buffs
+            root_new.add(new Label(String.valueOf(this.inventar.get(i).getPrice())), 2, (i+1));     //Preis
         }
 
         Button lootbox = new Button("Lootbox");
-        lootbox.setOnAction(e -> lootbox1());
+        lootbox.setOnAction(e -> lootbox1(1));
 
         this.primaryStage.setScene(new Scene(root_new, 500, 500));
         this.primaryStage.show();
