@@ -12,7 +12,8 @@ public class Spielfeld {
     protected String grafik = getClass().getResource("images/grass.png").toString();
     protected String tree = getClass().getResource("images/Sakura_tree_oben.png").toString();
 
-    private static Ort[][] map = new Ort[42][26];
+    private static ImageView[][] map = new ImageView[42][26];
+    private static Ort[][] mapOrte = new Ort[42][26];
     private static ImageView player;
 
     /**
@@ -32,7 +33,7 @@ public class Spielfeld {
     public void initDrawMap(Pane pane){
         for (int i = 0; i < map.length; i++) {
             for (int j = 0; j < map[i].length; j++) {
-                ImageView imv = new ImageView(new Image(map[i][j].grafik));
+                ImageView imv = new ImageView(new Image(grafik));
                 imv.setFitWidth(24);
                 imv.setFitHeight(24);
                 imv.setX(i * 24);
@@ -69,7 +70,7 @@ public class Spielfeld {
                 int posX = (int) (imv.getX() / 24);
                 int posY = (int) (imv.getY() / 24);
 
-                imv.setImage(new Image(map[posX][posY].grafik));
+                imv.setImage(map[posX][posY].getImage());
             }
         }
     }
@@ -81,19 +82,16 @@ public class Spielfeld {
         Random rd = new Random();
             for (int i = 0; i < map.length; i++) {
                 for (int j = 0; j < map[i].length; j++) {
+                    map[i][j] = new ImageView();
                     if (rd.nextInt(100) <= 95) {
-                    map[i][j] = new ImageView(new Image(grafik));
-                    map[i][j].setFitWidth(24);
-                    map[i][j].setFitHeight(24);
-                    map[i][j].setX(i * 24);
-                    map[i][j].setY(j * 24);
+                        map[i][j].setImage(new Image(grafik));
                     } else {
-                        map[i][j] = new ImageView(new Image(tree));
+                        map[i][j].setImage(new Image(tree));
+                    }
                         map[i][j].setFitWidth(24);
                         map[i][j].setFitHeight(24);
                         map[i][j].setX(i * 24);
                         map[i][j].setY(j * 24);
-                    }
                 }
             }
     }
@@ -103,18 +101,19 @@ public class Spielfeld {
      * @param place
      */
     public void applyOrt(Ort place){
-        map[place.positionX][place.positionY] = place;
+        map[place.positionX][place.positionY] = new ImageView(new Image(place.grafik));
+        mapOrte[place.positionX][place.positionY] = place;
     }
 
     public void movePlayer(){
         Spieler sp = Main.tdi.spieler;
     }
 
-    public Ort[][] getMap() {
+    public ImageView[][] getMap() {
         return map;
     }
 
-    public void setMap(Ort[][] map) {
+    public void setMap(ImageView[][] map) {
         this.map = map;
     }
 
