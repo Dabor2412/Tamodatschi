@@ -3,10 +3,11 @@ package gis.abi23e5if1lem.tamodatschi.tamodatschi;
 public class Essen {
 
     private String name;
-    private int[] buffs;
+    private int buff;
 
-    public Essen() {
-
+    public Essen(String name, int buff) {
+        this.name = name;
+        this.buff = buff;
     }
 
     public void konsumieren(){
