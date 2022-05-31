@@ -94,15 +94,15 @@ public class Shop extends Application {
         switch (zg.nextInt(3)+1) {//Art der Box wird zufällig festgelegt
             case 1 :
                 Main.tdi.spieler.setAngriffskraft(Main.tdi.spieler.getAngriffskraft()+boost); //Atribut wird geändert
-               label1.setText("Lootbox Nummer 1");
+               label1.setText("Du hast ein Angrifskraftboost von "+ boost+" gewonnen");
                 break;
             case  2:
                 Main.tdi.spieler.setVerteidigung(Main.tdi.spieler.getVerteidigung()+boost); //Atribut wird geändert
-                //hier Label schrift  einstellen
+                label1.setText("Du hast ein Verteidigungsboost von "+ boost+" gewonnen");
                 break;
             case 3:
                 Main.tdi.spieler.setLeben(Main.tdi.spieler.getLeben()+boost); //Atribut wird geändert
-                //hier Label schrift  einstellen
+                label1.setText("Du hast eine erhöhung deiner Leben um "+" gewonnen");
                 break;
             default:
 
