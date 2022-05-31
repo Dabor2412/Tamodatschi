@@ -12,7 +12,7 @@ public class Spielfeld {
     protected String grafik = getClass().getResource("images/grass.png").toString();
     protected String tree = getClass().getResource("images/Sakura_tree_oben.png").toString();
 
-    private static ImageView[][] map = new ImageView[42][26];
+    private static Ort[][] map = new Ort[42][26];
     private static ImageView player;
 
     /**
@@ -32,7 +32,12 @@ public class Spielfeld {
     public void initDrawMap(Pane pane){
         for (int i = 0; i < map.length; i++) {
             for (int j = 0; j < map[i].length; j++) {
-                pane.getChildren().add(map[i][j]);
+                ImageView imv = new ImageView(new Image(map[i][j].grafik));
+                imv.setFitWidth(24);
+                imv.setFitHeight(24);
+                imv.setX(i * 24);
+                imv.setY(j * 24);
+                pane.getChildren().add(imv);
             }
         }
 
@@ -64,7 +69,7 @@ public class Spielfeld {
                 int posX = (int) (imv.getX() / 24);
                 int posY = (int) (imv.getY() / 24);
 
-                imv.setImage(map[posX][posY].getImage());
+                imv.setImage(new Image(map[posX][posY].grafik));
             }
         }
     }
@@ -98,30 +103,19 @@ public class Spielfeld {
      * @param place
      */
     public void applyOrt(Ort place){
-        ImageView imv = map[place.positionX][place.positionY];
-
-        imv.setImage(new Image(place.grafik));
-        imv.setFitHeight(24);
-        imv.setFitWidth(24);
-
-        imv.setX(24 * place.positionX);
-        imv.setY(24 * place.positionY);
+        map[place.positionX][place.positionY] = place;
     }
 
     public void movePlayer(){
         Spieler sp = Main.tdi.spieler;
     }
 
-    public ImageView[][] getMap() {
+    public Ort[][] getMap() {
         return map;
     }
 
-    public void setMap(ImageView[][] map) {
+    public void setMap(Ort[][] map) {
         this.map = map;
-    }
-
-    public void setMapPoint(ImageView o, int posX, int posY){
-        map[posX][posY] = o;
     }
 
 }
