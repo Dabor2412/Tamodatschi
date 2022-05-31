@@ -76,21 +76,25 @@ public class Shop extends Application {
             root_new.add(new Label(String.valueOf(this.inventar.get(i).getPrice())), 2, (i+1));     //Preis
         }
 
+        Label label1 = new Label();
+        root_new.add(label1,1, this.inventar.size() + 1);
         Button lootbox = new Button("Lootbox");
-        lootbox.setOnAction(e -> lootbox1(1));
+        root_new.add(lootbox,0, this.inventar.size() + 1 );
+        lootbox.setOnAction(e -> lootbox1(1, label1));
+        lootbox.setPrefWidth(180);
 
         this.primaryStage.setScene(new Scene(root_new, 500, 500));
         this.primaryStage.show();
     }
 
-    private void lootbox1(int gross) {
+    private void lootbox1(int gross, Label label1) {
         Random zg = new Random(); //ein Zufalsgeneratorobjekt wird erstellt
         Main.tdi.spieler.setGeld((int) (Main.tdi.spieler.getGeld()-2*Math.pow(gross,2))); //hier Geld festlegen//Preis wird abgebucht
         int boost = (int) Math.round(Math.pow(2,gross)*1000/(zg.nextInt(900)+100)); //Größe der Box wird zufällig festgelegt
         switch (zg.nextInt(3)+1) {//Art der Box wird zufällig festgelegt
             case 1 :
                 Main.tdi.spieler.setAngriffskraft(Main.tdi.spieler.getAngriffskraft()+boost); //Atribut wird geändert
-                //hier Label schrift  einstellen
+               label1.setText("Lootbox Nummer 1");
                 break;
             case  2:
                 Main.tdi.spieler.setVerteidigung(Main.tdi.spieler.getVerteidigung()+boost); //Atribut wird geändert
