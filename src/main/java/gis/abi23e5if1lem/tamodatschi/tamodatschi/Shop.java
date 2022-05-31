@@ -1,13 +1,5 @@
 package gis.abi23e5if1lem.tamodatschi.tamodatschi;
 
-import javafx.application.Application;
-import javafx.stage.Stage;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-
-import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -15,17 +7,17 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import java.io.IOException;
+
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
-public class Shop extends Application {
+public class Shop {
     final List<Essen> inventar = new ArrayList<>();
     private Stage primaryStage;
 
-    @Override
-    public void start(Stage stage) throws IOException {
-        this.primaryStage = stage;
+    public void start(){
+        this.primaryStage = new Stage();
 
         this.inventar.add(new Essen("Steak", 1, 1));
         this.inventar.add(new Essen("Kuchen", 1, 1));

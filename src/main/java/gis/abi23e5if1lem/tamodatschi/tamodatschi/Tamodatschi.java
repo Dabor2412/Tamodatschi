@@ -66,7 +66,8 @@ public class Tamodatschi extends Application {
     @FXML
     protected void onTestShopButtonClick() {
         // Test:
-
+        Shop sp = new Shop();
+        sp.start();
         // End
     }
     @FXML

@@ -9,6 +9,8 @@ import java.util.Random;
 
 public class Spielfeld {
 
+    //Load pregenerated Image for Map and one for boundaries
+
     protected String grafik = getClass().getResource("images/grass.png").toString();
     protected String tree = getClass().getResource("images/Sakura_tree_oben.png").toString();
 
