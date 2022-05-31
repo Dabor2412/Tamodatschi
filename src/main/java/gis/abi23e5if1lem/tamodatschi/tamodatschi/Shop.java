@@ -83,7 +83,7 @@ public class Shop extends Application {
         lootbox.setOnAction(e -> lootbox1(1, label1));
         lootbox.setPrefWidth(180);
 
-        this.primaryStage.setScene(new Scene(root_new, 500, 500));
+        this.primaryStage.setScene(new Scene(root_new, 750, 600));
         this.primaryStage.show();
     }
 
