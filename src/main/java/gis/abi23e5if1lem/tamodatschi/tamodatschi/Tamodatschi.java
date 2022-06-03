@@ -35,8 +35,8 @@ public class Tamodatschi extends Application {
     @FXML
     protected void onTestButtonClick(Event e) {
     // Test:
-        feld = new Spielfeld(true);
-        feld.initDrawMap(pane);
+        feld = new Spielfeld(true, pane);
+        feld.initDrawMap();
         ((Button) e.getSource()).setDisable(true);
         // End
     }
