@@ -1,6 +1,5 @@
 package gis.abi23e5if1lem.tamodatschi.tamodatschi;
 
-import javafx.application.Application;
 import javafx.geometry.HPos;
 import javafx.geometry.Pos;
 import javafx.geometry.VPos;
@@ -13,7 +12,6 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
-import java.io.IOException;
 import java.util.Random;
 
 public class SchereSteinPapier {

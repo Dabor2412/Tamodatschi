@@ -61,8 +61,10 @@ public class Tamodatschi extends Application {
         // Test:
         //SchereSteinPapier ssp = new SchereSteinPapier();
         //ssp.start();
-        Memory mem = new Memory();
-        mem.start();
+        //Memory mem = new Memory();
+        //mem.start();
+        NoelSpricht nsp = new NoelSpricht();
+        nsp.start();
         // End
     }
     @FXML
