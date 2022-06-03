@@ -12,9 +12,11 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.Scanner;
 
 public class Shop {
     final List<Essen> inventar = new ArrayList<>();
@@ -97,22 +99,44 @@ public class Shop {
         switch (zg.nextInt(3)+1) {//Art der Box wird zufällig festgelegt
             case 1 :
                 Main.tdi.spieler.setAngriffskraft(Main.tdi.spieler.getAngriffskraft()+boost); //Attribut wird geändert
-                alert.setContentText("Du hast ein Angriffskraftboost von " + boost + " gewonnen");
+                alert.setContentText("Du hast das Item " + generateItemName() + " gezogen. Es erhöht deine Angriffskraft um " + boost);
                 alert.show();
                 break;
             case  2:
                 Main.tdi.spieler.setVerteidigung(Main.tdi.spieler.getVerteidigung()+boost); //Attribut wird geändert
-                alert.setContentText("Du hast ein Verteidigungsboost von " + boost + " gewonnen");
+                alert.setContentText("Du hast das Item " + generateItemName() + " gezogen. Es erhöht deine Verteidigung um " + boost);
                 alert.show();
                 break;
             case 3:
                 Main.tdi.spieler.setLeben(Main.tdi.spieler.getLeben()+boost); //Attribut wird geändert
-                alert.setContentText("Du hast eine Erhöhung deiner Leben um " + boost + " gewonnen");
+                alert.setContentText("Du hast das Item " + generateItemName() + " gezogen. Es erhöht deine Leben um " + boost);
                 alert.show();
                 break;
             default:
 
         } // end of switch
+    }
+
+    private String generateItemName() {
+        ArrayList<String> arr0 = new ArrayList<>();
+        ArrayList<String> arr1 = new ArrayList<>();
+        String target;
+        try {
+            Scanner sc0 = new Scanner(getClass().getResourceAsStream("files/itemName0.txt"));
+            Scanner sc1 = new Scanner(getClass().getResourceAsStream("files/itemName1.txt"));
+
+            while(sc0.hasNext()) {
+                arr0.add(sc0.nextLine());
+            }
+            while(sc1.hasNext()) {
+                arr1.add(sc1.nextLine());
+            }
+        } catch(Exception e) { e.printStackTrace(); }
+
+        Random rd = new Random();
+        target = arr0.get(rd.nextInt(arr0.size())) + " " + arr1.get(rd.nextInt(arr1.size()));
+        System.out.println(target);
+        return target;
     }
 
     public void addInv(Essen gericht){ inventar.add(gericht); }
