@@ -59,8 +59,10 @@ public class Tamodatschi extends Application {
     @FXML
     protected void onTestMinigameButtonClick() {
         // Test:
-        SchereSteinPapier ssp = new SchereSteinPapier();
-        ssp.start();
+        //SchereSteinPapier ssp = new SchereSteinPapier();
+        //ssp.start();
+        Memory mem = new Memory();
+        mem.start();
         // End
     }
     @FXML
