@@ -6,8 +6,11 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.image.PixelReader;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -32,8 +35,8 @@ public class Tamodatschi extends Application {
     @FXML
     protected void onTestButtonClick(Event e) {
     // Test:
-        feld = new Spielfeld(true);
-        feld.initDrawMap(pane);
+        feld = new Spielfeld(true, pane);
+        feld.initDrawMap();
         ((Button) e.getSource()).setDisable(true);
         // End
     }
@@ -75,31 +78,39 @@ public class Tamodatschi extends Application {
         // End
     }
     @FXML
+    protected void onTestImageBoundaries(){
+
+        int black = 0;
+        for (int i = 0; i < feld.getSizeX(); i++) {
+            for (int j = 0; j < feld.getSizeY(); j++) {
+
+            }
+        }
+        System.out.println(black);
+    }
+    @FXML
     protected void onDisplayText(KeyEvent kev){
         switch (kev.getCharacter()) {
             case "w" :
-                if(spieler.getPosY() > 0){
-                    spieler.setPosY(spieler.getPosY() - 1);
-                }
+                feld.movePlayer(0,-1);
                 break;
             case "a" :
-                if(spieler.getPosX() > 0){
-                    spieler.setPosX(spieler.getPosX() - 1);
-                }
+                feld.movePlayer(-1,0);
                 break;
             case "s" :
-                if(spieler.getPosY() < feld.getMap()[0].length-1){
-                    spieler.setPosY(spieler.getPosY() + 1);
-                }
+                feld.movePlayer(0,1);
                 break;
             case "d" :
-                if(spieler.getPosX() < feld.getMap().length-1){
-                    spieler.setPosX(spieler.getPosX() + 1);
-                }
+                feld.movePlayer(1,0);
+                break;
+            case "y":
+                onTestImageBoundaries();
                 break;
         }
 
-        feld.drawMap(pane);
+        if(pane != null) {
+            feld.drawMap(pane);
+        }
     }
 
 
