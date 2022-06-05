@@ -1,139 +1,121 @@
 package gis.abi23e5if1lem.tamodatschi.tamodatschi;
 
+import javafx.animation.FadeTransition;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.util.*;
 
 
 public class Memory {
 
-    int Zaehler = 0;
-    private Button buttons[][] = new Button[4][4];
-    List<String> list = new ArrayList<>();
+    private static final int pairs = 8;
+    private static final int rows = 4;
 
 
+    private Card selected = null;
+    private int zaehler = 2;
 
-    public void start() {
+    public void start(){
+
         Pane root = new Pane();
 
-        Scene scene = new Scene(root, 800, 800);
+        Scene scene = new Scene(root, 600, 600);
         Stage stage = new Stage();
         stage.setTitle("Memory");
         stage.setScene(scene);
         stage.show();
 
-
-
-        list.add("Apfel");
-        list.add("Apfel");
-        list.add("Orange");
-        list.add("Orange");
-        list.add("Melone");
-        list.add("Melone");
-        list.add("Paprika");
-        list.add("Paprika");
-        list.add("Gurke");
-        list.add("Gurke");
-        list.add("Birne");
-        list.add("Birne");
-        list.add("Banane");
-        list.add("Banane");
-        list.add("Tomate");
-        list.add("Tomate");
-        System.out.println(list);
-
-        Collections.shuffle(list);
-
-        System.out.println(list);
-
-        for (int i = 0; i < 4; i++) {
-            for (int j = 0; j < 4; j++) {
-                Button b = new Button();
-                b.setLayoutX(i * 65 + 270);
-                b.setLayoutY(j * 65 + 270);
-                b.setPrefSize(60, 60);
-
-                root.getChildren().add(b);
-                buttons[j][i] = b;
-                b.setOnAction( e ->
-                zuweisung(b)
-                );
-            }
-
+        char c = 'A';
+        List<Card> cards = new ArrayList<>();
+        for (int i = 0; i < pairs; i++) {
+            cards.add(new Card(String.valueOf(c)));
+            cards.add(new Card(String.valueOf(c)));
+            c++;
         }
 
+        Collections.shuffle(cards);
+
+        for (int i = 0; i < cards.size(); i++) {
+            Card card = cards.get(i);
+            card.setTranslateX(50 * (i % rows));
+            card.setTranslateY(50 *(i / rows));
+            root.getChildren().add(card);
+        }
     }
 
-    public void zuweisung(Button b){
+    private class Card extends StackPane {
+        private Text text = new Text();
 
-        ImageView apfel = new ImageView(new Image(getClass().getResource("images/apple.jpg").toString()));
-        apfel.setFitHeight(45);
-        apfel.setFitWidth(45);
-        ImageView orange = new ImageView(new Image(getClass().getResource("images/Orange.jpg").toString()));
-        orange.setFitWidth(45);
-        orange.setFitHeight(45);
-        ImageView melone = new ImageView(new Image(getClass().getResource("images/Melone.jpg").toString()));
-        melone.setFitWidth(45);
-        melone.setFitHeight(45);
-        ImageView paprika = new ImageView(new Image(getClass().getResource("images/paprika.jpg").toString()));
-        paprika.setFitWidth(45);
-        paprika.setFitHeight(45);
-        ImageView gurke = new ImageView(new Image(getClass().getResource("images/Gurke.jpg").toString()));
-        gurke.setFitWidth(45);
-        gurke.setFitHeight(45);
-        ImageView birne = new ImageView(new Image(getClass().getResource("images/Birne.jpg").toString()));
-        birne.setFitWidth(45);
-        birne.setFitHeight(45);
-        ImageView banane = new ImageView(new Image(getClass().getResource("images/Banane.jpg").toString()));
-        banane.setFitWidth(45);
-        banane.setFitHeight(45);
-        ImageView tomate = new ImageView(new Image(getClass().getResource("images/Tomate.jpg").toString()));
-        tomate.setFitWidth(45);
-        tomate.setFitHeight(45);
+        public Card(String image) {
+            Rectangle border = new Rectangle(50, 50);
+            border.setFill(null);
+            border.setStroke(Color.BLACK);
 
-        for (int k = 0; k < 1; k++) {
-            if (list.get(k).equals("Apfel")) {
-                b.setGraphic(apfel);
-                b.setDisable(true);
-                list.remove("Apfel");
-            } else if (list.get(k).equals("Orange")) {
-                b.setGraphic(orange);
-                b.setDisable(true);
-                list.remove("Orange");
-            } else if (list.get(k).equals("Melone")) {
-                b.setGraphic(melone);
-                b.setDisable(true);
-                list.remove("Melone");
-            } else if (list.get(k).equals("Paprika")) {
-                b.setGraphic(paprika);
-                b.setDisable(true);
-                list.remove("Paprika");
-            } else if (list.get(k).equals("Gurke")) {
-                b.setGraphic(gurke);
-                list.remove("Gurke");
-            } else if (list.get(k).equals("Birne")) {
-                b.setGraphic(birne);
-                b.setDisable(true);
-                list.remove("Birne");
-            } else if (list.get(k).equals("Banane")) {
-                b.setGraphic(banane);
-                b.setDisable(true);
-                list.remove("Banane");
-            } else if (list.get(k).equals("Tomate")) {
-                b.setGraphic(tomate);
-                b.setDisable(true);
-                list.remove("Tomate");
+            text.setText(image);
+            text.setFont(Font.font(30));
+
+            setAlignment(Pos.CENTER);
+            getChildren().addAll(border, text);
+
+            setOnMouseClicked(this::Logik);
+            close();
+        }
+        public void Logik(MouseEvent event){
+            if (isOpen() || zaehler == 0) {
+                zaehler --;
+                return;
+            }
+
+            if (selected == null) {
+                selected = this;
+                open(() -> {});
+            } else {
+                open(() -> {
+                    if(!gleichesBild(selected)) {
+                        selected.close();
+                        this.close();
+                    }
+
+                    selected = null;
+                    zaehler = 2;
+                });
             }
         }
-       }
 
-       public void ueberpruefung(Button b){
+        public boolean isOpen(){
+            return text.getOpacity() == 1;
+        }
 
-       }
+
+        public void open(Runnable action){
+            FadeTransition ft = new FadeTransition(Duration.seconds(0.5), text);
+            ft.setToValue(1);
+            ft.setOnFinished(e -> action.run());
+            ft.play();
+        }
+
+        public void close(){
+            FadeTransition ft = new FadeTransition(Duration.seconds(0.5), text);
+            ft.setToValue(0);
+            ft.play();
+        }
+
+        public boolean gleichesBild(Card other){
+            return text.getText().equals(other.text.getText());
+        }
     }
+}
