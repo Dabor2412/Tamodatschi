@@ -1,18 +1,32 @@
 package gis.abi23e5if1lem.tamodatschi.tamodatschi;
 
-import java.util.Random;
+public class Minigame extends Ort {
 
-public class Minigame {
+    public int minigameId = 0;
     public void start() {
-        Random r = new Random();
-        switch (r.nextInt(3)){
+        switch (minigameId){
             case 0:
                 SchereSteinPapier ssp = new SchereSteinPapier();
                 ssp.start();
                 break;
+            case 1:
+                Memory mem = new Memory();
+                mem.start();
+                break;
+            case 2:
+                NoelSpricht nsp = new NoelSpricht();
+                nsp.start();
+                break;
         }
     }
 
-    public Minigame(){
+    public Minigame(int x, int y, int minigameId){
+        super(x, y);
+        this.minigameId = minigameId;
+    }
+
+    public Minigame(int x, int y, String grafik, int minigameId){
+        super(x, y, grafik);
+        this.minigameId = minigameId;
     }
 }

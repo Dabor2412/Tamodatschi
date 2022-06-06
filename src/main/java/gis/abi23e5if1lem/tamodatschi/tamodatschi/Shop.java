@@ -18,9 +18,17 @@ import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
-public class Shop {
+public class Shop extends Ort{
     final List<Essen> inventar = new ArrayList<>();
     private Stage primaryStage;
+
+    public Shop(int x, int y) {
+        super(x, y);
+    }
+
+    public Shop(int x, int y, String grafik) {
+        super(x, y, grafik);
+    }
 
     public void start(){
         this.primaryStage = new Stage();

@@ -9,17 +9,16 @@ package gis.abi23e5if1lem.tamodatschi.tamodatschi;
 
     Window structure:
         - Made up of 16x16 squares in a 1024x576 Window
-        -> 64 Squares horizontal
-        -> 36 Squares vertical
+        -> 42 Squares horizontal
+        -> 26 Squares vertical
 
  */
 
 public class Main {
 
-    public static Tamodatschi tdi;
+    public static Tamodatschi tdi = new Tamodatschi();
 
     public static void main(String[] args) {
-        tdi = new Tamodatschi();
         tdi.initGame();
     }
 }

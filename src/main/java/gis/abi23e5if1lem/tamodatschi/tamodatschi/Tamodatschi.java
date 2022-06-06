@@ -17,7 +17,7 @@ import java.io.IOException;
 import java.util.Random;
 
 public class Tamodatschi extends Application {
-    public static Spieler spieler = new Spieler();
+    public Spieler spieler = new Spieler();
     public Spielfeld feld;
     public Scene scene;
     @FXML
@@ -29,7 +29,8 @@ public class Tamodatschi extends Application {
     }
 
     // Test variables:
-    Ort testOrt = new Ort("Test", 16,16, getClass().getResource("images/banan.png").toString());
+    Ort testOrt = new Ort( 7,16, getClass().getResource("images/banan.png").toString());
+    Minigame testMin = new Minigame(2, 5, getClass().getResource("images/lootbox.png").toString(), 1);
 
     // End
     @FXML
@@ -43,7 +44,9 @@ public class Tamodatschi extends Application {
     @FXML
     protected void onTest2ButtonClick(Event e) {
     // Test:
+        feld.applyBounds(testOrt.getPositionX(), testOrt.getPositionY(), true);
         feld.applyOrt(testOrt);
+        feld.applyOrt(testMin);
         feld.drawMap(pane);
         ((Button) e.getSource()).setDisable(true);
     // End
@@ -54,8 +57,8 @@ public class Tamodatschi extends Application {
         Random r = new Random();
         int x = r.nextInt(42);
         int y = r.nextInt(26);
-        spieler.setPosX(x);
-        spieler.setPosY(y);
+        Main.tdi.spieler.setPosX(x);
+        Main.tdi.spieler.setPosY(y);
         feld.drawMap(pane);
     // End
     }
@@ -73,8 +76,8 @@ public class Tamodatschi extends Application {
     @FXML
     protected void onTestShopButtonClick() {
         // Test:
-        Shop sp = new Shop();
-        sp.start();
+        Shop sp = new Shop(3,9, getClass().getResource("images/japanese_door.png").toString());
+        feld.applyOrt(sp);
         // End
     }
     @FXML
@@ -119,8 +122,9 @@ public class Tamodatschi extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(Tamodatschi.class.getResource("tamodatschi.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 1152, 700);
         this.scene = scene;
+        stage.setMinWidth(1152);
+        stage.setMinHeight(700);
         stage.setTitle("Tamodatschi");
-        stage.setResizable(false);
         stage.setScene(scene);
         stage.show();
 

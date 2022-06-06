@@ -4,18 +4,16 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 public class Ort {
-    private String name;
     private int positionX;
     private int positionY;
-    private boolean betretbar;
-    private String grafik;
+    private String grafik = null;
 
-    public String getName() {
-        return name;
+    public String getGrafik() {
+        return grafik;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setGrafik(String grafik) {
+        this.grafik = grafik;
     }
 
     public int getPositionX() {
@@ -34,24 +32,12 @@ public class Ort {
         this.positionY = positionY;
     }
 
-    public boolean isBetretbar() {
-        return betretbar;
+    public Ort(int x, int y) {
+        this.positionX = x;
+        this.positionY = y;
     }
 
-    public void setBetretbar(boolean betretbar) {
-        this.betretbar = betretbar;
-    }
-
-    public String getGrafik() {
-        return grafik;
-    }
-
-    public void setGrafik(String grafik) {
-        this.grafik = grafik;
-    }
-
-    public Ort(String name, int x, int y, String grafik) {
-        this.name = name;
+    public Ort(int x, int y, String grafik) {
         this.positionX = x;
         this.positionY = y;
         this.grafik = grafik;
