@@ -124,7 +124,6 @@ public class Memory {
                 paarzaehler++;
                 selected.setDisable(true);
                 other.setDisable(true);
-                System.out.println(paarzaehler);
                 if(paarzaehler == 8){
                     label.setText("Du hast gewonnen!");
                     Main.tdi.spieler.setGeld(Main.tdi.spieler.getGeld() + 5);
