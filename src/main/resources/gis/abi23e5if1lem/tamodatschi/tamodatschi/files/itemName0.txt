@@ -45,3 +45,17 @@ die Schule
 den Waschlappen
 die Dosensuppe
 das Maschinengewehr
+den Granatapfel
+die Kartoffel
+den Ofen
+die Heckenschere
+den Bunker
+den Drucker
+das Schälmesser
+das Gemüsemesser
+das Spickmesser
+das Schinkenmesser
+das Steakmesser
+das Universalmesser mit Welle
+das Ausbeinmesser
+das Filiermesser
