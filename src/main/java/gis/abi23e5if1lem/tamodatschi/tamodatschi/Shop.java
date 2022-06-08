@@ -4,16 +4,13 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.control.Dialog;
 import javafx.scene.control.Label;
-import javafx.event.EventHandler;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -41,12 +38,10 @@ public class Shop extends Ort{
         this.inventar.add(new Essen("Gummibärchen", 1, 1));
 
         Scene scene = new Scene(new Pane(), 500, 500);
-        this.primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
-          public void handle(WindowEvent we) {
-              for(int i = 0; i < this.inventar.size(); i++) {
-                  this.inventar.remove(this.inventar.get(0));
-              }
-          }
+        this.primaryStage.setOnCloseRequest(we -> {
+            for(int i = 0; i < inventar.size(); i++) {
+                inventar.remove(inventar.get(0));
+            }
         });
         this.primaryStage.setTitle("Shop");
         this.primaryStage.setScene(scene);
@@ -164,10 +159,10 @@ public class Shop extends Ort{
     }
 
     public boolean istPleite (double a){
-        if (a>Main.tdi.spieler.getGeld()){
-     return false;
-     //hier label beschreiben
-    } else {
+        if (a > Main.tdi.spieler.getGeld()) {
+            return false;
+            //hier label beschreiben
+        } else {
             return true;
         }
     }
