@@ -49,8 +49,9 @@ public class Shop extends Ort{
 
     private void buyItem(Essen essen0) {
         //bezahlen und zum Inventar
+        if (istPleite(essen0.getPrice())){
         Main.tdi.spieler.setGeld(Main.tdi.spieler.getGeld() - essen0.getPrice());
-        Main.tdi.spieler.addEssen(essen0);
+        Main.tdi.spieler.addEssen(essen0);}
 
         //Objekt aus Liste entfernen
         this.inventar.remove(essen0);
@@ -94,6 +95,7 @@ public class Shop extends Ort{
     }
 
     private void lootbox1(int gross, Label label1) {
+       if (istPleite(2*Math.pow(gross,2))){
         Random zg = new Random(); //ein Zufalsgeneratorobjekt wird erstellt
         Main.tdi.spieler.setGeld((int) (Main.tdi.spieler.getGeld()-2*Math.pow(gross,2))); //hier Geld festlegen//Preis wird abgebucht
         int boost = (int) Math.round(Math.pow(2,gross)*1000/(zg.nextInt(900)+100)); //Größe der Box wird zufällig festgelegt
@@ -122,7 +124,7 @@ public class Shop extends Ort{
                 break;
             default:
 
-        } // end of switch
+        }} // end of switch
     }
 
     private String generateItemName() {
@@ -152,4 +154,14 @@ public class Shop extends Ort{
     public void removeInv(Essen gericht){
         inventar.remove(gericht);
     }
+
+    public boolean istPleite (double a){
+        if (a>Main.tdi.spieler.getGeld()){
+     return false;
+     //hier label beschreiben
+    } else {
+            return true;
+        }
+    }
+
 }
