@@ -57,7 +57,6 @@ public class Shop extends Ort{
 
         //neu laden
         loadInterface();
-        System.out.println(this.inventar.size());
     }
 
     private void loadInterface() {
