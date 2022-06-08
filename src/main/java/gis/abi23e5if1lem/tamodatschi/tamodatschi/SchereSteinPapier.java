@@ -43,12 +43,15 @@ public class SchereSteinPapier {
             if (fight(0, root, symbol1, symbol2) == 1) {
                 label.setText("Du hast gewonnen.");
                 label.setTextFill(Color.GREEN);
+                Main.tdi.spieler.setGeld(Main.tdi.spieler.getGeld() + 2);
             } else if(fight(0, root, symbol1, symbol2) == 2){
                 label.setText("Es gibt keinen Sieger");
                 label.setTextFill(Color.VIOLET);
+                Main.tdi.spieler.setGeld(Main.tdi.spieler.getGeld() + 1);
             } else {
                 label.setText("Du hast verloren.");
                 label.setTextFill(Color.RED);
+                Main.tdi.spieler.setGeld(Main.tdi.spieler.getGeld() - 2);
             }
         });
         button_schere.setPrefWidth(220);
