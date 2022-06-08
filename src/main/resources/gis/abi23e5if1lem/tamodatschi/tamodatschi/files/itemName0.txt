@@ -33,6 +33,9 @@ das WLAN-Passwort
 die Uhr
 den Affen
 den Ball
+den Feuerlöscher
+das Haarspray
+den Füherschein
 den Segen
 den Turnschuh
 den Schraubendreher
