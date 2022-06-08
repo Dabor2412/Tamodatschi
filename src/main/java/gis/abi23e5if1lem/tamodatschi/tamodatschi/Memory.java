@@ -3,6 +3,7 @@ package gis.abi23e5if1lem.tamodatschi.tamodatschi;
 import javafx.animation.FadeTransition;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
@@ -23,9 +24,11 @@ public class Memory {
     private static final int pairs = 8;
     private static final int rows = 4;
 
+    private Label label = new Label();
 
     private Card selected = null;
     private int zaehler = 2;
+    private int paarzaehler = 0;
 
     public void start(){
 
@@ -36,6 +39,13 @@ public class Memory {
         stage.setTitle("Memory");
         stage.setScene(scene);
         stage.show();
+
+        label.setPrefWidth(180);
+        label.setLayoutX(300);
+        label.setLayoutY(100);
+        root.getChildren().add(label);
+        label.setAlignment(Pos.CENTER);
+        label.setText("Du hast Memory betreten!");
 
         char c = 'A';
         List<Card> cards = new ArrayList<>();
@@ -87,7 +97,6 @@ public class Memory {
                         selected.close();
                         this.close();
                     }
-
                     selected = null;
                     zaehler = 2;
                 });
@@ -107,12 +116,20 @@ public class Memory {
         }
 
         public void close(){
-            FadeTransition ft = new FadeTransition(Duration.seconds(0.5), text);
-            ft.setToValue(0);
-            ft.play();
+            text.setOpacity(0);
         }
 
         public boolean gleichesBild(Card other){
+            if(text.getText().equals(other.text.getText())){
+                paarzaehler++;
+                selected.setDisable(true);
+                other.setDisable(true);
+                System.out.println(paarzaehler);
+                if(paarzaehler == 8){
+                    label.setText("Du hast gewonnen!");
+                    Main.tdi.spieler.setGeld(Main.tdi.spieler.getGeld() + 5);
+                }
+            }
             return text.getText().equals(other.text.getText());
         }
     }
