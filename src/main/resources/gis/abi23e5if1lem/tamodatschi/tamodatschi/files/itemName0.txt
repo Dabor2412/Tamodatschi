@@ -33,6 +33,8 @@ das WLAN-Passwort
 die Uhr
 den Affen
 den Ball
+das Tor
+das Schwimmbad
 den Feuerlöscher
 das Haarspray
 den Füherschein
@@ -40,3 +42,6 @@ den Segen
 den Turnschuh
 den Schraubendreher
 die Schule
+den Waschlappen
+die Dosensuppe
+das Maschinengewehr
