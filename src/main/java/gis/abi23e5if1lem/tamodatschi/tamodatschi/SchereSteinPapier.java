@@ -15,7 +15,7 @@ import javafx.stage.Stage;
 import java.util.Random;
 
 public class SchereSteinPapier {
-
+    //Erstellung der Oberfläche und des Feldes
     public void start() {
         GridPane root = new GridPane();
         root.setHgap(20);
@@ -35,7 +35,7 @@ public class SchereSteinPapier {
 
         Label symbol2 = new Label();
         root.add(symbol2, 2, 0);
-
+        //Gewinnausgabe für das Szenario Schere!
         Button button_schere = new Button("Schere");
         button_schere.setPrefWidth(60);
         root.add(button_schere, 0, 1);
@@ -55,7 +55,7 @@ public class SchereSteinPapier {
             }
         });
         button_schere.setPrefWidth(220);
-
+        //Gewinnausgabe für das Szenario Stein!
         Button button_stein = new Button("Stein");
         button_stein.setPrefWidth(60);
         root.add(button_stein, 1, 1);
@@ -63,16 +63,19 @@ public class SchereSteinPapier {
             if (fight(1, root, symbol1, symbol2) == 1) {
                 label.setText("Du hast gewonnen.");
                 label.setTextFill(Color.GREEN);
+                Main.tdi.spieler.setGeld(Main.tdi.spieler.getGeld() + 2);
             } else if(fight(1, root, symbol1, symbol2) == 2){
                 label.setText("Es gibt keinen Sieger");
                 label.setTextFill(Color.VIOLET);
+                Main.tdi.spieler.setGeld(Main.tdi.spieler.getGeld() + 1);
             }  else {
                 label.setText("Du hast verloren.");
                 label.setTextFill(Color.RED);
+                Main.tdi.spieler.setGeld(Main.tdi.spieler.getGeld() - 2);
             }
         });
         button_stein.setPrefWidth(220);
-
+        //Gewinnausgabe für das Szenario Papier!
         Button button_papier = new Button("Papier");
         button_papier.setPrefWidth(60);
         root.add(button_papier, 2, 1);
@@ -80,12 +83,15 @@ public class SchereSteinPapier {
             if (fight(2, root, symbol1, symbol2) == 1) {
                 label.setText("Du hast gewonnen.");
                 label.setTextFill(Color.GREEN);
+                Main.tdi.spieler.setGeld(Main.tdi.spieler.getGeld() + 2);
             } else if(fight(2, root, symbol1, symbol2) == 2){
                 label.setText("Es gibt keinen Sieger");
                 label.setTextFill(Color.VIOLET);
+                Main.tdi.spieler.setGeld(Main.tdi.spieler.getGeld() + 1);
             } else {
                 label.setText("Du hast verloren.");
                 label.setTextFill(Color.RED);
+                Main.tdi.spieler.setGeld(Main.tdi.spieler.getGeld() - 2);
             }
         });
         button_papier.setPrefWidth(220);
@@ -96,7 +102,7 @@ public class SchereSteinPapier {
         stage.setScene(scene);
         stage.show();
     }
-
+    // Überprüfung wer gewinnt für die einzelnen Möglichkeiten!
     private int fight(int x, GridPane gp, Label symbol2, Label symbol1) {
         Random rd = new Random();
         switch(rd.nextInt(3)) {

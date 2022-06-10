@@ -99,7 +99,7 @@ public class Shop extends Ort{
 
     private void lootbox1(int gross, Label label1) {
        if (istPleite(2*Math.pow(gross,2))){
-        Random zg = new Random(); //ein Zufalsgeneratorobjekt wird erstellt
+        Random zg = new Random(); //ein Zufallsgeneratorobjekt wird erstellt
         Main.tdi.spieler.setGeld((int) (Main.tdi.spieler.getGeld()-2*Math.pow(gross,2))); //hier Geld festlegen//Preis wird abgebucht
         int boost = (int) Math.round(Math.pow(2,gross)*1000/(zg.nextInt(900)+100)); //Größe der Box wird zufällig festgelegt
         Alert alert = new Alert(Alert.AlertType.INFORMATION, "");
