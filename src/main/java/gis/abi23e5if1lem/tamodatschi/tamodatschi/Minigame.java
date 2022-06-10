@@ -7,11 +7,11 @@ public class Minigame extends Ort {
         switch (minigameId){
             case 0:
                 SchereSteinPapier ssp = new SchereSteinPapier();
-                ssp.start();
+                ssp.start(1);
                 break;
             case 1:
                 Memory mem = new Memory();
-                mem.start();
+                mem.start(1);
                 break;
             case 2:
                 NoelSpricht nsp = new NoelSpricht();

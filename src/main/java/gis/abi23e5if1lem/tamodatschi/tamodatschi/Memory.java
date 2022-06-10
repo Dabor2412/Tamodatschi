@@ -29,9 +29,11 @@ public class Memory {
     private Card selected = null;
     private int zaehler = 2;
     private int paarzaehler = 0;
+    private int area;
 
     public void start(){
         //Erstellung des Feldes und der Szene wo Memory läuft
+        this.area = area;
         Pane root = new Pane();
 
         Scene scene = new Scene(root, 600, 600);
@@ -131,7 +133,7 @@ public class Memory {
                 if(paarzaehler == pairs){
                     //Wenn der Zähler von den Paaren auf 8 steht, gerade die maximale Anzahl der Paare,dann wird diese If Abfrage ausgeführt
                     label.setText("Du hast gewonnen!");
-                    Main.tdi.spieler.setGeld(Main.tdi.spieler.getGeld() + 5);
+                    Main.tdi.spieler.setGeld(Main.tdi.spieler.getGeld() + 5 * area);
                 }
             }
             return text.getText().equals(other.text.getText());

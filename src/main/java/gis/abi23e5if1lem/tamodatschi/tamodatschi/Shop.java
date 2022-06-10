@@ -53,15 +53,15 @@ public class Shop extends Ort{
     private void buyItem(Essen essen0) {
         //bezahlen und zum Inventar
         if (istPleite(essen0.getPrice())){
-        Main.tdi.spieler.setGeld(Main.tdi.spieler.getGeld() - essen0.getPrice());
-        Main.tdi.spieler.addEssen(essen0);}
+            Main.tdi.spieler.setGeld(Main.tdi.spieler.getGeld() - essen0.getPrice());
+            Main.tdi.spieler.addEssen(essen0);
 
-        //Objekt aus Liste entfernen
-        this.inventar.remove(essen0);
+            //Objekt aus Liste entfernen
+            this.inventar.remove(essen0);
+        }
 
         //neu laden
         loadInterface();
-        System.out.println(this.inventar.size());
     }
 
     private void loadInterface() {

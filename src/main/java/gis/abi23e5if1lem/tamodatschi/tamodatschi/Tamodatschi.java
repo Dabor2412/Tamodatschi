@@ -68,7 +68,7 @@ public class Tamodatschi extends Application {
         //SchereSteinPapier ssp = new SchereSteinPapier();
         //ssp.start();
         Memory mem = new Memory();
-        mem.start();
+        mem.start(1);
         //NoelSpricht nsp = new NoelSpricht();
         //nsp.start();
         // End
