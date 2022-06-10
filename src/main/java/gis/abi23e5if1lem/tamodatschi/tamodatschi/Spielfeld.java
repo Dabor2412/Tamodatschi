@@ -43,6 +43,12 @@ public class Spielfeld {
         textures[225] = getClass().getResource("images/japanese_door.png").toString();
         textures[215] = getClass().getResource("images/sand.jpg").toString();
         textures[205] = getClass().getResource("images/banan.png").toString();
+        textures[195] = getClass().getResource("images/sand_new.png").toString();
+        textures[185] = getClass().getResource("images/oasis.png").toString();
+        textures[175] = getClass().getResource("images/harbor.png").toString();
+        textures[165] = getClass().getResource("images/cactus.png").toString();
+        textures[145] = getClass().getResource("images/palm.png").toString();
+        textures[5] = getClass().getResource("images/ship_boss.png").toString();
         textures[0] = getClass().getResource("images/Villain.png").toString();
 
         if (isInit) {
