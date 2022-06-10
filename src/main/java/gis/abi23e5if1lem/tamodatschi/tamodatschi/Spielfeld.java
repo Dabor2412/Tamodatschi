@@ -108,7 +108,6 @@ public class Spielfeld {
         player.setFitWidth(24);
         player.setX(Main.tdi.spieler.getPosX() * 24);
         player.setY(Main.tdi.spieler.getPosY() * 24);
-        Main.tdi.spieler.setGeld(2);
         pane.getChildren().add(player);
 
 
