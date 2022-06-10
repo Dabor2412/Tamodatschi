@@ -16,6 +16,7 @@ import java.util.Random;
 
 public class SchereSteinPapier {
     	//Erstellung der Oberfläche und des Feldes
+    public void start(int area){
         GridPane root = new GridPane();
         root.setHgap(20);
         root.setVgap(20);
