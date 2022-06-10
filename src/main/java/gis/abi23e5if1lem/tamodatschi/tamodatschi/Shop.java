@@ -30,7 +30,7 @@ public class Shop extends Ort{
 
     public void start(){
         this.primaryStage = new Stage();
-
+        this.inventar.clear();
         this.inventar.add(new Essen("Steak", 1, 1));
         this.inventar.add(new Essen("Kuchen", 1, 1));
         this.inventar.add(new Essen("Pudding", 1, 1));
