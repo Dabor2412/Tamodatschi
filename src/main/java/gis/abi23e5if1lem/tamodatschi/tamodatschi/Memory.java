@@ -31,7 +31,7 @@ public class Memory {
     private int paarzaehler = 0;
     private int area;
 
-    public void start(){
+    public void start(int area){
         //Erstellung des Feldes und der Szene wo Memory läuft
         this.area = area;
         Pane root = new Pane();

@@ -24,7 +24,7 @@ public class Tamodatschi extends Application {
     @FXML
     public Pane pane;
     @FXML
-    public Label label;
+    public Label labelMoney;
     @FXML
     protected void onDisplayClick(Event e) {
         System.out.println(e.getTarget().toString());

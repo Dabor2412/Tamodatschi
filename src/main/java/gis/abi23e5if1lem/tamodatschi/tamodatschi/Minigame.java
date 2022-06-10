@@ -15,7 +15,7 @@ public class Minigame extends Ort {
                 break;
             case 2:
                 NoelSpricht nsp = new NoelSpricht();
-                nsp.start();
+                nsp.start(1);
                 break;
         }
     }
