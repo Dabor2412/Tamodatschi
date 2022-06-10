@@ -1,5 +1,5 @@
 package gis.abi23e5if1lem.tamodatschi.tamodatschi;
-
+//Klasse mit den Attributen Name, Buff und Preis. Entsprechenden Setter- und Gettermethoden sind falls nötig vorhanden.
 public class Essen {
 
     private String name;
