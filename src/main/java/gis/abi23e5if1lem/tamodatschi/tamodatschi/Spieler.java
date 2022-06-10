@@ -15,7 +15,7 @@ public class Spieler {
         List<Essen> essen = new ArrayList();
 
         public Spieler () {
-
+                this.geld = 10;
         }
 
         public int getLeben(){
