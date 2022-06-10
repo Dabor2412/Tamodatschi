@@ -21,7 +21,7 @@ public class Spielfeld {
             2.3. Blau, Ort/Minigame (line 85)
      */
 
-    private final String layoutTexture = getClass().getResource("images/bounds.png").toString();
+    private final String layoutTexture = getClass().getResource("images/bounds_new.png").toString();
     private static String[] textures = new String[256];
     private static ImageView[][] mapTextures = new ImageView[42][26];
     private static Ort[][] mapOrte = new Ort[42][26];
@@ -108,7 +108,7 @@ public class Spielfeld {
         player.setFitWidth(24);
         player.setX(Main.tdi.spieler.getPosX() * 24);
         player.setY(Main.tdi.spieler.getPosY() * 24);
-
+        Main.tdi.spieler.setGeld(2);
         pane.getChildren().add(player);
 
 

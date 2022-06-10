@@ -4,7 +4,6 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.control.Dialog;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -12,7 +11,6 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -40,6 +38,11 @@ public class Shop extends Ort{
         this.inventar.add(new Essen("Gummibärchen", 1, 1));
 
         Scene scene = new Scene(new Pane(), 500, 500);
+        this.primaryStage.setOnCloseRequest(we -> {
+            for(int i = 0; i < inventar.size(); i++) {
+                inventar.remove(inventar.get(0));
+            }
+        });
         this.primaryStage.setTitle("Shop");
         this.primaryStage.setScene(scene);
         this.primaryStage.show();
@@ -49,8 +52,9 @@ public class Shop extends Ort{
 
     private void buyItem(Essen essen0) {
         //bezahlen und zum Inventar
+        if (istPleite(essen0.getPrice())){
         Main.tdi.spieler.setGeld(Main.tdi.spieler.getGeld() - essen0.getPrice());
-        Main.tdi.spieler.addEssen(essen0);
+        Main.tdi.spieler.addEssen(essen0);}
 
         //Objekt aus Liste entfernen
         this.inventar.remove(essen0);
@@ -93,6 +97,7 @@ public class Shop extends Ort{
     }
 
     private void lootbox1(int gross, Label label1) {
+       if (istPleite(2*Math.pow(gross,2))){
         Random zg = new Random(); //ein Zufalsgeneratorobjekt wird erstellt
         Main.tdi.spieler.setGeld((int) (Main.tdi.spieler.getGeld()-2*Math.pow(gross,2))); //hier Geld festlegen//Preis wird abgebucht
         int boost = (int) Math.round(Math.pow(2,gross)*1000/(zg.nextInt(900)+100)); //Größe der Box wird zufällig festgelegt
@@ -121,7 +126,7 @@ public class Shop extends Ort{
                 break;
             default:
 
-        } // end of switch
+        }} // end of switch
     }
 
     private String generateItemName() {
@@ -151,4 +156,14 @@ public class Shop extends Ort{
     public void removeInv(Essen gericht){
         inventar.remove(gericht);
     }
+
+    public boolean istPleite (double a){
+        if (a > Main.tdi.spieler.getGeld()) {
+            return false;
+            //hier label beschreiben
+        } else {
+            return true;
+        }
+    }
+
 }
