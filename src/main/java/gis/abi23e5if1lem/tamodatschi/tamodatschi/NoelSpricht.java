@@ -15,7 +15,7 @@ public class NoelSpricht {
     private int[] reihenfolge = new int[5];
     private Button[] buttonArr = new Button[4];
 
-    public void start() {
+    public void start(int area) {
         VBox root = new VBox();
         root.setAlignment(Pos.CENTER);
 

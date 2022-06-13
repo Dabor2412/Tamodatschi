@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.PixelReader;
 import javafx.scene.input.KeyEvent;
@@ -22,7 +23,8 @@ public class Tamodatschi extends Application {
     public Scene scene;
     @FXML
     public Pane pane;
-
+    @FXML
+    public Label labelMoney;
     @FXML
     protected void onDisplayClick(Event e) {
         System.out.println(e.getTarget().toString());
@@ -127,7 +129,6 @@ public class Tamodatschi extends Application {
         stage.setTitle("Tamodatschi");
         stage.setScene(scene);
         stage.show();
-
     }
 
     public void initGame() {

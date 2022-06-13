@@ -2,7 +2,7 @@ package gis.abi23e5if1lem.tamodatschi.tamodatschi;
 
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-
+//Klasse mit den Attributen position x  und y sowie Graphik, dient als Superklasse für Minigame, Shop und vieleicht Bossfight. Entsprechende Setter und Getter-Methoden sind vorhanden. Es gibt zwei Konstruktoren. 
 public class Ort {
     private int positionX;
     private int positionY;
