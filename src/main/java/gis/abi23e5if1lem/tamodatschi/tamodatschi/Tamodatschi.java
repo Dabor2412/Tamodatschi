@@ -4,14 +4,18 @@ import javafx.application.Application;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.PixelReader;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.Border;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
+import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -41,6 +45,9 @@ public class Tamodatschi extends Application {
         feld = new Spielfeld(true, pane);
         feld.initDrawMap();
         ((Button) e.getSource()).setDisable(true);
+        labelMoney.setBorder(Border.stroke(Color.BLACK));
+        labelMoney.setBackground(Background.fill(Color.LIGHTGRAY));
+
         // End
     }
     @FXML
@@ -95,6 +102,7 @@ public class Tamodatschi extends Application {
     }
     @FXML
     protected void onDisplayText(KeyEvent kev){
+       labelMoney.setText("Geld: " + Main.tdi.spieler.getGeld());
         switch (kev.getCharacter()) {
             case "w" :
                 feld.movePlayer(0,-1);
@@ -122,10 +130,10 @@ public class Tamodatschi extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Tamodatschi.class.getResource("tamodatschi.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 1152, 700);
+        Scene scene = new Scene(fxmlLoader.load(), 1152, 624);
         this.scene = scene;
         stage.setMinWidth(1152);
-        stage.setMinHeight(700);
+        stage.setMinHeight(624);
         stage.setTitle("Tamodatschi");
         stage.setScene(scene);
         stage.show();

@@ -51,6 +51,7 @@ public class SchereSteinPapier {
             } else {
                 label.setText("Du hast verloren.");
                 label.setTextFill(Color.RED);
+                Main.tdi.spieler.setGeld(Main.tdi.spieler.getGeld() - 2 * area);
             }
         });
         button_schere.setPrefWidth(220);
@@ -62,15 +63,15 @@ public class SchereSteinPapier {
             if (fight(1, root, symbol1, symbol2) == 1) {
                 label.setText("Du hast gewonnen.");
                 label.setTextFill(Color.GREEN);
-                Main.tdi.spieler.setGeld(Main.tdi.spieler.getGeld() + 2);
+                Main.tdi.spieler.setGeld(Main.tdi.spieler.getGeld() + 3 * area);
             } else if(fight(1, root, symbol1, symbol2) == 2){
                 label.setText("Es gibt keinen Sieger");
                 label.setTextFill(Color.VIOLET);
-                Main.tdi.spieler.setGeld(Main.tdi.spieler.getGeld() + 1);
+                Main.tdi.spieler.setGeld(Main.tdi.spieler.getGeld() + 1 * area);
             }  else {
                 label.setText("Du hast verloren.");
                 label.setTextFill(Color.RED);
-                Main.tdi.spieler.setGeld(Main.tdi.spieler.getGeld() - 2);
+                Main.tdi.spieler.setGeld(Main.tdi.spieler.getGeld() - 2 * area);
             }
         });
         button_stein.setPrefWidth(220);
@@ -82,15 +83,15 @@ public class SchereSteinPapier {
             if (fight(2, root, symbol1, symbol2) == 1) {
                 label.setText("Du hast gewonnen.");
                 label.setTextFill(Color.GREEN);
-                Main.tdi.spieler.setGeld(Main.tdi.spieler.getGeld() + 2);
+                Main.tdi.spieler.setGeld(Main.tdi.spieler.getGeld() + 3 * area);
             } else if(fight(2, root, symbol1, symbol2) == 2){
                 label.setText("Es gibt keinen Sieger");
                 label.setTextFill(Color.VIOLET);
-                Main.tdi.spieler.setGeld(Main.tdi.spieler.getGeld() + 1);
+                Main.tdi.spieler.setGeld(Main.tdi.spieler.getGeld() + 1 * area);
             } else {
                 label.setText("Du hast verloren.");
                 label.setTextFill(Color.RED);
-                Main.tdi.spieler.setGeld(Main.tdi.spieler.getGeld() - 2);
+                Main.tdi.spieler.setGeld(Main.tdi.spieler.getGeld() - 2 * area);
             }
         });
         button_papier.setPrefWidth(220);
