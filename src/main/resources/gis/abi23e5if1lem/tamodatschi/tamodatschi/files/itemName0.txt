@@ -33,6 +33,7 @@ das WLAN-Passwort
 die Uhr
 den Affen
 den Ball
+die Handfeuerwaffe
 das Tor
 das Schwimmbad
 den Feuerlöscher
@@ -59,3 +60,4 @@ das Steakmesser
 das Universalmesser mit Welle
 das Ausbeinmesser
 das Filiermesser
+das Kapital
