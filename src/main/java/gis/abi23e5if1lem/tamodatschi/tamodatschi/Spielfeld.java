@@ -152,9 +152,9 @@ public class Spielfeld {
         }
         if (spieler.getLeben<1){
         Alert alert = new Alert(Alert.AlertType.INFORMATION, "");
-        ImageView imv = new ImageView(new Image(getClass().getResource("images/lootbox.png").toString()));
-        imv.setFitHeight(64);
-        imv.setFitWidth(64);
+        ImageView imv = new ImageView(new Image(getClass().getResource("images/GameOver.png").toString()));
+        imv.setFitHeight(460);
+        imv.setFitWidth(741);
         alert.setGraphic(imv);
         alert.setTitle("Game Over");
         alert.setHeaderText("Du bist leider verstorben");   
