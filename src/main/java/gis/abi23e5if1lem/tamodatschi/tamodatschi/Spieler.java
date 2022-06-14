@@ -27,6 +27,10 @@ public class Spieler {
                 this.leben = leben;
         }
 
+        public int getHunger() {return hunger;}
+
+        public void setHunger(int hunger) {this.hunger = hunger;}
+
         public int getAngriffskraft(){
                 return angriffskraft;
         }

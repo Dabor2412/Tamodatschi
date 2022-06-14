@@ -30,6 +30,10 @@ public class Tamodatschi extends Application {
     @FXML
     public Label labelMoney;
     @FXML
+    public Label labelHunger;
+    @FXML
+    public Label labelPlayer;
+    @FXML
     protected void onDisplayClick(Event e) {
         System.out.println(e.getTarget().toString());
     }
@@ -45,8 +49,15 @@ public class Tamodatschi extends Application {
         feld = new Spielfeld(true, pane);
         feld.initDrawMap();
         ((Button) e.getSource()).setDisable(true);
+        labelPlayer.setBorder(Border.stroke(Color.BLACK));
         labelMoney.setBorder(Border.stroke(Color.BLACK));
+        labelHunger.setBorder(Border.stroke(Color.BLACK));
+        labelHunger.setBackground(Background.fill(Color.LIGHTGRAY));
         labelMoney.setBackground(Background.fill(Color.LIGHTGRAY));
+        labelPlayer.setBackground(Background.fill(Color.LIGHTGRAY));
+        pane.setBackground(Background.fill(Color.DARKOLIVEGREEN));
+
+
 
         // End
     }
@@ -103,6 +114,7 @@ public class Tamodatschi extends Application {
     @FXML
     protected void onDisplayText(KeyEvent kev){
        labelMoney.setText("Geld: " + Main.tdi.spieler.getGeld());
+       labelHunger.setText("Hunger: " + Main.tdi.spieler.getHunger());
         switch (kev.getCharacter()) {
             case "w" :
                 feld.movePlayer(0,-1);

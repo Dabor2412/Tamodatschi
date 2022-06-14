@@ -10,6 +10,9 @@
       <Button layoutX="1064.0" layoutY="154.0" mnemonicParsing="false" onMouseClicked="#onTestPlayerButtonClick" prefHeight="25.0" prefWidth="85.0" text="PlayerTest" />
       <Button layoutX="1064.0" layoutY="205.0" mnemonicParsing="false" onAction="#onTestMinigameButtonClick" prefHeight="25.0" prefWidth="85.0" text="MinigameTest" />
       <Button layoutX="1064.0" layoutY="256.0" mnemonicParsing="false" onAction="#onTestShopButtonClick" prefHeight="25.0" prefWidth="85.0" text="ShopTest" />
-      <Label  fx:id="labelMoney" layoutX="1064.0" layoutY="320.0"  prefHeight="25.0" prefWidth="85.0" text= "Geld" alignment="CENTER"/>
+      <Label  fx:id="labelMoney" layoutX="1020.0" layoutY="370.0"  prefHeight="25.0" prefWidth="85.0" text= "Geld" alignment="CENTER"/>
+      <Label  fx:id="labelPlayer" layoutX="1008.0" layoutY="330.0"  prefHeight="25.0" prefWidth="144.0" text= "Spieler Inventar" alignment="CENTER"/>
+      <Label  fx:id="labelHunger" layoutX="1020.0" layoutY="410.0"  prefHeight="25.0" prefWidth="85.0" text= "Hunger" alignment="CENTER"/>
+      <TextField  fx:id="textfieldEssen" layoutX="1020.0" layoutY="410.0"  prefHeight="25.0" prefWidth="85.0" alignment="CENTER"/>
    </children>
 </Pane>
