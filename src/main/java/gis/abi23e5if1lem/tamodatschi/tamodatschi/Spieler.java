@@ -12,7 +12,8 @@ public class Spieler {
         private int posX = 0;
         private int posY = 0;
         private int geld;
-        List<Essen> essen = new ArrayList();
+        List<Essen> essen = new ArrayList<>();
+        List<String> item = new ArrayList<>();
 
         public Spieler () {
                 this.geld = 10;
@@ -52,6 +53,18 @@ public class Spieler {
 
         public void konsumiereEssen(Essen gericht){
                 essen.remove(gericht);
+        }
+
+        public List getItems() {
+                return item;
+        }
+
+        public void addItem(String name) {
+                item.add(name);
+        }
+
+        public void removeItem(String name) {
+                item.remove(name);
         }
 
         public int getGeld() {

@@ -148,6 +148,7 @@ public class Shop extends Ort{
 
         Random rd = new Random();
         target = arr0.get(rd.nextInt(arr0.size())) + " " + arr1.get(rd.nextInt(arr1.size()));
+        Main.tdi.spieler.addItem(target);
         System.out.println(target);
         return target;
     }
