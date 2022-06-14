@@ -7,6 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.Border;
@@ -23,6 +24,8 @@ public class Tamodatschi extends Application {
     public Pane pane;
     @FXML
     public Label labelMoney;
+    @FXML
+    public TextField textFieldEssen;
     @FXML
     public Label labelHunger;
     @FXML
@@ -51,6 +54,8 @@ public class Tamodatschi extends Application {
         labelHunger.setBackground(Background.fill(Color.LIGHTGRAY));
         labelMoney.setBackground(Background.fill(Color.LIGHTGRAY));
         labelPlayer.setBackground(Background.fill(Color.LIGHTGRAY));
+        textFieldEssen.setBackground(Background.fill(Color.LIGHTGRAY));
+        textFieldEssen.setBorder(Border.stroke(Color.BLACK));
         pane.setBackground(Background.fill(Color.DARKOLIVEGREEN));
         // End
     }
