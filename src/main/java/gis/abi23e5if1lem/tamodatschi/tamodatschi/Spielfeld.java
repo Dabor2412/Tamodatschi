@@ -151,7 +151,13 @@ public class Spielfeld {
          spieler.setLeben(spieler.getLeben()-3);   
         }
         if (spieler.getLeben<1){
-            
+        Alert alert = new Alert(Alert.AlertType.INFORMATION, "");
+        ImageView imv = new ImageView(new Image(getClass().getResource("images/lootbox.png").toString()));
+        imv.setFitHeight(64);
+        imv.setFitWidth(64);
+        alert.setGraphic(imv);
+        alert.setTitle("Game Over");
+        alert.setHeaderText("Du bist leider verstorben");   
         }
         if (spieler.getPosY()+chngY >= 0 && spieler.getPosX()+chngX >= 0 && spieler.getPosY()+chngY < sizeY && spieler.getPosX()+chngX < sizeX) {
             if (!mapBounds[spieler.getPosX()+chngX][spieler.getPosY()+chngY]) {
