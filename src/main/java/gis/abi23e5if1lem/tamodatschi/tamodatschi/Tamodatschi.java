@@ -8,6 +8,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.PixelReader;
 import javafx.scene.input.KeyEvent;
@@ -29,6 +30,8 @@ public class Tamodatschi extends Application {
     public Pane pane;
     @FXML
     public Label labelMoney;
+    @FXML
+    public TextField textFieldEssen;
     @FXML
     public Label labelHunger;
     @FXML
@@ -55,6 +58,8 @@ public class Tamodatschi extends Application {
         labelHunger.setBackground(Background.fill(Color.LIGHTGRAY));
         labelMoney.setBackground(Background.fill(Color.LIGHTGRAY));
         labelPlayer.setBackground(Background.fill(Color.LIGHTGRAY));
+        textFieldEssen.setBackground(Background.fill(Color.LIGHTGRAY));
+        textFieldEssen.setBorder(Border.stroke(Color.BLACK));
         pane.setBackground(Background.fill(Color.DARKOLIVEGREEN));
 
 
