@@ -145,6 +145,11 @@ public class Spielfeld {
 
     public void movePlayer(int chngX, int chngY){
         Spieler spieler = Main.tdi.spieler;
+        if (spieler.getHunger()>0)   {
+        spieler.setHunger(spieler.getHunger()-1);
+        } else {
+         spieler.setLeben(spieler.getLeben()-3);   
+        }
         if (spieler.getPosY()+chngY >= 0 && spieler.getPosX()+chngX >= 0 && spieler.getPosY()+chngY < sizeY && spieler.getPosX()+chngX < sizeX) {
             if (!mapBounds[spieler.getPosX()+chngX][spieler.getPosY()+chngY]) {
                 spieler.setPosX(spieler.getPosX() + chngX);
