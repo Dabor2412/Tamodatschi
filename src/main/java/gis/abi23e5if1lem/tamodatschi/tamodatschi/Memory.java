@@ -93,9 +93,11 @@ public class Memory {
 
             if (selected == null) {
                 selected = this;
+                selected.setDisable(true);
                 open(() -> {});
             } else {
                 open(() -> {
+                    selected.setDisable(false);
                     if(!gleichesBild(selected)) {
                         selected.close();
                         this.close();
