@@ -48,8 +48,14 @@ public class Spielfeld {
         textures[175] = getClass().getResource("images/harbor.png").toString();
         textures[165] = getClass().getResource("images/cactus.png").toString();
         textures[145] = getClass().getResource("images/palm.png").toString();
-        textures[5] = getClass().getResource("images/ship_boss.png").toString();
-        textures[0] = getClass().getResource("images/Villain.png").toString();
+        textures[135] = getClass().getResource("images/snow.png").toString();
+        textures[125] = getClass().getResource("images/fish_pond.png").toString();;
+        textures[115] = getClass().getResource("images/house.png").toString();;
+        textures[105] = getClass().getResource("images/pine_tree.png").toString();;
+        textures[95] =  getClass().getResource("images/train.png").toString();;
+        textures[10] =  getClass().getResource("images/door.png").toString();;
+        textures[5] =   getClass().getResource("images/ship_boss.png").toString();
+        textures[0] =   getClass().getResource("images/Villain.png").toString();
 
         if (isInit) {
             initDrawMap();
@@ -150,15 +156,15 @@ public class Spielfeld {
         } else {
          spieler.setLeben(spieler.getLeben()-3);   
         }
-        if (spieler.getLeben<1){
+       /* if (spieler.getLeben<1){
         Alert alert = new Alert(Alert.AlertType.INFORMATION, "");
         ImageView imv = new ImageView(new Image(getClass().getResource("images/GameOver.png").toString()));
         imv.setFitHeight(460);
         imv.setFitWidth(741);
         alert.setGraphic(imv);
         alert.setTitle("Game Over");
-        alert.setHeaderText("Du bist leider verstorben");   
-        }
+        alert.setHeaderText("Du bist leider verstorben");
+        }*/
         if (spieler.getPosY()+chngY >= 0 && spieler.getPosX()+chngX >= 0 && spieler.getPosY()+chngY < sizeY && spieler.getPosX()+chngX < sizeX) {
             if (!mapBounds[spieler.getPosX()+chngX][spieler.getPosY()+chngY]) {
                 spieler.setPosX(spieler.getPosX() + chngX);
