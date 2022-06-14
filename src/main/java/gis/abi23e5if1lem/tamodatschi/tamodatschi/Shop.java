@@ -53,8 +53,8 @@ public class Shop extends Ort{
     private void buyItem(Essen essen0) {
         //bezahlen und zum Inventar
         if (istPleite(essen0.getPrice())){
-            Main.tdi.spieler.setGeld(Main.tdi.spieler.getGeld() - essen0.getPrice());
-            Main.tdi.spieler.addEssen(essen0);
+            Main.tdi.getSpieler().setGeld(Main.tdi.getSpieler().getGeld() - essen0.getPrice());
+            Main.tdi.getSpieler().addEssen(essen0);
 
             //Objekt aus Liste entfernen
             this.inventar.remove(essen0);
@@ -100,7 +100,7 @@ public class Shop extends Ort{
     private void lootbox1(int gross, Label label1) {
        if (istPleite(2*Math.pow(gross,2))){
         Random zg = new Random(); //ein Zufallsgeneratorobjekt wird erstellt
-        Main.tdi.spieler.setGeld((int) (Main.tdi.spieler.getGeld()-2*Math.pow(gross,2))); //hier Geld festlegen//Preis wird abgebucht
+        Main.tdi.getSpieler().setGeld((int) (Main.tdi.getSpieler().getGeld()-2*Math.pow(gross,2))); //hier Geld festlegen//Preis wird abgebucht
         int boost = (int) Math.round(Math.pow(2,gross)*1000/(zg.nextInt(900)+100)); //Größe der Box wird zufällig festgelegt
         Alert alert = new Alert(Alert.AlertType.INFORMATION, "");
         ImageView imv = new ImageView(new Image(getClass().getResource("images/lootbox.png").toString()));
@@ -111,17 +111,17 @@ public class Shop extends Ort{
         alert.setHeaderText("Lootbox wurde geöffnet");
         switch (zg.nextInt(3)+1) {//Art der Box wird zufällig festgelegt
             case 1 :
-                Main.tdi.spieler.setAngriffskraft(Main.tdi.spieler.getAngriffskraft()+boost); //Attribut wird geändert
+                Main.tdi.getSpieler().setAngriffskraft(Main.tdi.getSpieler().getAngriffskraft()+boost); //Attribut wird geändert
                 alert.setContentText("Du hast das Item " + generateItemName() + " gezogen. Es erhöht deine Angriffskraft um " + boost);
                 alert.show();
                 break;
             case  2:
-                Main.tdi.spieler.setVerteidigung(Main.tdi.spieler.getVerteidigung()+boost); //Attribut wird geändert
+                Main.tdi.getSpieler().setVerteidigung(Main.tdi.getSpieler().getVerteidigung()+boost); //Attribut wird geändert
                 alert.setContentText("Du hast das Item " + generateItemName() + " gezogen. Es erhöht deine Verteidigung um " + boost);
                 alert.show();
                 break;
             case 3:
-                Main.tdi.spieler.setLeben(Main.tdi.spieler.getLeben()+boost); //Attribut wird geändert
+                Main.tdi.getSpieler().setLeben(Main.tdi.getSpieler().getLeben()+boost); //Attribut wird geändert
                 alert.setContentText("Du hast das Item " + generateItemName() + " gezogen. Es erhöht deine Leben um " + boost);
                 alert.show();
                 break;
@@ -148,7 +148,7 @@ public class Shop extends Ort{
 
         Random rd = new Random();
         target = arr0.get(rd.nextInt(arr0.size())) + " " + arr1.get(rd.nextInt(arr1.size()));
-        Main.tdi.spieler.addItem(target);
+        Main.tdi.getSpieler().addItem(target);
         System.out.println(target);
         return target;
     }
@@ -160,7 +160,7 @@ public class Shop extends Ort{
     }
 
     public boolean istPleite (double a){
-        if (a > Main.tdi.spieler.getGeld()) {
+        if (a > Main.tdi.getSpieler().getGeld()) {
             return false;
             //hier label beschreiben
         } else {

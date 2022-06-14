@@ -4,26 +4,20 @@ import javafx.application.Application;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
-import javafx.scene.image.PixelReader;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.Border;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
-import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.Random;
 
 public class Tamodatschi extends Application {
-    public Spieler spieler = new Spieler();
-    public Spielfeld feld;
     public Scene scene;
     @FXML
     public Pane pane;
@@ -33,6 +27,8 @@ public class Tamodatschi extends Application {
     public Label labelHunger;
     @FXML
     public Label labelPlayer;
+    private Spieler spieler = new Spieler();
+    private Spielfeld feld = new Spielfeld(false, pane);
     @FXML
     protected void onDisplayClick(Event e) {
         System.out.println(e.getTarget().toString());
@@ -56,9 +52,6 @@ public class Tamodatschi extends Application {
         labelMoney.setBackground(Background.fill(Color.LIGHTGRAY));
         labelPlayer.setBackground(Background.fill(Color.LIGHTGRAY));
         pane.setBackground(Background.fill(Color.DARKOLIVEGREEN));
-
-
-
         // End
     }
     @FXML
@@ -157,5 +150,13 @@ public class Tamodatschi extends Application {
 
     public Tamodatschi() {
 
+    }
+
+    public Spieler getSpieler() {
+        return spieler;
+    }
+
+    public Spielfeld getFeld() {
+        return feld;
     }
 }

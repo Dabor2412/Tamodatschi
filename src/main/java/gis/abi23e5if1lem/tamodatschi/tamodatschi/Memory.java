@@ -133,7 +133,7 @@ public class Memory {
                 if(paarzaehler == pairs){
                     //Wenn der Zähler von den Paaren auf 8 steht, gerade die maximale Anzahl der Paare,dann wird diese If Abfrage ausgeführt
                     label.setText("Du hast gewonnen!");
-                    Main.tdi.spieler.setGeld(Main.tdi.spieler.getGeld() + 10 * area);
+                    Main.tdi.getSpieler().setGeld(Main.tdi.getSpieler().getGeld() + 10 * area);
                 }
             }
             return text.getText().equals(other.text.getText());

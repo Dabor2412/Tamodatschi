@@ -1,6 +1,7 @@
 package gis.abi23e5if1lem.tamodatschi.tamodatschi;
 
 import javafx.scene.Node;
+import javafx.scene.control.Alert;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.PixelReader;
@@ -89,9 +90,9 @@ public class Spielfeld {
                     case 1: //Normal Ort
                         mapOrte[i][j] = new Ort(i, j);
                         break;
-                    case 2: //Spieler
-                        Main.tdi.spieler.setPosX(i);
-                        Main.tdi.spieler.setPosY(j);
+                    case 2: //getSpieler()
+                        Main.tdi.getSpieler().setPosX(i);
+                        Main.tdi.getSpieler().setPosY(j);
                         break;
                     case 3: //Laden
                         mapOrte[i][j] = new Shop(i, j);
@@ -102,8 +103,11 @@ public class Spielfeld {
                     case 5: //Minigame 1
                         mapOrte[i][j] = new Minigame(i, j, 1);
                         break;
-                    case 6: //Minigame 3
+                    case 6: //Minigame 2
                         mapOrte[i][j] = new Minigame(i, j, 2);
+                        break;
+                    case 7: //Boss
+                        mapOrte[i][j] = new BossFight(i, j);
                         break;
                 }
             }
@@ -112,8 +116,8 @@ public class Spielfeld {
         player = new ImageView(new Image(getClass().getResource("images/iGoSleep.jpg").toString()));
         player.setFitHeight(24);
         player.setFitWidth(24);
-        player.setX(Main.tdi.spieler.getPosX() * 24);
-        player.setY(Main.tdi.spieler.getPosY() * 24);
+        player.setX(Main.tdi.getSpieler().getPosX() * 24);
+        player.setY(Main.tdi.getSpieler().getPosY() * 24);
         pane.getChildren().add(player);
 
 
@@ -128,8 +132,8 @@ public class Spielfeld {
              ) {
             if (node instanceof ImageView) {
                 if(node.equals(player)){
-                    player.setX(Main.tdi.spieler.getPosX() * 24);
-                    player.setY(Main.tdi.spieler.getPosY() * 24);
+                    player.setX(Main.tdi.getSpieler().getPosX() * 24);
+                    player.setY(Main.tdi.getSpieler().getPosY() * 24);
 
                     return;
                 }
@@ -144,22 +148,25 @@ public class Spielfeld {
     }
 
     public void movePlayer(int chngX, int chngY){
-        Spieler spieler = Main.tdi.spieler;
-        if (spieler.getHunger()>0)   {
-        spieler.setHunger(spieler.getHunger()-1);
+        Spieler spieler = Main.tdi.getSpieler();
+        if (spieler.getHunger() > 0) {
+            spieler.setHunger(spieler.getHunger()-1);
         } else {
-         spieler.setLeben(spieler.getLeben()-3);   
+            spieler.setLeben(spieler.getLeben()-3);
         }
-        if (spieler.getLeben<1){
-        Alert alert = new Alert(Alert.AlertType.INFORMATION, "");
-        ImageView imv = new ImageView(new Image(getClass().getResource("images/GameOver.png").toString()));
-        imv.setFitHeight(460);
-        imv.setFitWidth(741);
-        alert.setGraphic(imv);
-        alert.setTitle("Game Over");
-        alert.setHeaderText("Du bist leider verstorben");   
+        if (spieler.getLeben() < 1) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION, "");
+            ImageView imv = new ImageView(new Image(getClass().getResource("images/GameOver.png").toString()));
+            imv.setFitHeight(460);
+            imv.setFitWidth(741);
+            alert.setGraphic(imv);
+            alert.setTitle("Game Over");
+            alert.setHeaderText("Du bist leider verstorben");
         }
         if (spieler.getPosY()+chngY >= 0 && spieler.getPosX()+chngX >= 0 && spieler.getPosY()+chngY < sizeY && spieler.getPosX()+chngX < sizeX) {
+            if (mapOrte[spieler.getPosX()+chngX][spieler.getPosY()+chngY] instanceof BossFight) {
+                ((BossFight) mapOrte[spieler.getPosX()+chngX][spieler.getPosY()+chngY]).start();
+            }
             if (!mapBounds[spieler.getPosX()+chngX][spieler.getPosY()+chngY]) {
                 spieler.setPosX(spieler.getPosX() + chngX);
                 spieler.setPosY(spieler.getPosY() + chngY);
@@ -184,6 +191,9 @@ public class Spielfeld {
         if(place.getGrafik() != null){
             applyTexture(place.getPositionX(), place.getPositionY(), place.getGrafik());
         }
+    }
+    public void removeOrt(int x, int y){
+        mapOrte[x][y] = null;
     }
     public void applyOrtTexture(Ort place, String grafik) {
         mapOrte[place.getPositionX()][place.getPositionY()] = place;
@@ -213,7 +223,7 @@ public class Spielfeld {
         return 26;
     }
 
-    public static String[] getTextures() {
+    public String[] getTextures() {
         return textures;
     }
 

@@ -12,7 +12,7 @@ import javafx.stage.Stage;
 
 import java.util.Random;
 
-public class BossFight {
+public class BossFight extends Ort{
     private Pane fightPane;
     private ImageView bossBild;
     private ImageView charakterBild;
@@ -22,6 +22,10 @@ public class BossFight {
     private Button flee_button;
     private Boss boss = new Boss(100, 5, 10);
     private Stage stage;
+
+    public BossFight(int x, int y) {
+        super(x, y);
+    }
 
     public void start() {
         Pane root = new Pane();
@@ -99,12 +103,14 @@ public class BossFight {
         dialog.appendText("Angriff mit " + slider.getValue() + "\n");
         Random rd = new Random();
         double a = rd.nextInt(141)/100;
-        int schaden =(int)Math.round((Math.log(Main.tdi.spieler.getAngriffskraft()/Math.pow(slider.getValue(), 0.05))*Math.pow(Math.pow(slider.getValue()-1,2)+1,5)*Math.pow(slider.getValue()/2, a)));
+        int schaden =(int)Math.round((Math.log(Main.tdi.getSpieler().getAngriffskraft()/Math.pow(slider.getValue(), 0.05))*Math.pow(Math.pow(slider.getValue()-1,2)+1,5)*Math.pow(slider.getValue()/2, a)));
         this.boss.setLeben(this.boss.getLeben() - schaden - this.boss.getVerteidigung());
         this.dialog.appendText(String.valueOf(this.boss.getLeben()));
         if (this.boss.getLeben() <= 0) {
-            Main.tdi.feld.applyTexture(11, 13, Main.tdi.feld.getTextures()[255]);
-            Main.tdi.feld.applyBounds(11,13, false);
+            Spielfeld spf = Main.tdi.getFeld();
+            spf.applyTexture(this.getPositionX(), this.getPositionY(), spf.getTextures()[255]);
+            spf.applyBounds(this.getPositionX(),this.getPositionY(), false);
+            spf.removeOrt(this.getPositionX(), this.getPositionY());
         }
     }
 }

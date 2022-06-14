@@ -16,9 +16,10 @@ package gis.abi23e5if1lem.tamodatschi.tamodatschi;
 //Strart des Spiels. ein neues Spiel wird inizialisiert.
 public class Main {
 
-    public static Tamodatschi tdi = new Tamodatschi();
+    public static Tamodatschi tdi;
 
     public static void main(String[] args) {
+        tdi = new Tamodatschi();
         tdi.initGame();
     }
 }
