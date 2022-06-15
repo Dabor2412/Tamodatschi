@@ -89,6 +89,7 @@ public class BossFight extends Ort{
         flee_button.setLayoutY(300);
         flee_button.setPrefHeight(120);
         flee_button.setPrefWidth(220);
+        flee_button.setOnAction(e -> this.stage.hide());
         root.getChildren().add(flee_button);
 
         //Erstellen von Scene und Stage
