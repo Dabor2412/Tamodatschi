@@ -56,7 +56,7 @@ public class Tamodatschi extends Application {
         labelPlayer.setBackground(Background.fill(Color.LIGHTGRAY));
         textFieldEssen.setBackground(Background.fill(Color.LIGHTGRAY));
         textFieldEssen.setBorder(Border.stroke(Color.BLACK));
-        pane.setBackground(Background.fill(Color.DARKOLIVEGREEN));
+        pane.setBackground(Background.fill(Color.DARKOLIVEGREEN));   //Noel ist lost
         // End
     }
     @FXML
