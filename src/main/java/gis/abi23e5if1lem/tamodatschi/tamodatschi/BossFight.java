@@ -104,7 +104,7 @@ public class BossFight extends Ort{
         dialog.appendText("Angriff mit " + slider.getValue() + "\n");
         Random rd = new Random();
         double a = rd.nextInt(141)/100;
-        int schaden =(int)Math.round((Math.log(Main.tdi.getSpieler().getAngriffskraft()/Math.pow(slider.getValue(), 0.05))*Math.pow(Math.pow(slider.getValue()-1,2)+1,5)*Math.pow(slider.getValue()/2, a)));
+        int schaden =(int)Math.round((Math.log(Main.tdi.getSpieler().getAngriffskraft()/Math.pow(slider.getValue(), 0.05))*Math.pow(Math.pow(slider.getValue()-1,2)+1,5)*Math.pow(slider.getValue()/2, a))*5);
         this.boss.setLeben(this.boss.getLeben() - schaden - this.boss.getVerteidigung());
         this.dialog.appendText(String.valueOf(this.boss.getLeben()));
         if (this.boss.getLeben() <= 0) {
