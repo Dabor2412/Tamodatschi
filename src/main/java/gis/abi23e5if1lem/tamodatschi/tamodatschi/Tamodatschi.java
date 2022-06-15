@@ -30,8 +30,8 @@ public class Tamodatschi extends Application {
     public Label labelHunger;
     @FXML
     public Label labelPlayer;
-    private Spieler spieler = new Spieler();
-    private Spielfeld feld = new Spielfeld(false, pane);
+    private Spieler spieler;
+    private Spielfeld feld;
     @FXML
     protected void onDisplayClick(Event e) {
         System.out.println(e.getTarget().toString());
@@ -45,8 +45,9 @@ public class Tamodatschi extends Application {
     @FXML
     protected void onTestButtonClick(Event e) {
     // Test:
-        feld = new Spielfeld(true, pane);
-        feld.initDrawMap();
+        Main.tdi.spieler = new Spieler();
+        Main.tdi.feld = new Spielfeld(true, pane);
+        getFeld().initDrawMap();
         ((Button) e.getSource()).setDisable(true);
         labelPlayer.setBorder(Border.stroke(Color.BLACK));
         labelMoney.setBorder(Border.stroke(Color.BLACK));
@@ -62,10 +63,10 @@ public class Tamodatschi extends Application {
     @FXML
     protected void onTest2ButtonClick(Event e) {
     // Test:
-        feld.applyBounds(testOrt.getPositionX(), testOrt.getPositionY(), true);
-        feld.applyOrt(testOrt);
-        feld.applyOrt(testMin);
-        feld.drawMap(pane);
+        getFeld().applyBounds(testOrt.getPositionX(), testOrt.getPositionY(), true);
+        getFeld().applyOrt(testOrt);
+        getFeld().applyOrt(testMin);
+        getFeld().drawMap(pane);
         ((Button) e.getSource()).setDisable(true);
     // End
     }
@@ -77,7 +78,7 @@ public class Tamodatschi extends Application {
         int y = r.nextInt(26);
         Main.tdi.spieler.setPosX(x);
         Main.tdi.spieler.setPosY(y);
-        feld.drawMap(pane);
+        getFeld().drawMap(pane);
     // End
     }
     @FXML
@@ -95,7 +96,7 @@ public class Tamodatschi extends Application {
     protected void onTestShopButtonClick() {
         // Test:
         Shop sp = new Shop(3,9, getClass().getResource("images/japanese_door.png").toString());
-        feld.applyOrt(sp);
+        getFeld().applyOrt(sp);
         // End
     }
     @FXML
@@ -115,16 +116,16 @@ public class Tamodatschi extends Application {
        labelHunger.setText("Hunger: " + Main.tdi.spieler.getHunger());
         switch (kev.getCharacter()) {
             case "w" :
-                feld.movePlayer(0,-1);
+                getFeld().movePlayer(0,-1);
                 break;
             case "a" :
-                feld.movePlayer(-1,0);
+                getFeld().movePlayer(-1,0);
                 break;
             case "s" :
-                feld.movePlayer(0,1);
+                getFeld().movePlayer(0,1);
                 break;
             case "d" :
-                feld.movePlayer(1,0);
+                getFeld().movePlayer(1,0);
                 break;
             case "y":
                 onTestImageBoundaries();
@@ -132,7 +133,7 @@ public class Tamodatschi extends Application {
         }
 
         if(pane != null) {
-            feld.drawMap(pane);
+            getFeld().drawMap(pane);
         }
     }
 
@@ -153,15 +154,13 @@ public class Tamodatschi extends Application {
         launch();
     }
 
-    public Tamodatschi() {
-
-    }
+    public Tamodatschi() {}
 
     public Spieler getSpieler() {
-        return spieler;
+        return Main.tdi.spieler;
     }
 
     public Spielfeld getFeld() {
-        return feld;
+        return Main.tdi.feld;
     }
 }
