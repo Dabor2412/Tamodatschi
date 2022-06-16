@@ -23,8 +23,20 @@ public class BossFight extends Ort{
     private Boss boss = new Boss(100, 5, 10);
     private Stage stage;
 
+    private String bossImage = getClass().getResource("images/Villain.png").toString();
+    private String playerImage = getClass().getResource("images/iGoSleep.jpg").toString();
+
     public BossFight(int x, int y) {
         super(x, y);
+    }
+    public BossFight(int x, int y, String bossGrafik) {
+        super(x, y);
+        bossImage = bossGrafik;
+    }
+    public BossFight(int x, int y, String bossGrafik, String spielerGrafik) {
+        super(x, y);
+        bossImage = bossGrafik;
+        playerImage = spielerGrafik;
     }
 
     public void start() {
@@ -42,7 +54,7 @@ public class BossFight extends Ort{
         //Boss
 
         //BossBld
-        bossBild = new ImageView(new Image(getClass().getResource("images/Villain.png").toString()));
+        bossBild = new ImageView(new Image(bossImage));
         bossBild.setLayoutX(160);
         bossBild.setLayoutY(30);
         bossBild.setFitHeight(200);
@@ -50,7 +62,7 @@ public class BossFight extends Ort{
         fightPane.getChildren().add(bossBild);
 
         //CharakterBild
-        charakterBild = new ImageView(new Image(getClass().getResource("images/iGoSleep.jpg").toString()));
+        charakterBild = new ImageView(new Image(playerImage));
         charakterBild.setLayoutX(30);
         charakterBild.setLayoutY(210);
         charakterBild.setFitHeight(200);
@@ -103,16 +115,32 @@ public class BossFight extends Ort{
     private void attack() {
         dialog.appendText("Angriff mit " + slider.getValue() + "\n");
         Random rd = new Random();
-        double a = rd.nextInt(141)/100;
-        int schaden =(int)Math.round((Math.log(Main.tdi.getSpieler().getAngriffskraft()/Math.pow(slider.getValue(), 0.05))*Math.pow(Math.pow(slider.getValue()-1,2)+1,5)*Math.pow(slider.getValue()/2, a))*5);
+        double a = rd.nextDouble(141) / 100D;
+        int schaden = (int) Math.round(
+                (Math.log(
+                        Main.tdi.getSpieler().getAngriffskraft() /
+                Math.pow(slider.getValue(), 0.05)
+                ) * Math.pow(
+                        Math.pow(slider.getValue() - 1, 2) + 1, 5
+                ) * Math.pow(
+                        slider.getValue() / 2, a
+                    )
+                ) *5);
         this.boss.setLeben(this.boss.getLeben() - schaden - this.boss.getVerteidigung());
         this.dialog.appendText(String.valueOf(this.boss.getLeben()));
         if (this.boss.getLeben() <= 0) {
             Spielfeld spf = Main.tdi.getFeld();
-            spf.applyTexture(this.getPositionX(), this.getPositionY(), spf.getTextures()[255]);
+            int textureID = getMatchingTexture(this.getPositionX(), this.getPositionY());
+            spf.applyTexture(this.getPositionX(), this.getPositionY(), spf.getTextures()[textureID]);
             spf.applyBounds(this.getPositionX(),this.getPositionY(), false);
             spf.removeOrt(this.getPositionX(), this.getPositionY());
         }
+    }
+
+    private int getMatchingTexture(int positionX, int positionY) {
+
+        return 255;
+
     }
 }
 
