@@ -23,11 +23,11 @@ public class Spielfeld {
      */
 
     private final String layoutTexture = getClass().getResource("images/bounds_new.png").toString();
-    private static String[] textures = new String[256];
-    private static ImageView[][] mapTextures = new ImageView[42][26];
-    private static Ort[][] mapOrte = new Ort[42][26];
-    private static Boolean[][] mapBounds = new Boolean[42][26];
-    private static ImageView player;
+    private String[] textures = new String[256];
+    private ImageView[][] mapTextures = new ImageView[42][26];
+    private Ort[][] mapOrte = new Ort[42][26];
+    private Boolean[][] mapBounds = new Boolean[42][26];
+    private ImageView player;
 
     private Pane pane;
 
@@ -59,14 +59,15 @@ public class Spielfeld {
         textures[0] =   getClass().getResource("images/Villain.png").toString();
 
         if (isInit) {
-            initDrawMap();
+            initDrawMap(pane);
         }
     }
 
     /**
      * Draws the map onto the screen
      */
-    public void initDrawMap(){
+    public void initDrawMap(Pane pane){
+        this.pane = pane;
         //Fill mapBounds according to Image
         Image img = new Image(layoutTexture);
         PixelReader pxr = img.getPixelReader();
@@ -125,8 +126,6 @@ public class Spielfeld {
         player.setX(Main.tdi.getSpieler().getPosX() * 24);
         player.setY(Main.tdi.getSpieler().getPosY() * 24);
         pane.getChildren().add(player);
-
-
     }
 
     /**
@@ -134,6 +133,7 @@ public class Spielfeld {
      * @param pane The main JavaFX pane containing the ImageView's
      */
     public void drawMap(Pane pane){
+        this.pane = pane;
         for (Node node: pane.getChildren()
              ) {
             if (node instanceof ImageView) {

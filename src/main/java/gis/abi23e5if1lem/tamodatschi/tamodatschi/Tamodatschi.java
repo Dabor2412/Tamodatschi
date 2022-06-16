@@ -19,6 +19,7 @@ import java.io.IOException;
 import java.util.Random;
 
 public class Tamodatschi extends Application {
+
     public Scene scene;
     @FXML
     public Pane pane;
@@ -30,8 +31,8 @@ public class Tamodatschi extends Application {
     public Label labelHunger;
     @FXML
     public Label labelPlayer;
-    private Spieler spieler;
-    private Spielfeld feld;
+    private static Spieler spieler;
+    private static Spielfeld feld;
     @FXML
     protected void onDisplayClick(Event e) {
         System.out.println(e.getTarget().toString());
@@ -45,9 +46,7 @@ public class Tamodatschi extends Application {
     @FXML
     protected void onTestButtonClick(Event e) {
     // Test:
-        Main.tdi.spieler = new Spieler();
-        Main.tdi.feld = new Spielfeld(true, pane);
-        getFeld().initDrawMap();
+        getFeld().initDrawMap(pane);
         ((Button) e.getSource()).setDisable(true);
         labelPlayer.setBorder(Border.stroke(Color.BLACK));
         labelMoney.setBorder(Border.stroke(Color.BLACK));
@@ -95,8 +94,12 @@ public class Tamodatschi extends Application {
     @FXML
     protected void onTestShopButtonClick() {
         // Test:
-        Shop sp = new Shop(3,9, getClass().getResource("images/japanese_door.png").toString());
-        getFeld().applyOrt(sp);
+        //Shop sp = new Shop(3,9, getClass().getResource("images/japanese_door.png").toString());
+        //getFeld().applyOrt(sp);
+        System.out.println(spieler.equals(Main.tdi.getSpieler()));
+        System.out.println(Main.tdi.getSpieler().equals(spieler));
+        System.out.println(feld.equals(Main.tdi.getFeld()));
+        System.out.println(Main.tdi.getFeld().equals(feld));
         // End
     }
     @FXML
@@ -138,6 +141,19 @@ public class Tamodatschi extends Application {
     }
 
 
+    public Tamodatschi() {
+        spieler = new Spieler();
+        feld = new Spielfeld(false, pane);
+    }
+
+    public Spieler getSpieler() {
+        return spieler;
+    }
+
+    public Spielfeld getFeld() {
+        return feld;
+    }
+
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Tamodatschi.class.getResource("tamodatschi.fxml"));
@@ -154,13 +170,4 @@ public class Tamodatschi extends Application {
         launch();
     }
 
-    public Tamodatschi() {}
-
-    public Spieler getSpieler() {
-        return Main.tdi.spieler;
-    }
-
-    public Spielfeld getFeld() {
-        return Main.tdi.feld;
-    }
 }
