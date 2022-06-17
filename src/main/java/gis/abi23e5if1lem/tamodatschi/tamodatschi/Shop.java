@@ -15,19 +15,19 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
-
+//Shop ist eine Unterklasse von Ort
 public class Shop extends Ort{
     final List<Essen> inventar = new ArrayList<>();
     private Stage primaryStage;
-
+    //Konstruktor0
     public Shop(int x, int y) {
         super(x, y);
     }
-
+    //Konstrucktor1
     public Shop(int x, int y, String grafik) {
         super(x, y, grafik);
     }
-
+    //Shopfenster wird geöffnet und Essensobjekte werden erstellt 
     public void start(){
         this.primaryStage = new Stage();
         this.inventar.clear();
@@ -63,7 +63,7 @@ public class Shop extends Ort{
         //neu laden
         loadInterface();
     }
-
+    //Interface wird neu geladen
     private void loadInterface() {
         GridPane root_new = new GridPane();
         root_new.setAlignment(Pos.CENTER);
@@ -96,7 +96,7 @@ public class Shop extends Ort{
         this.primaryStage.setScene(new Scene(root_new, 750, 600));
         this.primaryStage.show();
     }
-
+       //Lootbox kann hierrüber geöffenet werden
     private void lootbox1(int gross, Label label1) {
        if (istPleite(2*Math.pow(gross,2))){
         Random zg = new Random(); //ein Zufallsgeneratorobjekt wird erstellt
@@ -129,7 +129,7 @@ public class Shop extends Ort{
 
         }} // end of switch
     }
-
+    //ein Name von Items wird aus zwei Teilen zufällig generiert 
     private String generateItemName() {
         ArrayList<String> arr0 = new ArrayList<>();
         ArrayList<String> arr1 = new ArrayList<>();
@@ -152,7 +152,7 @@ public class Shop extends Ort{
         System.out.println(target);
         return target;
     }
-
+    //ein Essenobyekt wird ins Inventar des 
     public void addInv(Essen gericht){ inventar.add(gericht); }
 
     public void removeInv(Essen gericht){
