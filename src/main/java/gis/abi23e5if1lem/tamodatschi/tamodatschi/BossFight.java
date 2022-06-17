@@ -127,15 +127,18 @@ public class BossFight extends Ort{
     private void attack() {
         Random rd = new Random();
         double a = rd.nextDouble(141) / 100D;
-        int schaden = (int) Math.round(
+        /*int schaden = (int) Math.round(
                 (Math.log(
                         Main.tdi.getSpieler().getAngriffskraft() )/
                         (slider.getValue()*Math.log(2.71828)
                 ) *
                         Math.pow(slider.getValue() - 1, 2)
                 )*10
-                ) ;
-        this.boss.setLeben(this.boss.getLeben() - schaden - this.boss.getVerteidigung());
+                ) ;*/
+        int schaden = Main.tdi.getSpieler().getAngriffskraft() * 20;
+        if (((1 + rd.nextInt(100)) / 100 > slider.getValue())) {
+            this.boss.setLeben(this.boss.getLeben() - schaden - this.boss.getVerteidigung());
+        }
         this.life_indicator.setProgress(this.boss.getLeben() / 100);
         this.dialog.appendText(schaden + "");
 
