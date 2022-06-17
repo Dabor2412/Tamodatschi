@@ -8,17 +8,12 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.Border;
 import javafx.scene.layout.Pane;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.Random;
 
 public class Tamodatschi extends Application {
 
@@ -37,81 +32,20 @@ public class Tamodatschi extends Application {
     public ImageView logo;
     private static Spieler spieler;
     private static Spielfeld feld;
-    @FXML
-    protected void onDisplayClick(Event e) {
-        System.out.println(e.getTarget().toString());
-    }
 
     // Test variables:
     Ort testOrt = new Ort( 7,16, getClass().getResource("images/banan.png").toString());
     Minigame testMin = new Minigame(2, 5, getClass().getResource("images/lootbox.png").toString(), 1);
-
     // End
     @FXML
     protected void onStartGameButtonClick(Event e) {
-    // Test:
         ((Button) e.getSource()).setVisible(false);
         getFeld().initDrawMap(pane);
-    // End
     }
-    @FXML
-    protected void onTest2ButtonClick(Event e) {
-    // Test:
-        getFeld().applyBounds(testOrt.getPositionX(), testOrt.getPositionY(), true);
-        getFeld().applyOrt(testOrt);
-        getFeld().applyOrt(testMin);
-        getFeld().drawMap(pane);
-        ((Button) e.getSource()).setDisable(true);
-    // End
-    }
-    @FXML
-    protected void onTestPlayerButtonClick() {
-    // Test:
-        Random r = new Random();
-        int x = r.nextInt(42);
-        int y = r.nextInt(26);
-        Main.tdi.spieler.setPosX(x);
-        Main.tdi.spieler.setPosY(y);
-        getFeld().drawMap(pane);
-    // End
-    }
-    @FXML
-    protected void onTestMinigameButtonClick() {
-        // Test:
-        //SchereSteinPapier ssp = new SchereSteinPapier();
-        //ssp.start();
-        Memory mem = new Memory();
-        mem.start(1);
-        //NoelSpricht nsp = new NoelSpricht();
-        //nsp.start();
-        // End
-    }
-    @FXML
-    protected void onTestShopButtonClick() {
-        // Test:
-        //Shop sp = new Shop(3,9, getClass().getResource("images/japanese_door.png").toString());
-        //getFeld().applyOrt(sp);
-        System.out.println(spieler.equals(Main.tdi.getSpieler()));
-        System.out.println(Main.tdi.getSpieler().equals(spieler));
-        System.out.println(feld.equals(Main.tdi.getFeld()));
-        System.out.println(Main.tdi.getFeld().equals(feld));
-        // End
-    }
-    @FXML
-    protected void onTestImageBoundaries(){
 
-        int black = 0;
-        for (int i = 0; i < feld.getSizeX(); i++) {
-            for (int j = 0; j < feld.getSizeY(); j++) {
-
-            }
-        }
-        System.out.println(black);
-    }
-    @FXML
-    protected void onDisplayText(KeyEvent kev){
-       labelMoney.setText("Geld: " + Main.tdi.spieler.getGeld());
-       labelHunger.setText("Hunger: " + Main.tdi.spieler.getHunger());
+    private void onKeyDown(KeyEvent kev){
+       labelMoney.setText("Geld: " + spieler.getGeld());
+       labelHunger.setText("Hunger: " + spieler.getHunger());
         switch (kev.getCharacter()) {
             case "w" :
                 getFeld().movePlayer(0,-1);
@@ -124,9 +58,6 @@ public class Tamodatschi extends Application {
                 break;
             case "d" :
                 getFeld().movePlayer(1,0);
-                break;
-            case "y":
-                onTestImageBoundaries();
                 break;
         }
 
@@ -141,11 +72,11 @@ public class Tamodatschi extends Application {
         feld = new Spielfeld(false, pane);
     }
 
-    public Spieler getSpieler() {
+    public static Spieler getSpieler() {
         return spieler;
     }
 
-    public Spielfeld getFeld() {
+    public static Spielfeld getFeld() {
         return feld;
     }
 
@@ -154,6 +85,7 @@ public class Tamodatschi extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(Tamodatschi.class.getResource("tamodatschi.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 1152, 624);
         this.scene = scene;
+        scene.setOnKeyPressed(this::onKeyDown);
         stage.setMinWidth(1152);
         stage.setMinHeight(624);
         stage.setResizable(false);

@@ -130,14 +130,15 @@ public class BossFight extends Ort{
         this.dialog.appendText(String.valueOf(this.boss.getLeben()));
         if (this.boss.getLeben() <= 0) {
             Spielfeld spf = Main.tdi.getFeld();
-            int textureID = getMatchingTexture(this.getPositionX(), this.getPositionY());
+            int textureID = getMatchingTexture(this.getPositionX(), this.getPositionY(), spf);
             spf.applyTexture(this.getPositionX(), this.getPositionY(), spf.getTextures()[textureID]);
             spf.applyBounds(this.getPositionX(),this.getPositionY(), false);
             spf.removeOrt(this.getPositionX(), this.getPositionY());
         }
     }
 
-    private int getMatchingTexture(int positionX, int positionY) {
+    private int getMatchingTexture(int positionX, int positionY, Spielfeld feld) {
+
 
         return 255;
 
