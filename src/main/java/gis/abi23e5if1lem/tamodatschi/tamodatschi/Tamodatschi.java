@@ -22,8 +22,12 @@ public class Tamodatschi extends Application {
     public Pane pane;
     @FXML
     public Label labelMoney;
+
     @FXML
-    public TextField textFieldEssen;
+
+    public Rectangle rectangleleft;
+    @FXML
+    public Label labelFood;
     @FXML
     public Label labelHunger;
     @FXML
@@ -40,6 +44,12 @@ public class Tamodatschi extends Application {
     @FXML
     protected void onStartGameButtonClick(Event e) {
         ((Button) e.getSource()).setVisible(false);
+        labelHunger.setVisible(true);
+        labelPlayer.setVisible(true);
+        labelHunger.setVisible(true);
+        labelFood.setVisible(true);
+        rectangleleft.setVisible(false);
+
         getFeld().initDrawMap(pane);
     }
 
