@@ -2,9 +2,9 @@ package gis.abi23e5if1lem.tamodatschi.tamodatschi;
 
 import javafx.application.Application;
 import javafx.event.Event;
-import javafx.event.EventType;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -37,7 +37,7 @@ public class Tamodatschi extends Application {
     private static Spielfeld feld;
 
     // Test variables:
-    Ort testOrt = new Ort( 7,16, getClass().getResource("images/banan.png").toString());
+    Ort testOrt = new Ort( 7,16, getClass().getResource("images/grass_church.png").toString());
     Minigame testMin = new Minigame(2, 5, getClass().getResource("images/lootbox.png").toString(), 1);
     // End
     @FXML
@@ -57,21 +57,46 @@ public class Tamodatschi extends Application {
         getFeld().initDrawMap(pane);
     }
 
+    @FXML
+    protected void onClickFood(Event e) {
+        spieler.konsumiereEssen();
+        labelHunger.setText("Hunger: " + spieler.getHunger());
+        labelFood.setText("Essen:");
+        for (Essen es: spieler.getEssen()
+        ) {
+            labelFood.setText(labelFood.getText() + "\n" + es.getName());
+        }
+    }
+
     public void onKeyDown(KeyEvent kev){
         labelMoney.setText("Geld: " + spieler.getGeld());
         labelHunger.setText("Hunger: " + spieler.getHunger());
         labelLive.setText("Leben: " + spieler.getLeben());
+        labelPlayer.setAlignment(Pos.TOP_LEFT);
+        labelPlayer.setText("Spieler Inventar:");
+        for (String s: spieler.getItems()
+             ) {
+            labelPlayer.setText(labelPlayer.getText() + "\n" + s);
+        }
+        labelFood.setAlignment(Pos.TOP_LEFT);
+        labelFood.setText("Essen:");
+        for (Essen es: spieler.getEssen()
+        ) {
+            labelFood.setText(labelFood.getText() + "\n" + es.getName());
+        }
         switch (kev.getText()) {
             case "w" :
                 getFeld().movePlayer(0,-1);
                 break;
             case "a" :
+                getSpieler().setRotated(true);
                 getFeld().movePlayer(-1,0);
                 break;
             case "s" :
                 getFeld().movePlayer(0,1);
                 break;
             case "d" :
+                getSpieler().setRotated(false);
                 getFeld().movePlayer(1,0);
                 break;
         }

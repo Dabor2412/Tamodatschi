@@ -2,22 +2,26 @@ package gis.abi23e5if1lem.tamodatschi.tamodatschi;
 
 import java.util.ArrayList;
 import java.util.List;
-//Spieler-Klasse mit den unten stehenden Attributen und entsprechenden  getter- und Settermethoden  
+import java.util.Stack;
+
+//Spieler-Klasse mit den unten stehenden Attributen und entsprechenden  getter- und Settermethoden
 public class Spieler {
-        private String name;
         private int leben;
         private int angriffskraft;
-        private int verteidigung;
         private int hunger;
         private int posX = 0;
         private int posY = 0;
         private int geld;
-        List<Essen> essen = new ArrayList<>();//Liste des Essens 
+        private boolean rotation = false;
+        //Liste des Essens
+        Stack<Essen> essen = new Stack<>();
         List<String> item = new ArrayList<>();
-        //Konstruckto der Spieler erhält 10 Geld
+        //Konstrucktor der Spieler erhält 16 Geld und weitere Attribute
         public Spieler () {
-                this.geld = 10;
-                this.angriffskraft=2;
+                this.geld = 16;
+                this.angriffskraft = 5;
+                this.leben = 9;
+                this.hunger = 80;
         }
 
         public int getLeben(){
@@ -40,27 +44,19 @@ public class Spieler {
                 this.angriffskraft = angriffskraft;
         }
 
-        public int getVerteidigung(){
-                return verteidigung;
-        }
-
-        public void setVerteidigung(int verteidigung){
-                this.verteidigung = verteidigung;
-        }
-
-        public List getEssen() {
+        public Stack<Essen> getEssen() {
                 return essen;
         }
 
         public void addEssen(Essen gericht){
-                essen.add(gericht);
+                essen.push(gericht);
         }
 
-        public void konsumiereEssen(Essen gericht){
-                essen.remove(gericht);
+        public void konsumiereEssen(){
+                hunger += essen.pop().getBuff();
         }
 
-        public List getItems() {
+        public List<String> getItems() {
                 return item;
         }
 
@@ -94,5 +90,13 @@ public class Spieler {
 
         public void setPosY(int posY) {
                 this.posY = posY;
+        }
+
+        public boolean isRotated() {
+                return rotation;
+        }
+
+        public void setRotated(boolean rotation) {
+                this.rotation = rotation;
         }
 }

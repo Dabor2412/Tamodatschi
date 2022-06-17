@@ -12,9 +12,6 @@ public class Essen {
         this.price = preis;
     }
 
-    public void konsumieren(){
-
-    }
 
     public String getName() {
         return name;

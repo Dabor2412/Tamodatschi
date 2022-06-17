@@ -13,7 +13,7 @@ public class Spielfeld {
     private final int sizeX = 42;
     private final int sizeY = 26;
 
-    //Load pregenerated Image for Map and one for boundaries
+    // Load pregenerated Image for Map and one for boundaries
     /* Wie macht man eine Map:
         1. 42x26 großes Bild machen
         2. Jeden Pixel je nach Aufgabe anmalen:
@@ -37,13 +37,13 @@ public class Spielfeld {
      */
     public Spielfeld(boolean isInit, Pane pane) {
         this.pane = pane;
-    // Stringarray werden Bilder hinzugefügt
+        // Stringarray werden Bilder hinzugefügt
         textures[255] = getClass().getResource("images/grass.png").toString();
         textures[245] = getClass().getResource("images/water.png").toString();
         textures[235] = getClass().getResource("images/Sakura_tree_oben.png").toString();
         textures[225] = getClass().getResource("images/japanese_door.png").toString();
-        textures[215] = getClass().getResource("images/sand.jpg").toString();
-        textures[205] = getClass().getResource("images/banan.png").toString();
+        textures[215] = getClass().getResource("images/grass_house.png").toString();
+        textures[205] = getClass().getResource("images/grass_church.png").toString();
         textures[195] = getClass().getResource("images/sand_new.png").toString();
         textures[185] = getClass().getResource("images/oasis.png").toString();
         textures[175] = getClass().getResource("images/harbor.png").toString();
@@ -126,7 +126,7 @@ public class Spielfeld {
             }
         }
         // Spieler wird Bild zugewiesen und auf die Pane gemalt
-        player = new ImageView(new Image(getClass().getResource("images/iGoSleep.jpg").toString()));
+        player = new ImageView(new Image(getClass().getResource("images/knight.png").toString()));
         player.setFitHeight(24);
         player.setFitWidth(24);
         player.setX(Main.tdi.getSpieler().getPosX() * 24);
@@ -146,6 +146,11 @@ public class Spielfeld {
                 if(node.equals(player)){
                     player.setX(Main.tdi.getSpieler().getPosX() * 24);
                     player.setY(Main.tdi.getSpieler().getPosY() * 24);
+                    if (Main.tdi.getSpieler().isRotated()) {
+                        player.setScaleX(-1);
+                    } else {
+                        player.setScaleX(1);
+                    }
 
                     return;
                 }
@@ -176,6 +181,7 @@ public class Spielfeld {
             alert.setGraphic(imv);
             alert.setTitle("Game Over");
             alert.setHeaderText("Du bist leider verstorben");
+            alert.show();
         }
         // Überprüfung des Ortes auf den sich der Spieler bewegt um jeweilige Klasse auszuführen
         if (spieler.getPosY()+chngY >= 0 && spieler.getPosX()+chngX >= 0 && spieler.getPosY()+chngY < sizeY && spieler.getPosX()+chngX < sizeX) {
@@ -242,6 +248,11 @@ public class Spielfeld {
 
     public String[] getTextures() {
         return textures;
+    }
+
+
+    public ImageView[][] getMapTextures() {
+        return mapTextures;
     }
 
 }

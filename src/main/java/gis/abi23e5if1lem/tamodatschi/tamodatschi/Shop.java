@@ -31,11 +31,11 @@ public class Shop extends Ort{
     public void start(){
         this.primaryStage = new Stage();
         this.inventar.clear();
-        this.inventar.add(new Essen("Steak", 1, 1));
-        this.inventar.add(new Essen("Kuchen", 1, 1));
-        this.inventar.add(new Essen("Pudding", 1, 1));
-        this.inventar.add(new Essen("Mandarine", 1, 1));
-        this.inventar.add(new Essen("Gummibärchen", 1, 1));
+        this.inventar.add(new Essen("Steak", 20, 1));
+        this.inventar.add(new Essen("Kuchen", 20, 1));
+        this.inventar.add(new Essen("Pudding", 20, 1));
+        this.inventar.add(new Essen("Mandarine", 20, 1));
+        this.inventar.add(new Essen("Gummibärchen", 20, 1));
 
         Scene scene = new Scene(new Pane(), 500, 500);
         this.primaryStage.setOnCloseRequest(we -> {
@@ -111,17 +111,17 @@ public class Shop extends Ort{
         alert.setHeaderText("Lootbox wurde geöffnet");
         switch (zg.nextInt(3)+1) {//Art der Box wird zufällig festgelegt
             case 1 :
-                Main.tdi.getSpieler().setAngriffskraft(Main.tdi.getSpieler().getAngriffskraft()+boost); //Attribut wird geändert
+                Main.tdi.getSpieler().setAngriffskraft(Main.tdi.getSpieler().getAngriffskraft() + boost); //Attribut wird geändert
                 alert.setContentText("Du hast das Item " + generateItemName() + " gezogen. Es erhöht deine Angriffskraft um " + boost);
                 alert.show();
                 break;
             case  2:
-                Main.tdi.getSpieler().setVerteidigung(Main.tdi.getSpieler().getVerteidigung()+boost); //Attribut wird geändert
-                alert.setContentText("Du hast das Item " + generateItemName() + " gezogen. Es erhöht deine Verteidigung um " + boost);
+                Main.tdi.getSpieler().setHunger(Main.tdi.getSpieler().getHunger() + boost); //Attribut wird geändert
+                alert.setContentText("Du hast das Item " + generateItemName() + " gezogen. Es sättigt dich um " + boost);
                 alert.show();
                 break;
             case 3:
-                Main.tdi.getSpieler().setLeben(Main.tdi.getSpieler().getLeben()+boost); //Attribut wird geändert
+                Main.tdi.getSpieler().setLeben(Main.tdi.getSpieler().getLeben() + boost); //Attribut wird geändert
                 alert.setContentText("Du hast das Item " + generateItemName() + " gezogen. Es erhöht deine Leben um " + boost);
                 alert.show();
                 break;
