@@ -8,6 +8,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
@@ -100,6 +101,11 @@ public class SchereSteinPapier {
         Stage stage = new Stage();
         stage.setTitle("Schere Stein Papier");
         stage.setScene(scene);
+        scene.setOnKeyPressed(e -> {
+            if (e.getCode().equals(KeyCode.ESCAPE)) {
+                stage.close();
+            }
+        });
         stage.show();
     }
     // Überprüfung wer gewinnt für die einzelnen Möglichkeiten!

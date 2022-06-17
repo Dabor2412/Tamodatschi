@@ -4,6 +4,7 @@ import javafx.animation.FadeTransition;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
@@ -40,6 +41,11 @@ public class Memory {
         Stage stage = new Stage();
         stage.setTitle("Memory");
         stage.setScene(scene);
+        scene.setOnKeyPressed(e -> {
+            if (e.getCode().equals(KeyCode.ESCAPE)) {
+                stage.close();
+            }
+        });
         stage.show();
 
         label.setPrefWidth(180);
