@@ -60,7 +60,7 @@ public class Tamodatschi extends Application {
     public void onKeyDown(KeyEvent kev){
         labelMoney.setText("Geld: " + spieler.getGeld());
         labelHunger.setText("Hunger: " + spieler.getHunger());
-        labelLive.setText("Lebenn: " + spieler.getLeben());
+        labelLive.setText("Leben: " + spieler.getLeben());
         switch (kev.getText()) {
             case "w" :
                 getFeld().movePlayer(0,-1);

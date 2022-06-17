@@ -50,13 +50,19 @@ public class Spielfeld {
         textures[165] = getClass().getResource("images/cactus.png").toString();
         textures[145] = getClass().getResource("images/palm.png").toString();
         textures[135] = getClass().getResource("images/snow.png").toString();
-        textures[125] = getClass().getResource("images/fish_pond.png").toString();;
-        textures[115] = getClass().getResource("images/house.png").toString();;
-        textures[105] = getClass().getResource("images/pine_tree.png").toString();;
-        textures[95] =  getClass().getResource("images/train.png").toString();;
-        textures[10] =  getClass().getResource("images/door.png").toString();;
-        textures[5] =   getClass().getResource("images/ship_boss.png").toString();
-        textures[0] =   getClass().getResource("images/Villain.png").toString();
+        textures[125] = getClass().getResource("images/fish_pond.png").toString();
+        textures[115] = getClass().getResource("images/house.png").toString();
+        textures[105] = getClass().getResource("images/pine_tree.png").toString();
+        textures[95]  = getClass().getResource("images/train.png").toString();
+        textures[85]  = getClass().getResource("images/hell_rock.png").toString();
+        textures[75]  = getClass().getResource("images/hell_shop.png").toString();
+        textures[65]  = getClass().getResource("images/hell_skeleton.png").toString();
+        textures[55]  = getClass().getResource("images/hell_chest.png").toString();
+        textures[45]  = getClass().getResource("images/lava.png").toString();
+        textures[15]  = getClass().getResource("images/hell_hole.png").toString();
+        textures[10]  = getClass().getResource("images/door.png").toString();
+        textures[5]   = getClass().getResource("images/ship_boss.png").toString();
+        textures[0]   = getClass().getResource("images/Villain.png").toString();
 
         if (isInit) {
             initDrawMap(pane);
