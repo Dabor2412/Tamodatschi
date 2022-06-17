@@ -2,7 +2,7 @@ package gis.abi23e5if1lem.tamodatschi.tamodatschi;
 
 import java.util.ArrayList;
 import java.util.List;
-
+//Spieler-Klasse mit den unten stehenden Attributen und entsprechenden  getter- und Settermethoden  
 public class Spieler {
         private String name;
         private int leben;
@@ -12,11 +12,12 @@ public class Spieler {
         private int posX = 0;
         private int posY = 0;
         private int geld;
-        List<Essen> essen = new ArrayList<>();
+        List<Essen> essen = new ArrayList<>();//Liste des Essens 
         List<String> item = new ArrayList<>();
-
+        //Konstruckto der Spieler erhält 10 Geld
         public Spieler () {
                 this.geld = 10;
+                this.angriffskraft=2;
         }
 
         public int getLeben(){
