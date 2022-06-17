@@ -11,6 +11,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
+import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -24,7 +25,6 @@ public class Tamodatschi extends Application {
     public Label labelMoney;
 
     @FXML
-
     public Rectangle rectangleleft;
     @FXML
     public Label labelFood;

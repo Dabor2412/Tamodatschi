@@ -5,15 +5,15 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.shape.*?>
 
-<Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1152.0" style="-fx-background-color: #556B2F;" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gis.abi23e5if1lem.tamodatschi.tamodatschi.Tamodatschi">
+<Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1152.0" style="-fx-background-color: #5e5e5e;" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gis.abi23e5if1lem.tamodatschi.tamodatschi.Tamodatschi">
    <children>
-      <Button layoutX="500.0" layoutY="410.0" mnemonicParsing="false" onMouseClicked="#onStartGameButtonClick" prefHeight="25.0" prefWidth="85.0" style="-fx-border-color:black; -fx-border-width: 1; -fx-border-style: solid; -fx-background-color: #D3D3D3;" text="Start" />
+      <Button layoutX="457.5" layoutY="410.0" mnemonicParsing="false" onMouseClicked="#onStartGameButtonClick" prefHeight="25.0" prefWidth="85.0" style="-fx-border-color:black; -fx-border-width: 1; -fx-border-style: solid; -fx-background-color: #D3D3D3;" text="Start" />
       <Label fx:id="labelMoney" alignment="CENTER" layoutX="1020.0" layoutY="370.0" prefHeight="25.0" prefWidth="85.0" style="-fx-border-color:black; -fx-border-width: 1; -fx-border-style: solid; -fx-background-color: #D3D3D3;" text="Geld" visible="false" />
       <Label fx:id="labelPlayer" alignment="CENTER" layoutX="1008.0" layoutY="330.0" prefHeight="25.0" prefWidth="144.0" style="-fx-border-color:black; -fx-border-width: 1; -fx-border-style: solid; -fx-background-color: #D3D3D3;" text="Spieler Inventar" visible="false" />
       <Label fx:id="labelHunger" alignment="CENTER" layoutX="1020.0" layoutY="410.0" prefHeight="25.0" prefWidth="85.0" style="-fx-border-color:black; -fx-border-width: 1; -fx-border-style: solid; -fx-background-color: #D3D3D3;" text="Hunger" visible="false" />
       <Label fx:id="labelFood" layoutX="1020.0" layoutY="440.0" prefHeight="150.0" prefWidth="85.0" style="-fx-border-color:black; -fx-border-width: 1; -fx-border-style: solid; -fx-background-color: #D3D3D3;" text="Essen" visible=" false" />
-      <Rectangle fx:id="rectangleleft" fill="#363636" height="700.0" layoutX="1000" layoutY="0" style="-fx-border-color: #363636; -fx-border-width: 1; -fx-border-style: solid; -fx-background-color: #363636;" width="154.0" />
-      <ImageView fx:id="logo" fitHeight="361.0" fitWidth="653.0" layoutX="230.0" layoutY="47.0" pickOnBounds="true" preserveRatio="true">
+      <Rectangle fx:id="rectangleleft" fill="#363636" height="700.0" layoutX="1000" layoutY="0" style="-fx-border-color: #363636; -fx-border-width: 1; -fx-border-style: solid; -fx-background-color: #4d4d4d;" width="154.0" />
+      <ImageView fx:id="logo" fitHeight="361.0" fitWidth="653.0" layoutX="187.5" layoutY="47.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/logo.png" />
          </image></ImageView>
