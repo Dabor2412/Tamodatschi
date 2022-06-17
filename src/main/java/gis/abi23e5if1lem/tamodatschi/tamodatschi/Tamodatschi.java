@@ -8,6 +8,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.Border;
@@ -31,6 +33,8 @@ public class Tamodatschi extends Application {
     public Label labelHunger;
     @FXML
     public Label labelPlayer;
+    @FXML
+    public ImageView logo;
     private static Spieler spieler;
     private static Spielfeld feld;
     @FXML
@@ -44,20 +48,11 @@ public class Tamodatschi extends Application {
 
     // End
     @FXML
-    protected void onTestButtonClick(Event e) {
+    protected void onStartGameButtonClick(Event e) {
     // Test:
+        ((Button) e.getSource()).setVisible(false);
         getFeld().initDrawMap(pane);
-        ((Button) e.getSource()).setDisable(true);
-        labelPlayer.setBorder(Border.stroke(Color.BLACK));
-        labelMoney.setBorder(Border.stroke(Color.BLACK));
-        labelHunger.setBorder(Border.stroke(Color.BLACK));
-        labelHunger.setBackground(Background.fill(Color.LIGHTGRAY));
-        labelMoney.setBackground(Background.fill(Color.LIGHTGRAY));
-        labelPlayer.setBackground(Background.fill(Color.LIGHTGRAY));
-        textFieldEssen.setBackground(Background.fill(Color.LIGHTGRAY));
-        textFieldEssen.setBorder(Border.stroke(Color.BLACK));
-        pane.setBackground(Background.fill(Color.DARKOLIVEGREEN));   //Noel ist lost
-        // End
+    // End
     }
     @FXML
     protected void onTest2ButtonClick(Event e) {
@@ -161,6 +156,7 @@ public class Tamodatschi extends Application {
         this.scene = scene;
         stage.setMinWidth(1152);
         stage.setMinHeight(624);
+        stage.setResizable(false);
         stage.setTitle("Tamodatschi");
         stage.setScene(scene);
         stage.show();
