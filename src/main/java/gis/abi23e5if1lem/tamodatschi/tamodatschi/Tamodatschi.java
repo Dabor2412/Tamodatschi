@@ -7,7 +7,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
@@ -28,7 +27,7 @@ public class Tamodatschi extends Application {
     @FXML
     public Label labelMoney;
     @FXML
-    public TextField textFieldEssen;
+    public Label labelFood;
     @FXML
     public Label labelHunger;
     @FXML
@@ -51,6 +50,10 @@ public class Tamodatschi extends Application {
     protected void onStartGameButtonClick(Event e) {
     // Test:
         ((Button) e.getSource()).setVisible(false);
+        labelHunger.setVisible(true);
+        labelPlayer.setVisible(true);
+        labelHunger.setVisible(true);
+        labelFood.setVisible(true);
         getFeld().initDrawMap(pane);
     // End
     }

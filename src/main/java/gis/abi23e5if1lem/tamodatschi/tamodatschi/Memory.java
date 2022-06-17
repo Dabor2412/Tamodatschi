@@ -90,11 +90,12 @@ public class Memory {
                 zaehler --;
                 return;
             }
-
+        //Auswahl der erste Karte des Paars, diese wird unklickbar gemacht und abgespeichert
             if (selected == null) {
                 selected = this;
                 selected.setDisable(true);
                 open(() -> {});
+        //Auswahl der zweiten karte des Paars, erste wird wieder klickbar gemacht
             } else {
                 open(() -> {
                     selected.setDisable(false);
@@ -133,7 +134,7 @@ public class Memory {
                 selected.setDisable(true);
                 other.setDisable(true);
                 if(paarzaehler == pairs){
-                    //Wenn der Zähler von den Paaren auf 8 steht, gerade die maximale Anzahl der Paare,dann wird diese If Abfrage ausgeführt
+                    //Wenn der Zähler von den Paaren auf 8 steht, gerade die maximale Anzahl der Paare,dann wird der spieler zu Gewinner deklariert und erhält 10 Geld
                     label.setText("Du hast gewonnen!");
                     Main.tdi.getSpieler().setGeld(Main.tdi.getSpieler().getGeld() + 10 * area);
                 }
