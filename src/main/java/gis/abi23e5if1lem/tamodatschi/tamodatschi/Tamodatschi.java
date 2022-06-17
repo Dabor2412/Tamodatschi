@@ -14,6 +14,7 @@ import javafx.scene.layout.Background;
 import javafx.scene.layout.Border;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -26,6 +27,10 @@ public class Tamodatschi extends Application {
     public Pane pane;
     @FXML
     public Label labelMoney;
+
+    @FXML
+
+    public Rectangle rectangleleft;
     @FXML
     public Label labelFood;
     @FXML
@@ -54,6 +59,8 @@ public class Tamodatschi extends Application {
         labelPlayer.setVisible(true);
         labelHunger.setVisible(true);
         labelFood.setVisible(true);
+        rectangleleft.setVisible(false);
+
         getFeld().initDrawMap(pane);
     // End
     }
