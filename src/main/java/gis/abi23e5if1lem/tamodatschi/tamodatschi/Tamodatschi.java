@@ -30,6 +30,8 @@ public class Tamodatschi extends Application {
     @FXML
     public Label labelPlayer;
     @FXML
+    public Label labelLive;
+    @FXML
     public ImageView logo;
     private static Spieler spieler;
     private static Spielfeld feld;
@@ -47,6 +49,7 @@ public class Tamodatschi extends Application {
         labelPlayer.setVisible(true);
         labelMoney.setVisible(true);
         labelFood.setVisible(true);
+        labelLive.setVisible(true);
         rectangleleft.setVisible(false);
 
         pane.getScene().addEventHandler(KeyEvent.KEY_PRESSED, event -> onKeyDown(event));
@@ -57,6 +60,7 @@ public class Tamodatschi extends Application {
     public void onKeyDown(KeyEvent kev){
         labelMoney.setText("Geld: " + spieler.getGeld());
         labelHunger.setText("Hunger: " + spieler.getHunger());
+        labelLive.setText("Lebenn: " + spieler.getLeben());
         switch (kev.getText()) {
             case "w" :
                 getFeld().movePlayer(0,-1);

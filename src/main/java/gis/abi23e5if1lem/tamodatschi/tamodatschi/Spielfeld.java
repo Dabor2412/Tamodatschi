@@ -23,11 +23,11 @@ public class Spielfeld {
      */
 
     private final String layoutTexture = getClass().getResource("images/bounds_new.png").toString();
-    private String[] textures = new String[256];
-    private ImageView[][] mapTextures = new ImageView[42][26];
-    private Ort[][] mapOrte = new Ort[42][26];
-    private Boolean[][] mapBounds = new Boolean[42][26];
-    private ImageView player;
+    private static String[] textures = new String[256];
+    private static ImageView[][] mapTextures = new ImageView[42][26];
+    private static Ort[][] mapOrte = new Ort[42][26];
+    private static Boolean[][] mapBounds = new Boolean[42][26];
+    private static ImageView player;
 
     private Pane pane;
 
@@ -217,7 +217,7 @@ public class Spielfeld {
     public void applyTexture(int x, int y, String grafik) {
         mapTextures[x][y].setImage(new Image(grafik));
     }
-    
+
     public void applyTexture(int x, int y, Image grafik) {
         mapTextures[x][y].setImage(grafik);
     }
