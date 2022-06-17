@@ -32,12 +32,12 @@ public class Spielfeld {
     private Pane pane;
 
     /**
-     * Class constructor
-     * @param isInit Sets whether JavaFX has already started
+     * Konstruktor der Klasse
+     * Parameter isInit gibt an ob Tamodatschi schon gestartet worden ist
      */
     public Spielfeld(boolean isInit, Pane pane) {
         this.pane = pane;
-
+    // Stringarray werden Bilder hinzugefügt
         textures[255] = getClass().getResource("images/grass.png").toString();
         textures[245] = getClass().getResource("images/water.png").toString();
         textures[235] = getClass().getResource("images/Sakura_tree_oben.png").toString();
@@ -64,11 +64,11 @@ public class Spielfeld {
     }
 
     /**
-     * Draws the map onto the screen
+     * Zeichnet die Map auf die Pane
      */
     public void initDrawMap(Pane pane){
         this.pane = pane;
-        //Fill mapBounds according to Image
+        //Dem Feld wird je nach Pixel ein Bild zugewiesen
         Image img = new Image(layoutTexture);
         PixelReader pxr = img.getPixelReader();
         for (int i = 0; i < sizeX; i++) {
@@ -77,7 +77,7 @@ public class Spielfeld {
             }
         }
 
-        //Fill Textures
+        //Auffüllung der Standardfelder ohne Aktionen
         for (int i = 0; i < sizeX; i++) {
             for (int j = 0; j < sizeY; j++) {
                 ImageView imv = new ImageView(new Image(textures[(int) (pxr.getColor(i,j).getGreen()*255)]));
@@ -90,7 +90,7 @@ public class Spielfeld {
             }
         }
 
-        //Fill Ort/Minigames
+        //Bildzuweisung der Minigame und Ort/Shopfelder
         for (int i = 0; i < sizeX; i++) {
             for (int j = 0; j < sizeY; j++) {
                 switch ((int) (pxr.getColor(i,j).getBlue()*255)) {
@@ -119,7 +119,7 @@ public class Spielfeld {
                 }
             }
         }
-
+        // Spieler wird Bild zugewiesen und auf die Pane gemalt
         player = new ImageView(new Image(getClass().getResource("images/iGoSleep.jpg").toString()));
         player.setFitHeight(24);
         player.setFitWidth(24);
@@ -152,14 +152,16 @@ public class Spielfeld {
             }
         }
     }
-
+    //Bewegung des Spielers auf der Pane
     public void movePlayer(int chngX, int chngY){
         Spieler spieler = Main.tdi.getSpieler();
+       // Wenn der Spieler keinen Hungerwert mehr hat, verliert der Spieler Leben
         if (spieler.getHunger() > 0) {
             spieler.setHunger(spieler.getHunger()-1);
         } else {
             spieler.setLeben(spieler.getLeben()-3);
         }
+        // Deathscreen if Players life is lower than 1, it opens a new Alert
         if (spieler.getLeben() < 1) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION, "");
             ImageView imv = new ImageView(new Image(getClass().getResource("images/GameOver.png").toString()));
@@ -169,6 +171,7 @@ public class Spielfeld {
             alert.setTitle("Game Over");
             alert.setHeaderText("Du bist leider verstorben");
         }
+        // Überprüfung des Ortes auf den sich der Spieler bewegt um jeweilige Klasse auszuführen
         if (spieler.getPosY()+chngY >= 0 && spieler.getPosX()+chngX >= 0 && spieler.getPosY()+chngY < sizeY && spieler.getPosX()+chngX < sizeX) {
             if (mapOrte[spieler.getPosX()+chngX][spieler.getPosY()+chngY] instanceof BossFight) {
                 ((BossFight) mapOrte[spieler.getPosX()+chngX][spieler.getPosY()+chngY]).start();
@@ -201,6 +204,7 @@ public class Spielfeld {
     public void removeOrt(int x, int y){
         mapOrte[x][y] = null;
     }
+
     public void applyOrtTexture(Ort place, String grafik) {
         mapOrte[place.getPositionX()][place.getPositionY()] = place;
         applyTexture(place.getPositionX(), place.getPositionY(), grafik);
@@ -213,6 +217,7 @@ public class Spielfeld {
     public void applyTexture(int x, int y, String grafik) {
         mapTextures[x][y].setImage(new Image(grafik));
     }
+    
     public void applyTexture(int x, int y, Image grafik) {
         mapTextures[x][y].setImage(grafik);
     }
