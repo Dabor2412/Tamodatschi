@@ -113,7 +113,6 @@ public class BossFight extends Ort{
     }
 
     private void attack() {
-        dialog.appendText("Angriff mit " + slider.getValue() + "\n");
         Random rd = new Random();
         double a = rd.nextDouble(141) / 100D;
         int schaden = (int) Math.round(
@@ -127,13 +126,13 @@ public class BossFight extends Ort{
                     )
                 ) *5);
         this.boss.setLeben(this.boss.getLeben() - schaden - this.boss.getVerteidigung());
-        this.dialog.appendText(String.valueOf(this.boss.getLeben()));
         if (this.boss.getLeben() <= 0) {
             Spielfeld spf = Main.tdi.getFeld();
             int textureID = getMatchingTexture(this.getPositionX(), this.getPositionY());
             spf.applyTexture(this.getPositionX(), this.getPositionY(), spf.getTextures()[textureID]);
             spf.applyBounds(this.getPositionX(),this.getPositionY(), false);
             spf.removeOrt(this.getPositionX(), this.getPositionY());
+            this.stage.hide();
         }
     }
 
