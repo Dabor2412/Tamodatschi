@@ -15,12 +15,12 @@ public class Minigame extends Ort {
                 break;
         }
     }
-    //Konstruktor0 
+    //Konstruktor für den Fall, dass die Grafik in der Klasse Spielfeld zugewiesen wurde
     public Minigame(int x, int y, int minigameId){
         super(x, y);
         this.minigameId = minigameId;
     }
-    //Konstrucktor1
+    //Konstrucktor mit Grafik
     public Minigame(int x, int y, String grafik, int minigameId){
         super(x, y, grafik);
         this.minigameId = minigameId;
