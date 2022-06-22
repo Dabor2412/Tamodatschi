@@ -1,5 +1,6 @@
 package gis.abi23e5if1lem.tamodatschi.tamodatschi;
 
+import javafx.animation.PathTransition;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
@@ -7,7 +8,10 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
+import javafx.scene.shape.MoveTo;
+import javafx.scene.shape.Path;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.util.Random;
 
@@ -24,8 +28,8 @@ public class BossFight extends Ort{
     private Button attack_button;
     private Button flee_button;
     private ProgressBar life_indicator;
-    private Boss boss = new Boss(20, 1);
-    private int scale = 100 / boss.getLeben();
+    private Boss boss;
+    private int scale;
     private Stage stage;
 
     private String bossImage = getClass().getResource("images/Villain.png").toString();
@@ -57,6 +61,32 @@ public class BossFight extends Ort{
         root.getChildren().add(fightPane);
 
         //Boss
+        int area = 1000;
+        switch(Main.tdi.getSpieler().getPosX()) {
+            case 11:
+                area = 1;
+                System.out.println("1");
+                break;
+            case 19:
+                area = 2;
+                System.out.println("2");
+                break;
+            case 28:
+                area = 3;
+                System.out.println("3");
+                break;
+            case 40:
+                area = 4;
+                System.out.println("4");
+                break;
+            default:
+                System.out.println("Die Funktion funktioniert nicht");
+        }
+        int bossLeben = (int) Math.pow(20, area);
+        int bossAngriff = (int) Math.pow(10, area);
+        this.boss = new Boss(bossLeben, 4);
+
+        this.scale = 100 / boss.getLeben();
 
         //BossBld
         bossBild = new ImageView(new Image(bossImage));
@@ -99,13 +129,13 @@ public class BossFight extends Ort{
         info1.setPrefWidth(80);
         root.getChildren().add(info1);
 
+        //Info2 text
         info2 = new Label("Angriff -->");
         info2.setLayoutX(800);
         info2.setLayoutY(235);
         info2.setPrefHeight(20);
         info2.setPrefWidth(80);
         root.getChildren().add(info2);
-
 
         //Leben
         spielerLeben = new Label("Leben: " + Main.tdi.getSpieler().getLeben());
@@ -162,7 +192,7 @@ public class BossFight extends Ort{
         Random rd = new Random();
         int schaden = (int) Math.ceil(Main.tdi.getSpieler().getAngriffskraft() * slider.getValue());
 
-        if (((1D + rd.nextDouble(100)) / 50D > slider.getValue())) {
+        if ((((1D + rd.nextDouble(100)) / 50D > slider.getValue()))) {
             this.boss.setLeben(this.boss.getLeben() - schaden);
             this.dialog.appendText("Du hast mit " + schaden + " Schaden getroffen\n");
         }
@@ -173,6 +203,20 @@ public class BossFight extends Ort{
             spielerLeben.setText("Leben: " + Main.tdi.getSpieler().getLeben());
             this.dialog.appendText("Du wurdest mit " + this.boss.getAngriff() + " Schaden getroffen\n");
         }
+
+        /* Path path = new Path();
+        path.getElements().add(new MoveTo(400, 100));
+        path.getElements().add(new MoveTo(10, 10));
+        PathTransition pathTransition = new PathTransition();
+        pathTransition.setDuration(Duration.seconds(3));
+        pathTransition.setPath(path);
+        pathTransition.setOrientation(PathTransition.OrientationType.ORTHOGONAL_TO_TANGENT);
+        pathTransition.setCycleCount(1);
+        pathTransition.setAutoReverse(false);
+        pathTransition.setNode(this.charakterBild);
+        pathTransition.play(); */
+
+        System.out.println(this.boss.getLeben() + "");
 
         if (this.boss.getLeben() <= 0) {
             Spielfeld spf = Main.tdi.getFeld();

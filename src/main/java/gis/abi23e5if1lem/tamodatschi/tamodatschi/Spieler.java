@@ -13,15 +13,17 @@ public class Spieler {
         private int posY = 0;
         private int geld;
         private boolean rotation = false;
+
         //Liste des Essens
         Stack<Essen> essen = new Stack<>();
         List<String> item = new ArrayList<>();
+
         //Konstrucktor der Spieler erhält 16 Geld und weitere Attribute
         public Spieler () {
                 this.geld = 16;
                 this.angriffskraft = 5;
-                this.leben = 9;
-                this.hunger = 80;
+                this.leben = 20;
+                this.hunger = 40;
         }
 
         public int getLeben(){
