@@ -9,8 +9,10 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
+import javafx.scene.layout.Background;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
 
 import java.util.Random;
@@ -22,10 +24,12 @@ public class SchereSteinPapier {
         root.setHgap(20);
         root.setVgap(20);
         root.setAlignment(Pos.CENTER);
+        root.setBackground(Background.fill(Paint.valueOf("3e3e3e")));
         GridPane.setHalignment(root, HPos.CENTER);
         GridPane.setValignment(root, VPos.CENTER);
 
         Label label = new Label("Wähle eine Aktion aus");
+        label.setTextFill(Color.WHITE);
         label.setPrefWidth(180);
         root.add(label, 1, 0);
         label.setAlignment(Pos.CENTER);

@@ -36,8 +36,7 @@ public class Memory {
         //Erstellung des Feldes und der Szene wo Memory läuft
         this.area = area;
         Pane root = new Pane();
-
-        Scene scene = new Scene(root, 600, 600);
+        Scene scene = new Scene(root, 500, 250);
         Stage stage = new Stage();
         stage.setTitle("Memory");
         stage.setScene(scene);

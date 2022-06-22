@@ -152,13 +152,13 @@ public class Shop extends Ort{
         System.out.println(target);
         return target;
     }
-    //ein Essenobyekt wird ins Inventar des 
+    //ein Essenobyekt wird ins Inventar des Spielers hinzugefügt
     public void addInv(Essen gericht){ inventar.add(gericht); }
 
     public void removeInv(Essen gericht){
         inventar.remove(gericht);
     }
-
+    //es wird kontroloiert ob ein Spieler noch genug Geld hat
     public boolean istPleite (double a){
         if (a > Main.tdi.getSpieler().getGeld()) {
             return false;
