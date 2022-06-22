@@ -58,13 +58,17 @@ public class Tamodatschi extends Application {
     }
 
     @FXML
-    protected void onClickFood(Event e) {
-        spieler.konsumiereEssen();
-        labelHunger.setText("Hunger: " + spieler.getHunger());
-        labelFood.setText("Essen:");
-        for (Essen es: spieler.getEssen()
-        ) {
-            labelFood.setText(labelFood.getText() + "\n" + es.getName());
+    protected void onClickFood(Event evt) {
+        try {
+            spieler.konsumiereEssen();
+            labelHunger.setText("Hunger: " + spieler.getHunger());
+            labelFood.setText("Essen:");
+            for (Essen es : spieler.getEssen()
+            ) {
+                labelFood.setText(labelFood.getText() + "\n" + es.getName());
+            }
+        } catch(Exception e) {
+            System.out.println(e.getStackTrace());
         }
     }
 

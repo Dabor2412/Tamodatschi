@@ -38,6 +38,12 @@ public class Shop extends Ort{
         this.inventar.add(new Essen("Gummibärchen", 20, 1));
 
         Scene scene = new Scene(new Pane(), 500, 500);
+        scene.setOnKeyPressed(e -> {
+            System.out.println(e.getSource());
+            if (e.getCode().toString() == "ESCAPE") {
+                primaryStage.close();
+            }
+        });
         this.primaryStage.setOnCloseRequest(we -> {
             for(int i = 0; i < inventar.size(); i++) {
                 inventar.remove(inventar.get(0));
@@ -93,8 +99,17 @@ public class Shop extends Ort{
         lootbox.setOnAction(e -> lootbox1(1, label1));
         lootbox.setPrefWidth(180);
 
-        this.primaryStage.setScene(new Scene(root_new, 750, 600));
+        Scene scene = new Scene(root_new, 750, 600);
+
+        this.primaryStage.setScene(scene);
         this.primaryStage.show();
+
+        scene.setOnKeyPressed(e -> {
+            System.out.println(e.getCode());
+            if (e.getCode().toString() == "ESCAPE") {
+                this.primaryStage.close();
+            }
+        });
     }
        //Lootbox kann hierrüber geöffenet werden
     private void lootbox1(int gross, Label label1) {

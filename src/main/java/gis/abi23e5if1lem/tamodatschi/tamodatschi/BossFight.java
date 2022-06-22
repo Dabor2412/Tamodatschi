@@ -31,8 +31,6 @@ public class BossFight extends Ort{
     private Boss boss;
     private int scale;
     private Stage stage;
-
-    private String bossImage = getClass().getResource("images/Villain.png").toString();
     private String playerImage = getClass().getResource("images/knight.png").toString();
 
     public BossFight(int x, int y) {
@@ -40,11 +38,9 @@ public class BossFight extends Ort{
     }
     public BossFight(int x, int y, String bossGrafik) {
         super(x, y);
-        bossImage = bossGrafik;
     }
     public BossFight(int x, int y, String bossGrafik, String spielerGrafik) {
         super(x, y);
-        bossImage = bossGrafik;
         playerImage = spielerGrafik;
     }
 
@@ -89,7 +85,16 @@ public class BossFight extends Ort{
         this.scale = 100 / boss.getLeben();
 
         //BossBld
-        bossBild = new ImageView(new Image(bossImage));
+        switch(area) {
+            case 1:
+                bossBild = new ImageView(new Image(getClass().getResource("images/Villain.png").toString()));
+            case 2:
+                bossBild = new ImageView(new Image(getClass().getResource("images/Villain.png").toString()));
+            case 3:
+                bossBild = new ImageView(new Image(getClass().getResource("images/Villain.png").toString()));
+            case 4:
+                bossBild = new ImageView(new Image(getClass().getResource("images/Villain.png").toString()));
+        }
         bossBild.setLayoutX(160);
         bossBild.setLayoutY(30);
         bossBild.setFitHeight(200);
