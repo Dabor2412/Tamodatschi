@@ -36,10 +36,6 @@ public class Tamodatschi extends Application {
     private static Spieler spieler;
     private static Spielfeld feld;
 
-    // Test variables:
-    Ort testOrt = new Ort( 7,16, getClass().getResource("images/grass_church.png").toString());
-    Minigame testMin = new Minigame(2, 5, getClass().getResource("images/lootbox.png").toString(), 1);
-    // End
     @FXML
     protected void onStartGameButtonClick(Event e) {
         ((Button) e.getSource()).setVisible(false);
@@ -61,6 +57,15 @@ public class Tamodatschi extends Application {
     protected void onClickFood(Event evt) {
         try {
             spieler.konsumiereEssen();
+
+            //Extra Essen wird zu Leben
+            if (spieler.getHunger() > 100) {
+                int saturated = spieler.getHunger() - 100;
+                spieler.setLeben(spieler.getLeben() + (saturated / 5));
+                spieler.setHunger(100);
+            }
+
+            labelLive.setText("Leben: " + spieler.getLeben());
             labelHunger.setText("Hunger: " + spieler.getHunger());
             labelFood.setText("Essen:");
             for (Essen es : spieler.getEssen()

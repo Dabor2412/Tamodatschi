@@ -29,7 +29,7 @@ public class BossFight extends Ort{
     private Button flee_button;
     private ProgressBar life_indicator;
     private Boss boss;
-    private int scale;
+    private double scale;
     private Stage stage;
     private String playerImage = getClass().getResource("images/knight.png").toString();
 
@@ -82,7 +82,7 @@ public class BossFight extends Ort{
         int bossAngriff = (int) Math.pow(10, area);
         this.boss = new Boss(bossLeben, 4);
 
-        this.scale = 100 / boss.getLeben();
+        this.scale = 100D / boss.getLeben();
 
         //BossBld
         switch(area) {
@@ -221,7 +221,7 @@ public class BossFight extends Ort{
         pathTransition.setNode(this.charakterBild);
         pathTransition.play(); */
 
-        System.out.println(this.boss.getLeben() + "");
+        System.out.println(this.boss.getLeben());
 
         if (this.boss.getLeben() <= 0) {
             Spielfeld spf = Main.tdi.getFeld();
