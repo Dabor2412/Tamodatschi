@@ -18,6 +18,9 @@ import javafx.stage.Stage;
 import java.util.Random;
 
 public class SchereSteinPapier {
+    private Button button_schere;
+    private Button button_papier;
+    private Button button_stein;
     	//Erstellung der Oberfläche und des Feldes
     public void start(int area){
         GridPane root = new GridPane();
@@ -41,15 +44,15 @@ public class SchereSteinPapier {
         Label symbol2 = new Label();
         root.add(symbol2, 2, 0);
         //Gewinnausgabe für das Szenario Schere!
-        Button button_schere = new Button("Schere");
+        button_schere = new Button("Schere");
         button_schere.setPrefWidth(60);
         root.add(button_schere, 0, 1);
         button_schere.setOnAction(e -> {
-            if (fight(0, root, symbol1, symbol2) == 1) {
+            if (fight(0, symbol1, symbol2) == 1) {
                 label.setText("Du hast gewonnen.");
                 label.setTextFill(Color.GREEN);
                 Main.tdi.getSpieler().setGeld(Main.tdi.getSpieler().getGeld() + 3 * area);
-            } else if(fight(0, root, symbol1, symbol2) == 2){
+            } else if(fight(0, symbol1, symbol2) == 2){
                 label.setText("Es gibt keinen Sieger");
                 label.setTextFill(Color.VIOLET);
                 Main.tdi.getSpieler().setGeld(Main.tdi.getSpieler().getGeld() + 1 * area);
@@ -58,18 +61,19 @@ public class SchereSteinPapier {
                 label.setTextFill(Color.RED);
                 Main.tdi.getSpieler().setGeld(Main.tdi.getSpieler().getGeld() - 2 * area);
             }
+            disable(1);
         });
         button_schere.setPrefWidth(220);
         //Gewinnausgabe für das Szenario Stein!
-        Button button_stein = new Button("Stein");
+        button_stein = new Button("Stein");
         button_stein.setPrefWidth(60);
         root.add(button_stein, 1, 1);
         button_stein.setOnAction(e -> {
-            if (fight(1, root, symbol1, symbol2) == 1) {
+            if (fight(1, symbol1, symbol2) == 1) {
                 label.setText("Du hast gewonnen.");
                 label.setTextFill(Color.GREEN);
                 Main.tdi.getSpieler().setGeld(Main.tdi.getSpieler().getGeld() + 3 * area);
-            } else if(fight(1, root, symbol1, symbol2) == 2){
+            } else if(fight(1, symbol1, symbol2) == 2){
                 label.setText("Es gibt keinen Sieger");
                 label.setTextFill(Color.VIOLET);
                 Main.tdi.getSpieler().setGeld(Main.tdi.getSpieler().getGeld() + 1 * area);
@@ -78,18 +82,19 @@ public class SchereSteinPapier {
                 label.setTextFill(Color.RED);
                 Main.tdi.getSpieler().setGeld(Main.tdi.getSpieler().getGeld() - 2 * area);
             }
+            disable(1);
         });
         button_stein.setPrefWidth(220);
         //Gewinnausgabe für das Szenario Papier!
-        Button button_papier = new Button("Papier");
+        button_papier = new Button("Papier");
         button_papier.setPrefWidth(60);
         root.add(button_papier, 2, 1);
         button_papier.setOnAction(e -> {
-            if (fight(2, root, symbol1, symbol2) == 1) {
+            if (fight(2, symbol1, symbol2) == 1) {
                 label.setText("Du hast gewonnen.");
                 label.setTextFill(Color.GREEN);
                 Main.tdi.getSpieler().setGeld(Main.tdi.getSpieler().getGeld() + 3 * area);
-            } else if(fight(2, root, symbol1, symbol2) == 2){
+            } else if(fight(2, symbol1, symbol2) == 2){
                 label.setText("Es gibt keinen Sieger");
                 label.setTextFill(Color.VIOLET);
                 Main.tdi.getSpieler().setGeld(Main.tdi.getSpieler().getGeld() + 1 * area);
@@ -98,6 +103,7 @@ public class SchereSteinPapier {
                 label.setTextFill(Color.RED);
                 Main.tdi.getSpieler().setGeld(Main.tdi.getSpieler().getGeld() - 2 * area);
             }
+            disable(1);
         });
         button_papier.setPrefWidth(220);
 
@@ -113,7 +119,7 @@ public class SchereSteinPapier {
         stage.show();
     }
     // Überprüfung wer gewinnt für die einzelnen Möglichkeiten!
-    private int fight(int x, GridPane gp, Label symbol2, Label symbol1) {
+    private int fight(int x, Label symbol2, Label symbol1) {
         Random rd = new Random();
         switch(rd.nextInt(3)) {
             case 0:
@@ -166,5 +172,15 @@ public class SchereSteinPapier {
                 }
         }
         return 0;
+    }
+    private void disable(int time) {
+        button_papier.setDisable(true);
+        button_schere.setDisable(true);
+        button_stein.setDisable(true);
+        Timer timer = new Timer();
+        timer.waitSecs(time);
+        button_papier.setDisable(false);
+        button_stein.setDisable(false);
+        button_schere.setDisable(false);
     }
 }
