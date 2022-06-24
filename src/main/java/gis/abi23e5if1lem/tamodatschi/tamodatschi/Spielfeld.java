@@ -181,6 +181,7 @@ public class Spielfeld {
             alert.setGraphic(imv);
             alert.setTitle("Game Over");
             alert.setHeaderText("Du bist leider verstorben");
+            alert.setOnCloseRequest(dialogEvent -> System.exit(0));
             alert.show();
         }
         // Überprüfung des Ortes auf den sich der Spieler bewegt um jeweilige Klasse auszuführen
