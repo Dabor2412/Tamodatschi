@@ -58,9 +58,9 @@ public class Shop extends Ort{
         loadInterface();
     }
 
-    private void buyItem(Essen essen0) {
+    private void buyItem(Essen essen0,Label label3) {
         //bezahlen und zum Inventar
-        if (istPleite(essen0.getPrice())){
+        if (istPleite(essen0.getPrice(), label3)){
             Main.tdi.getSpieler().setGeld(Main.tdi.getSpieler().getGeld() - essen0.getPrice());
             Main.tdi.getSpieler().addEssen(essen0);
 
@@ -84,26 +84,30 @@ public class Shop extends Ort{
         root_new.add(new Label("Buffs"), 1, 0);
         root_new.add(new Label("Preis"), 2, 0);
 
-        for (int i = 0; i < this.inventar.size(); i++) {
-            Essen essen = this.inventar.get(i);
-            Button tempi = new Button(this.inventar.get(i).getName());
-            tempi.setOnAction(e -> buyItem(essen));
-            tempi.setPrefWidth(180);
-            root_new.add(tempi, 0, (i+1));                                                        //Name
-            root_new.add(new Label(String.valueOf(this.inventar.get(i).getBuff())), 1, (i+1));     //Buffs
-            root_new.add(new Label(String.valueOf(this.inventar.get(i).getPrice())), 2, (i+1));     //Preis
-        }
-
         Label label1 = new Label();
         root_new.add(label1,1, this.inventar.size() + 1);
         label1.setText("?");
         Label label2 = new Label();
         root_new.add(label2,2, this.inventar.size() + 1);
         label2.setText("2");
+        Label label3 = new Label();
+        root_new.add(label3,1, this.inventar.size() + 3);
         Button lootbox = new Button("Lootbox");
         root_new.add(lootbox,0, this.inventar.size() + 1 );
-        lootbox.setOnAction(e -> lootbox1(1, label1));
+        lootbox.setOnAction(e -> lootbox1(1, label1, label3));
         lootbox.setPrefWidth(180);
+
+        for (int i = 0; i < this.inventar.size(); i++) {
+            Essen essen = this.inventar.get(i);
+            Button tempi = new Button(this.inventar.get(i).getName());
+            tempi.setOnAction(e -> buyItem(essen, label3));
+            tempi.setPrefWidth(180);
+            root_new.add(tempi, 0, (i+1));                                                        //Name
+            root_new.add(new Label(String.valueOf(this.inventar.get(i).getBuff())), 1, (i+1));     //Buffs
+            root_new.add(new Label(String.valueOf(this.inventar.get(i).getPrice())), 2, (i+1));     //Preis
+        }
+
+
 
         Scene scene = new Scene(root_new, 750, 600);
 
@@ -117,40 +121,40 @@ public class Shop extends Ort{
             }
         });
     }
-       //Lootbox kann hierrüber geöffenet werden
-    private void lootbox1(int gross, Label label1) {
-       if (istPleite(2*Math.pow(gross,2))){
-        Random zg = new Random(); //ein Zufallsgeneratorobjekt wird erstellt
-        Main.tdi.getSpieler().setGeld((int) (Main.tdi.getSpieler().getGeld()-2*Math.pow(gross,2))); //hier Geld festlegen//Preis wird abgebucht
-        int boost = (int) Math.round(Math.pow(2,gross)*1000/(zg.nextInt(900)+100)); //Größe der Box wird zufällig festgelegt
-        Alert alert = new Alert(Alert.AlertType.INFORMATION, "");
-        ImageView imv = new ImageView(new Image(getClass().getResource("images/lootbox.png").toString()));
-        imv.setFitHeight(64);
-        imv.setFitWidth(64);
-        alert.setGraphic(imv);
-        alert.setTitle("Lootbox");
-        alert.setHeaderText("Lootbox wurde geöffnet");
-        switch (zg.nextInt(3)+1) {//Art der Box wird zufällig festgelegt
-            case 1 :
-                Main.tdi.getSpieler().setAngriffskraft(Main.tdi.getSpieler().getAngriffskraft() + boost); //Attribut wird geändert
-                alert.setContentText("Du hast das Item " + generateItemName() + " gezogen. Es erhöht deine Angriffskraft um " + boost);
-                alert.show();
-                break;
-            case  2:
-                Main.tdi.getSpieler().setHunger(Main.tdi.getSpieler().getHunger() + boost); //Attribut wird geändert
-                alert.setContentText("Du hast das Item " + generateItemName() + " gezogen. Es sättigt dich um " + boost);
-                alert.show();
-                break;
-            case 3:
-                Main.tdi.getSpieler().setLeben(Main.tdi.getSpieler().getLeben() + boost); //Attribut wird geändert
-                alert.setContentText("Du hast das Item " + generateItemName() + " gezogen. Es erhöht deine Leben um " + boost);
-                alert.show();
-                break;
-            default:
+    //Lootbox kann hierrüber geöffenet werden
+    private void lootbox1(int gross, Label label1, Label label3) {
+        if (istPleite(2*Math.pow(gross,2),label3)){
+            Random zg = new Random(); //ein Zufallsgeneratorobjekt wird erstellt
+            Main.tdi.getSpieler().setGeld((int) (Main.tdi.getSpieler().getGeld()-2*Math.pow(gross,2))); //hier Geld festlegen//Preis wird abgebucht
+            int boost = (int) Math.round(Math.pow(2,gross)*1000/(zg.nextInt(900)+100)); //Größe der Box wird zufällig festgelegt
+            Alert alert = new Alert(Alert.AlertType.INFORMATION, "");
+            ImageView imv = new ImageView(new Image(getClass().getResource("images/lootbox.png").toString()));
+            imv.setFitHeight(64);
+            imv.setFitWidth(64);
+            alert.setGraphic(imv);
+            alert.setTitle("Lootbox");
+            alert.setHeaderText("Lootbox wurde geöffnet");
+            switch (zg.nextInt(3)+1) {//Art der Box wird zufällig festgelegt
+                case 1 :
+                    Main.tdi.getSpieler().setAngriffskraft(Main.tdi.getSpieler().getAngriffskraft() + boost); //Attribut wird geändert
+                    alert.setContentText("Du hast das Item " + generateItemName() + " gezogen. Es erhöht deine Angriffskraft um " + boost);
+                    alert.show();
+                    break;
+                case  2:
+                    Main.tdi.getSpieler().setHunger(Main.tdi.getSpieler().getHunger() + boost); //Attribut wird geändert
+                    alert.setContentText("Du hast das Item " + generateItemName() + " gezogen. Es sättigt dich um " + boost);
+                    alert.show();
+                    break;
+                case 3:
+                    Main.tdi.getSpieler().setLeben(Main.tdi.getSpieler().getLeben() + boost); //Attribut wird geändert
+                    alert.setContentText("Du hast das Item " + generateItemName() + " gezogen. Es erhöht deine Leben um " + boost);
+                    alert.show();
+                    break;
+                default:
 
-        }} // end of switch
+            }} // end of switch
     }
-    //ein Name von Items wird aus zwei Teilen zufällig generiert 
+    //ein Name von Items wird aus zwei Teilen zufällig generiert
     private String generateItemName() {
         ArrayList<String> arr0 = new ArrayList<>();
         ArrayList<String> arr1 = new ArrayList<>();
@@ -180,10 +184,11 @@ public class Shop extends Ort{
         inventar.remove(gericht);
     }
     //es wird kontroloiert ob ein Spieler noch genug Geld hat
-    public boolean istPleite (double a){
+    public boolean istPleite (double a, Label label3){
         if (a > Main.tdi.getSpieler().getGeld()) {
+            label3.setText("Du bist leider pleite");
+            System.out.println("Pleite");
             return false;
-            //hier label beschreiben
         } else {
             return true;
         }
