@@ -15,15 +15,17 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
+
 //Shop ist eine Unterklasse von Ort
 public class Shop extends Ort{
     final List<Essen> inventar = new ArrayList<>();
     private Stage primaryStage;
-    //Konstruktor0
+
+    //Konstruktor falls die Grafik über Spielfeld zugewiesen wird
     public Shop(int x, int y) {
         super(x, y);
     }
-    //Konstrucktor1
+    //Konstrucktor bei dem auch eine Grafik zugewiesen wird
     public Shop(int x, int y, String grafik) {
         super(x, y, grafik);
     }
@@ -94,6 +96,10 @@ public class Shop extends Ort{
 
         Label label1 = new Label();
         root_new.add(label1,1, this.inventar.size() + 1);
+        label1.setText("?");
+        Label label2 = new Label();
+        root_new.add(label2,2, this.inventar.size() + 1);
+        label2.setText("2");
         Button lootbox = new Button("Lootbox");
         root_new.add(lootbox,0, this.inventar.size() + 1 );
         lootbox.setOnAction(e -> lootbox1(1, label1));

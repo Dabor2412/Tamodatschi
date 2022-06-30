@@ -172,18 +172,7 @@ public class Spielfeld {
         } else {
             spieler.setLeben(spieler.getLeben()-3);
         }
-        // Deathscreen if Players life is lower than 1, it opens a new Alert
-        if (spieler.getLeben() < 1) {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION, "");
-            ImageView imv = new ImageView(new Image(getClass().getResource("images/GameOver.png").toString()));
-            imv.setFitHeight(460);
-            imv.setFitWidth(741);
-            alert.setGraphic(imv);
-            alert.setTitle("Game Over");
-            alert.setHeaderText("Du bist leider verstorben");
-            alert.setOnCloseRequest(dialogEvent -> System.exit(0));
-            alert.show();
-        }
+        isTot();
         // Überprüfung des Ortes auf den sich der Spieler bewegt um jeweilige Klasse auszuführen
         if (spieler.getPosY()+chngY >= 0 && spieler.getPosX()+chngX >= 0 && spieler.getPosY()+chngY < sizeY && spieler.getPosX()+chngX < sizeX) {
             if (mapOrte[spieler.getPosX()+chngX][spieler.getPosY()+chngY] instanceof BossFight) {
@@ -201,6 +190,20 @@ public class Spielfeld {
                     }
                 }
             }
+        }
+    }
+    public void isTot (){
+        // Deathscreen if Players life is lower than 1, it opens a new Alert
+        if (Main.tdi.getSpieler().getLeben() < 1) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION, "");
+            ImageView imv = new ImageView(new Image(getClass().getResource("images/GameOver.png").toString()));
+            imv.setFitHeight(460);
+            imv.setFitWidth(741);
+            alert.setGraphic(imv);
+            alert.setTitle("Game Over");
+            alert.setHeaderText("Du bist leider verstorben");
+            alert.setOnCloseRequest(dialogEvent -> System.exit(0));
+            alert.show();
         }
     }
 
