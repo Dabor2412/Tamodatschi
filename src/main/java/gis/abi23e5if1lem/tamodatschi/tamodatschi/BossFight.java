@@ -56,7 +56,7 @@ public class BossFight extends Ort{
         fightPane.setBackground(Background.fill(Paint.valueOf("333333")));
         root.getChildren().add(fightPane);
 
-        //Boss
+        //Boss je nachdem wo der Boss auf der festgellegten Karte ist, ist er unterschiedlich stark, Implemantation über die x-Kordinate des Bosses
         int area = 1000;
         switch(Main.tdi.getSpieler().getPosX()) {
             case 11:
@@ -192,7 +192,7 @@ public class BossFight extends Ort{
         stage.setScene(scene);
         stage.show();
     }
-
+//Über die Eingabe des Slieders wird ein Schadenswert und eine Trefferwarscheinlichkeit für Spieler erechnet. Über eine Zufallszahl wird entschieden ob getroffen wird
     private void attack() {
         Random rd = new Random();
         int schaden = (int) Math.ceil(Main.tdi.getSpieler().getAngriffskraft() * slider.getValue());
@@ -200,6 +200,9 @@ public class BossFight extends Ort{
         if ((((1D + rd.nextDouble(100)) / 50D > slider.getValue()))) {
             this.boss.setLeben(this.boss.getLeben() - schaden);
             this.dialog.appendText("Du hast mit " + schaden + " Schaden getroffen\n");
+        }
+        else {
+            this.dialog.appendText("Du hast nicht getroffen\n");
         }
         this.life_indicator.setProgress(this.boss.getLeben() / 100D * scale);
 
@@ -222,7 +225,7 @@ public class BossFight extends Ort{
         pathTransition.play(); */
 
         System.out.println(this.boss.getLeben());
-
+        //überprüfung ob der Boss besiegt ist (0 Leben hat)-> Bosskampf wird bendet und Weg freigegebn
         if (this.boss.getLeben() <= 0) {
             Spielfeld spf = Main.tdi.getFeld();
             spf.applyTexture(this.getPositionX(), this.getPositionY(), getMatchingTexture(this.getPositionX(), this.getPositionY(), spf));
@@ -231,7 +234,7 @@ public class BossFight extends Ort{
             this.stage.close();
         }
     }
-
+    //Die Textur de s feldes links vom Boss wird ausgegeben um das ehmalige Boss-Feld mit ihr auszustatten
     private Image getMatchingTexture(int positionX, int positionY, Spielfeld feld) {
         return feld.getMapTextures()[positionX-1][positionY].getImage();
     }
