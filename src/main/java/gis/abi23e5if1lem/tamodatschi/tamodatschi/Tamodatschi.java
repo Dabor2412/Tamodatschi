@@ -95,16 +95,20 @@ public class Tamodatschi extends Application {
         }
         switch (kev.getText()) {
             case "w" :
+            case "W":
                 getFeld().movePlayer(0,-1);
                 break;
             case "a" :
+            case "A":
                 getSpieler().setRotated(true);
                 getFeld().movePlayer(-1,0);
                 break;
             case "s" :
+            case "S":
                 getFeld().movePlayer(0,1);
                 break;
             case "d" :
+            case "D":
                 getSpieler().setRotated(false);
                 getFeld().movePlayer(1,0);
                 break;
