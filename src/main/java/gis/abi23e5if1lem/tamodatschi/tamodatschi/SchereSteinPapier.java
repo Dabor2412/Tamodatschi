@@ -48,11 +48,12 @@ public class SchereSteinPapier {
         button_schere.setPrefWidth(60);
         root.add(button_schere, 0, 1);
         button_schere.setOnAction(e -> {
-            if (fight(0, symbol1, symbol2) == 1) {
+            int fNum = fight(0, symbol1, symbol2);
+            if (fNum == 1) {
                 label.setText("Du hast gewonnen.");
                 label.setTextFill(Color.GREEN);
                 Main.tdi.getSpieler().setGeld(Main.tdi.getSpieler().getGeld() + 3 * area);
-            } else if(fight(0, symbol1, symbol2) == 2){
+            } else if(fNum == 2){
                 label.setText("Es gibt keinen Sieger");
                 label.setTextFill(Color.VIOLET);
                 Main.tdi.getSpieler().setGeld(Main.tdi.getSpieler().getGeld() + 1 * area);
@@ -69,11 +70,12 @@ public class SchereSteinPapier {
         button_stein.setPrefWidth(60);
         root.add(button_stein, 1, 1);
         button_stein.setOnAction(e -> {
-            if (fight(1, symbol1, symbol2) == 1) {
+            int fNum = fight(1, symbol1, symbol2);
+            if (fNum == 1) {
                 label.setText("Du hast gewonnen.");
                 label.setTextFill(Color.GREEN);
                 Main.tdi.getSpieler().setGeld(Main.tdi.getSpieler().getGeld() + 3 * area);
-            } else if(fight(1, symbol1, symbol2) == 2){
+            } else if(fNum == 2){
                 label.setText("Es gibt keinen Sieger");
                 label.setTextFill(Color.VIOLET);
                 Main.tdi.getSpieler().setGeld(Main.tdi.getSpieler().getGeld() + 1 * area);
@@ -90,11 +92,12 @@ public class SchereSteinPapier {
         button_papier.setPrefWidth(60);
         root.add(button_papier, 2, 1);
         button_papier.setOnAction(e -> {
-            if (fight(2, symbol1, symbol2) == 1) {
+            int fNum = fight(2, symbol1, symbol2);
+            if (fNum == 1) {
                 label.setText("Du hast gewonnen.");
                 label.setTextFill(Color.GREEN);
                 Main.tdi.getSpieler().setGeld(Main.tdi.getSpieler().getGeld() + 3 * area);
-            } else if(fight(2, symbol1, symbol2) == 2){
+            } else if(fNum == 2){
                 label.setText("Es gibt keinen Sieger");
                 label.setTextFill(Color.VIOLET);
                 Main.tdi.getSpieler().setGeld(Main.tdi.getSpieler().getGeld() + 1 * area);

@@ -70,7 +70,7 @@ public class Spielfeld {
     }
 
     /**
-     * Zeichnet die Map auf die Pane
+     * Zeichnet die Map erstmalig auf die Pane
      */
     public void initDrawMap(Pane pane){
         this.pane = pane;
