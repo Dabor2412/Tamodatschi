@@ -207,12 +207,13 @@ public class BossFight extends Ort{
         this.life_indicator.setProgress(this.boss.getLeben() / 100D * scale);
 
         if (rd.nextDouble(1) > (1D - slider.getValue()/2)) {
-            if (Main.tdi.getSpieler().getLeben() - this.boss.getAngriff()<1){ //Stage wird geschlossen wenn Spieler stirbt
-             this.stage.close();
-            }
             Main.tdi.getSpieler().setLeben(Main.tdi.getSpieler().getLeben() - this.boss.getAngriff());
             spielerLeben.setText("Leben: " + Main.tdi.getSpieler().getLeben());
             this.dialog.appendText("Du wurdest mit " + this.boss.getAngriff() + " Schaden getroffen\n");
+            if (Main.tdi.getSpieler().getLeben()<1){ //Stage wird geschlossen wenn Spieler stirbt
+                Main.tdi.getFeld().isTot();
+                this.stage.close();
+            }
         }
 
         /* Path path = new Path();
